@@ -13,24 +13,6 @@ namespace DBMS_NHOM_10.View
     public class Procedure
     {
 
-        public static DataTable proc_giohang(string query)
-        {
-            SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-            DataTable dataTable = new DataTable();
-
-            adapter.Fill(dataTable);
-
-            return dataTable;
-        }
-
-        public static DataTable proc_timkiemkhachhang_sdt(string a)
-        {
-            string query = "exec proc_timkiemkhachhang_sdt " + a;
-            SqlDataAdapter adapter = new SqlDataAdapter(query,DataBaseConnection.GetSqlConnection());
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            return dataTable;
-        }
 
         public static DataTable proc_lichsumuahang(string a)
         {

@@ -16,3 +16,5 @@ C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Form
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormTaoHoaDon.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditDienThoai.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormEmployee.resources
+C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormShift.resources
+C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditKH.resources

@@ -54,13 +54,12 @@ namespace DBMS_NHOM_10.View
 
         public static void RunSQL(string sql)
         {
-            SqlCommand cmd; //Đối tượng thuộc lớp SqlCommand
-            cmd = new SqlCommand();
+            SqlCommand cmd = new SqlCommand();
             cmd.Connection = DataBaseConnection.GetSqlConnection(); //Gán kết nối
-            cmd.CommandText = sql; //Gán lệnh SQL
+            cmd.CommandText = sql;
             try
             {
-                cmd.ExecuteNonQuery(); //Thực hiện câu lệnh SQL
+                cmd.ExecuteNonQuery();
             }
             catch (Exception ex)
             {

@@ -28,7 +28,7 @@ namespace DBMS_NHOM_10.Forms
 
         public void danhsach_hoadon()
         {
-            string query = "SELECT * FROM v_hoadon";
+            string query = "SELECT * FROM HoaDon";
 
             SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
             DataTable table = new DataTable();
@@ -36,10 +36,11 @@ namespace DBMS_NHOM_10.Forms
             dataGridView_Order.DataSource = table;
 
             dataGridView_Order.Columns[0].HeaderText = "ID Hóa Đơn";
-            dataGridView_Order.Columns[1].HeaderText = "ID Khách Hàng";
-            dataGridView_Order.Columns[2].HeaderText = "Ngày Tạo";
-            dataGridView_Order.Columns[3].HeaderText = "Trị Giá";
-            dataGridView_Order.Columns[4].HeaderText = "Tình Trạng";
+            dataGridView_Order.Columns[1].HeaderText = "ID Nhân Viên";
+            dataGridView_Order.Columns[2].HeaderText = "ID Khách Hàng";
+            dataGridView_Order.Columns[3].HeaderText = "Ngày Tạo";
+            dataGridView_Order.Columns[4].HeaderText = "Trị Giá";
+            dataGridView_Order.Columns[5].HeaderText = "Tình Trạng";
 
             dateTimePicker_HD.Format = DateTimePickerFormat.Custom;
             dateTimePicker_HD.CustomFormat = "dd/MM/yyyy";
@@ -113,12 +114,23 @@ namespace DBMS_NHOM_10.Forms
 
         private void toolStripItem2_Click(object sender, EventArgs args)
         {
-            string value = dataGridView_Order.Rows[mouseLocation.RowIndex].Cells[0].Value.ToString();
+            string value = dataGridView_Order.Rows[mouseLocation.RowIndex].Cells["idHD"].Value.ToString();
             string sql = "DELETE FROM HoaDon WHERE idHD = '" + value + "'";
             DialogResult result = MessageBox.Show("Bạn Có Chắc Chắn Muốn Xóa Hóa Đơn "+value, "Thông Báo", MessageBoxButtons.OK);
             if (result == DialogResult.OK)
             {
-                Functions.RunSQL(sql);
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = DataBaseConnection.GetSqlConnection(); //Gán kết nối
+                cmd.CommandText = sql;
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+                load_refresh();
             }
             Refresh();
 
@@ -179,7 +191,7 @@ namespace DBMS_NHOM_10.Forms
         }
         public void load_refresh()
         {
-            string query = "SELECT * FROM v_hoadon";
+            string query = "SELECT * FROM HoaDon";
 
             btn_cthd.Text = "ID Hóa Đơn:";
             cbb_timkiem_tt.Text = "";
@@ -187,13 +199,14 @@ namespace DBMS_NHOM_10.Forms
             dataGridView_CTHD_dt.DataSource = null;
             dataGridView_CTHD_kh.DataSource = null;
 
-            DataTable dt = Functions.GetDataToTable(query);
-            dataGridView_Order.DataSource = dt;
+            SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+            DataTable table = new DataTable();
+            dap.Fill(table);
+            dataGridView_Order.DataSource = table;
 
             DateTime dateTime = DateTime.Now;
             dateTimePicker_HD.Value = dateTime;
         }
-
 
     }
 }

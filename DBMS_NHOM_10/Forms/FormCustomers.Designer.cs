@@ -218,6 +218,7 @@
             this.dataGridView_Customer.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
             this.dataGridView_Customer.Size = new System.Drawing.Size(1274, 294);
             this.dataGridView_Customer.TabIndex = 19;
+            this.dataGridView_Customer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
             this.dataGridView_Customer.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
             // 
             // FormCustomers

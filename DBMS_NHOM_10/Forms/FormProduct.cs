@@ -36,13 +36,13 @@ namespace DBMS_NHOM_10.Forms
             dataGridView_Product.DataSource = table;
 
             dataGridView_Product.Columns[0].HeaderText = "ID";
-            dataGridView_Product.Columns[1].HeaderText = "Tên";
-            dataGridView_Product.Columns[2].HeaderText = "Hãng";
-            dataGridView_Product.Columns[3].HeaderText = "Màu Sắc";
-            dataGridView_Product.Columns[4].HeaderText = "Dung Lượng";
+            dataGridView_Product.Columns[1].HeaderText = "Hãng";
+            dataGridView_Product.Columns[2].HeaderText = "Tên";
+            dataGridView_Product.Columns[3].HeaderText = "Màu sắc";
+            dataGridView_Product.Columns[4].HeaderText = "Dung lượng";
             dataGridView_Product.Columns[5].HeaderText = "Giá";
-            dataGridView_Product.Columns[6].HeaderText = "Số Lượng";
-            dataGridView_Product.Columns[7].HeaderText = "Tình Trạng";
+            dataGridView_Product.Columns[6].HeaderText = "Số lượng";
+            dataGridView_Product.Columns[7].HeaderText = "Trạng Thái";
             dataGridView_Product.Columns[8].HeaderText = "Hình ảnh";
         }
 
@@ -194,7 +194,7 @@ namespace DBMS_NHOM_10.Forms
             string value1 = btnHang.Tag.ToString();
             string value2 = btnGia.Tag.ToString();
 
-            string query = "exec proc_TimKiemHangDT " + value1 + "," + "'" + value2 + "'" + "";
+            string query = "exec proc_TimKiemHangGiaDT " + value1 + "," + "'" + value2 + "'" + "";
 
             SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
             DataTable table = new DataTable();
@@ -266,7 +266,7 @@ namespace DBMS_NHOM_10.Forms
         private void toolStripItem_themgh_Click(object sender, EventArgs args)
         {
             string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
-            string checktrangthai = "Select TinhTrang from DienThoai where idDienThoai = N'" + a + "'";
+            string checktrangthai = "Select TrangThai from DienThoai where idDienThoai = N'" + a + "'";
             if (Functions.GetFieldValues(checktrangthai) == "Hết hàng")
             {
                 MessageBox.Show("Sản phẩm đã hết hàng ", "Thông Báo", MessageBoxButtons.OK);
@@ -285,9 +285,12 @@ namespace DBMS_NHOM_10.Forms
 
                     if (int.Parse(Functions.GetFieldValues(checksoluong)) >= int.Parse(b) && int.Parse(b) > 0)
                     {
-                        string query = "exec proc_giohang " + a + "," + b;
+                        string query = "exec proc_themgiohang " + a + "," + b;
 
-                        DataTable dt_giohang = Procedure.proc_giohang(query);
+                        SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                        DataTable dt_giohang = new DataTable();
+
+                        adapter.Fill(dt_giohang);
                         dt.Merge(dt_giohang);
 
                         dataGridView_GioHang.DataSource = dt;
@@ -331,14 +334,28 @@ namespace DBMS_NHOM_10.Forms
 
         private void toolStripItem_xoa_Click(object sender, EventArgs args)
         {
-            string sql;
-            string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
-            MessageBox.Show(a);
-            sql = "DELETE FROM DienThoai WHERE idDienThoai= '"+ a.Trim() +"'";
-            MessageBox.Show(sql);
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa sản phẩm", "thông báo", MessageBoxButtons.OKCancel);
+            if(result == DialogResult.OK)
+            {
+                string sql;
+                string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
+                sql = "exec proc_XoaDienThoai '" + a.Trim() + "'";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = DataBaseConnection.GetSqlConnection();
+                cmd.CommandText = sql;
+                try
+                {
+                    cmd.ExecuteNonQuery();
+                }
+                catch (Exception ex)
+                {
+                    MessageBox.Show(ex.ToString());
+                }
+            }
+            else
+            {
 
-            Functions.RunSQL(sql);
-
+            }
         }
 
 

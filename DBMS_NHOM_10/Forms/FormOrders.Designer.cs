@@ -119,7 +119,7 @@
             this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
             this.btn_reset.Location = new System.Drawing.Point(0, 0);
             this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(81, 79);
+            this.btn_reset.Size = new System.Drawing.Size(67, 63);
             this.btn_reset.TabIndex = 19;
             this.btn_reset.UseVisualStyleBackColor = true;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
@@ -158,7 +158,7 @@
             this.dataGridView_CTHD_kh.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataGridView_CTHD_kh.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_CTHD_kh.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView_CTHD_kh.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dataGridView_CTHD_kh.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView_CTHD_kh.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle1.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle1.BackColor = System.Drawing.SystemColors.Control;
@@ -174,7 +174,7 @@
             dataGridViewCellStyle2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle2.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle2.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_CTHD_kh.DefaultCellStyle = dataGridViewCellStyle2;
             this.dataGridView_CTHD_kh.Location = new System.Drawing.Point(702, 120);
@@ -205,7 +205,7 @@
             this.dataGridView_CTDH_nv.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataGridView_CTDH_nv.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_CTDH_nv.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView_CTDH_nv.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dataGridView_CTDH_nv.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView_CTDH_nv.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -221,7 +221,7 @@
             dataGridViewCellStyle4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle4.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle4.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_CTDH_nv.DefaultCellStyle = dataGridViewCellStyle4;
             this.dataGridView_CTDH_nv.Location = new System.Drawing.Point(702, 25);
@@ -243,7 +243,7 @@
             this.dataGridView_CTHD_dt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.dataGridView_CTHD_dt.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
             this.dataGridView_CTHD_dt.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
-            this.dataGridView_CTHD_dt.BackgroundColor = System.Drawing.Color.LightGray;
+            this.dataGridView_CTHD_dt.BackgroundColor = System.Drawing.Color.White;
             this.dataGridView_CTHD_dt.BorderStyle = System.Windows.Forms.BorderStyle.Fixed3D;
             dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
@@ -259,7 +259,7 @@
             dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
             dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
-            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_CTHD_dt.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_CTHD_dt.Location = new System.Drawing.Point(128, 243);

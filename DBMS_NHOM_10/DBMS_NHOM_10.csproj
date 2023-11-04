@@ -54,6 +54,12 @@
     <Compile Include="Forms_branch\FormEditDienThoai.Designer.cs">
       <DependentUpon>FormEditDienThoai.cs</DependentUpon>
     </Compile>
+    <Compile Include="Forms_branch\FormEditKH.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms_branch\FormEditKH.Designer.cs">
+      <DependentUpon>FormEditKH.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms_branch\FormTaoHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
@@ -121,6 +127,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Forms_branch\FormEditDienThoai.resx">
       <DependentUpon>FormEditDienThoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms_branch\FormEditKH.resx">
+      <DependentUpon>FormEditKH.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms_branch\FormTaoHoaDon.resx">
       <DependentUpon>FormTaoHoaDon.cs</DependentUpon>
