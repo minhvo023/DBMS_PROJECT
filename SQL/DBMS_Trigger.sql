@@ -22,20 +22,37 @@ BEGIN
         GROUP BY idHD, idDienThoai
     ) AS D ON DienThoai.idDienThoai = D.idDienThoai;
 
-	UPDATE HoaDon
-	Set TrangThai = N'Đơn Đã Hủy'
+	-- Tiếp theo, xóa chi tiết hóa đơn liên quan
+    DELETE FROM ChiTietHoaDon
 	WHERE idHD IN (SELECT idHD FROM @DeletedHDIDs);
-END;
-
-    -- Tiếp theo, xóa chi tiết hóa đơn liên quan
-    --DELETE FROM ChiTietHoaDon
-    --WHERE idHD IN (SELECT idHD FROM @DeletedHDIDs);
 
     -- Tiếp theo, xóa hóa đơn
-    --DELETE FROM HoaDon
-    --WHERE idHD IN (SELECT idHD FROM @DeletedHDIDs);
+    DELETE FROM HoaDon
+    WHERE idHD IN (SELECT idHD FROM @DeletedHDIDs);
 
-CREATE OR ALTER TRIGGER UpdateTrangThaiVaKiemTraDienThoai
+	/*UPDATE HoaDon
+	Set TrangThai = N'Đơn Đã Hủy'
+	WHERE idHD IN (SELECT idHD FROM @DeletedHDIDs);*/
+END; 
+GO
+
+
+CREATE or ALTER TRIGGER KiemTraTenKH
+ON KhachHang
+AFTER INSERT, UPDATE
+AS
+BEGIN
+	-- Kiểm tra số điện thoại vừa thêm có bị trùng lặp
+	IF EXISTS ( SELECT * FROM inserted i WHERE EXISTS (SELECT *FROM KhachHang k WHERE k.TenKH = i.TenKH AND k.idKH <> i.idKH ))
+	BEGIN
+	-- Nếu trùng thì rollback
+		ROLLBACK;
+	END
+END
+GO
+
+
+CREATE OR ALTER TRIGGER UpdateTrangThaiDienThoai
 ON DienThoai
 AFTER INSERT, UPDATE
 AS
@@ -51,22 +68,34 @@ BEGIN
 	-- Kiểm tra và ngăn chặn cập nhật sai
 	IF (SELECT COUNT(*) FROM inserted WHERE SoLuong < 0 OR GiaBan < 0) > 0 
 	begin
-		RAISERROR ('Error, vui lòng kiểm tra lại thông tin', 0, 0)
+		RAISERROR ('THÔNG TIN VỀ GIÁ HOẶC SỐ LƯỢNG KHÔNG CHÍNH XÁC', 0, 0)
 		ROLLBACK;
 	END;
 END;
+GO
 
 
-CREATE OR ALTER TRIGGER InsteadOfDeleteTrigger
-ON DienThoai
+CREATE TRIGGER DeleteCustomer
+ON KhachHang
 INSTEAD OF DELETE
 AS
 BEGIN
-    -- Cập nhật tình trạng thành "ngừng bán"
-    UPDATE DienThoai
-    SET TinhTrang = N'Ngừng bán'
-    WHERE DienThoai.idDienThoai IN (SELECT idDienThoai FROM deleted);
-END;
+    DECLARE @idKH NVARCHAR(max)
 
+    -- Lấy danh sách các khách hàng bị xóa từ bảng xóa ảo (deleted)
+    SELECT @idKH = idKH
+    FROM deleted
 
-DELETE FROM DienThoai WHERE idDienThoai = 'dt07'
+    -- Kiểm tra xem khách hàng có đơn hàng đang tồn tại không
+    IF EXISTS (SELECT 1 FROM HoaDon WHERE idKH = @idKH)
+    BEGIN
+        RAISERROR('Không thể xóa khách hàng có đơn hàng đang tồn tại.', 16, 1)
+        ROLLBACK TRANSACTION
+    END
+    ELSE
+    BEGIN
+        -- Nếu không có đơn hàng nào, thực hiện xóa khách hàng
+        DELETE FROM KhachHang WHERE idKH = @idKH
+    END
+END
+GO

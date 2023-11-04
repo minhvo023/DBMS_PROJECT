@@ -1,14 +1,4 @@
-CREATE or ALTER VIEW v_hoadon
-AS
-SELECT DISTINCT  HoaDon.idHD,ChiTietHoaDon.idKH,HoaDon.Ngay, HoaDon.TriGiaHD, HoaDon.TrangThai 
-FROM HoaDon join ChiTietHoaDon
-ON HoaDon.idHD = ChiTietHoaDon.idHD
-go
 
-CREATE or ALTER VIEW v_dienthoai
-AS
-SELECT * FROM DienThoai
-go
 
 CREATE or ALTER VIEW v_khachhang
 AS
