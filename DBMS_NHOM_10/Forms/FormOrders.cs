@@ -147,9 +147,9 @@ namespace DBMS_NHOM_10.Forms
             timkiemhoadon_date();
 
             btn_cthd.Text = "ID Hóa Đơn:";
-            dataGridView_CTDH_nv.DataSource = null;
+            /*dataGridView_CTDH_nv.DataSource = null;
             dataGridView_CTHD_dt.DataSource = null;
-            dataGridView_CTHD_kh.DataSource = null;
+            dataGridView_CTHD_kh.DataSource = null;*/
         }
         public void timkiemhoadon_date()
         {

@@ -39,15 +39,27 @@ namespace DBMS_NHOM_10.Forms
             DateTime dateTime = DateTime.Now;
             dateTimePicker_ca.Value = dateTime;
         }
-        public void timkiemca_Date()
+        public void timkiemca()
         {
             DateTime dateTime = dateTimePicker_ca.Value;
             string dateString = dateTime.ToString("yyyy-MM-dd");
-            string query = "exec proc_timkiemphancong_ca " + " N'" + dateString + "'";
-            SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-            dataGridView_ca.DataSource = dataTable;
+            if (string.IsNullOrEmpty(textBox1.Text))
+            {
+                string query = "exec proc_timkiemphancong_ca " + " N'" + dateString + "',null";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dataGridView_ca.DataSource = dataTable;
+            }
+            else
+            {
+                string query = "exec proc_timkiemphancong_ca " + " N'" + dateString + "', N'" + textBox1.Text + "'";
+                SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
+                dataGridView_ca.DataSource = dataTable;
+            }
+            
         }
         
         private void panel4_Paint(object sender, PaintEventArgs e)
@@ -57,7 +69,7 @@ namespace DBMS_NHOM_10.Forms
 
         private void btn_DateCa_Click(object sender, EventArgs e)
         {
-            timkiemca_Date();
+            timkiemca();
         }
 
 
@@ -85,6 +97,16 @@ namespace DBMS_NHOM_10.Forms
         private void btn_refresh_Click(object sender, EventArgs e)
         {
             load_refresh();
+        }
+
+        private void textBox1_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void label1_Click(object sender, EventArgs e)
+        {
+
         }
     }
 }
