@@ -31,16 +31,16 @@ CREATE TABLE NhanVien(
 	idNV nchar(10) CONSTRAINT PK_NhanVien PRIMARY KEY,
 	idCV nchar(10) CONSTRAINT FK_NhanVien_CV FOREIGN KEY REFERENCES CongViec(idCV),
 	Ho_Ten nvarchar(100) NOT NULL,
-	NgaySinh date check(DATEDIFF(year, NgaySinh, GETDATE())>=18),
+	NgaySinh date ,
 	DiaChi nvarchar(100),
 	GioiTinh nvarchar(4),
-	soDT_NV nchar(11) check (len(soDT_NV) = 10)
+	soDT_NV nchar(11) ,
+	TrangThai nvarchar(max)
 )
 insert into NhanVien(idNV,idCV,Ho_Ten,NgaySinh,DiaChi,GioiTinh,soDT_NV)
 values
 ('NV_01','CV_01',N'Nguyễn Văn A', '1999-10-10',N'Quận 1',N'Nam','0345678927'),
 ('NV_02','CV_01',N'Nguyễn Thị C', '2000-7-8',N'Quận 2',N'Nữ','0346895782'),
-
 ('NV_03','CV_02',N'Trần Văn B', '2000-1-18',N'Quận 3',N'Nam','0345457489'),
 ('NV_04','CV_02',N'Lê văn L', '2002-1-27',N'Quận 4',N'Nam','0386794759'),
 
@@ -52,6 +52,7 @@ CREATE TABLE BangPhanCa(
 	idCa nchar(10),
 	idNV nchar(10) CONSTRAINT FK_BangPhanCa_NV FOREIGN KEY REFERENCES NhanVien(idNV),
 	NgayLam date NOT NULL,
+	TrangThai nvarchar(max),
 	CONSTRAINT PK_BangPhanCa PRIMARY KEY (idCa, idNV, NgayLam),
 	CONSTRAINT FK_BangPhanCa_Ca FOREIGN KEY (idCa) REFERENCES CalamViec(idCa)
 )
@@ -111,8 +112,8 @@ CREATE TABLE HoaDon(
 
 insert into HoaDon(idHD,idNV,idKH,Ngay,TriGiaHD,TrangThai)
 values
-('HD_01','NV_01','KH_01','2023-11-1',26780000,N'Đã thanh toán'),
-('HD_02','NV_02','KH_02','2023-11-3', 36990000,N'Đã thanh toán');
+('HD_01','NV_01','KH_01','1-11-2023',26780000,N'Đã thanh toán'),
+('HD_02','NV_02','KH_02','3-11-2023', 36990000,N'Đã thanh toán');
 
 
 CREATE TABLE HangDienThoai(

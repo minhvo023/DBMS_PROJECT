@@ -42,22 +42,23 @@ namespace DBMS_NHOM_10.Forms
         }
         private void btnSearch_sđt_Click(object sender, EventArgs e)
         {
-            string value = txb_TimKiem_sdt.Text;
-            if (value == "")
+            KhachHang_TKsdt();
+        }
+
+        public void KhachHang_TKsdt()
+        {
+            try
             {
-                string query = "exec proc_timkiemkhachhang_sdt null";
+                string value = txb_TimKiem_sdt.Text;
+                string query = "exec proc_KhachHang_TK_sdt '" + value + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
                 dataGridView_Customer.DataSource = dataTable;
             }
-            else
+            catch (Exception ex)
             {
-                string query = "exec proc_timkiemkhachhang_sdt '"+ value +"'";
-                SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-                DataTable dataTable = new DataTable();
-                adapter.Fill(dataTable);
-                dataGridView_Customer.DataSource = dataTable;
+                MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
             }
         }
 
@@ -98,29 +99,45 @@ namespace DBMS_NHOM_10.Forms
 
         private void toolStripItem_lsmh_Click(object sender, EventArgs args)
         {
-            string value = dataGridView_Customer.Rows[mouseLocation.RowIndex].Cells["idKH"].Value.ToString();
+            KhachHang_lsmh();
 
-            DataTable dt = Procedure.proc_lichsumuahang(value);
+        }
+        public void KhachHang_lsmh()
+        {
+            try
+            {
+                string value = dataGridView_Customer.Rows[mouseLocation.RowIndex].Cells["idKH"].Value.ToString();
 
-            dataGridView_lsmh.DataSource = dt;
-            btn_lsmh.Text = "ID Khách Hàng: " + value;
+                string query = "exec proc_KhachHang_lsmh N'" + value.Trim() + "'";
+                SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                DataTable dt = table;
+                dataGridView_lsmh.DataSource = dt;
+                btn_lsmh.Text = "ID Khách Hàng: " + value;
 
-            dataGridView_lsmh.Columns[0].HeaderText = "ID Hóa Đơn";
-            dataGridView_lsmh.Columns[1].HeaderText = "Ngày Mua";
-            dataGridView_lsmh.Columns[2].HeaderText = "Tên Điện Thoại";
-            dataGridView_lsmh.Columns[3].HeaderText = "Màu Sắc";
-            dataGridView_lsmh.Columns[4].HeaderText = "Dung Lượng";
-            dataGridView_lsmh.Columns[5].HeaderText = "Số Lượng";
-            dataGridView_lsmh.Columns[6].HeaderText = "Tổng Tiền";
+                dataGridView_lsmh.Columns[0].HeaderText = "ID Hóa Đơn";
+                dataGridView_lsmh.Columns[1].HeaderText = "Ngày Mua";
+                dataGridView_lsmh.Columns[2].HeaderText = "Tên Điện Thoại";
+                dataGridView_lsmh.Columns[3].HeaderText = "Màu Sắc";
+                dataGridView_lsmh.Columns[4].HeaderText = "Dung Lượng";
+                dataGridView_lsmh.Columns[5].HeaderText = "Số Lượng";
+                dataGridView_lsmh.Columns[6].HeaderText = "Tổng Tiền";
 
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+                btn_lsmh.Text = "ID Khách Hàng: ";
+                dataGridView_lsmh.DataSource = null;
+            }
         }
         private void toolStripItem_Sua_Click(object sender, EventArgs args)
         {
 
             string ck = "sửa";
-            DataGridViewRow datarow = dataGridView_Customer.Rows[mouseLocation.RowIndex];
-            FormEditKH form_edit_dt = new FormEditKH(datarow, ck);
-            form_edit_dt.ShowDialog();
+            KhachHang_them_sua(ck);
 
 
         }
@@ -129,31 +146,21 @@ namespace DBMS_NHOM_10.Forms
         {
 
             string ck = "thêm";
-            DataGridViewRow datarow = dataGridView_Customer.Rows[mouseLocation.RowIndex];
-            FormEditKH form_edit_dt = new FormEditKH(datarow, ck);
-            form_edit_dt.ShowDialog();
+            KhachHang_them_sua(ck);
 
         }
-
+        public void KhachHang_them_sua(string ck)
+        {
+            DataGridViewRow datarow = dataGridView_Customer.Rows[mouseLocation.RowIndex];
+            FormEditKhachHang form_edit_nv = new FormEditKhachHang(datarow, ck);
+            form_edit_nv.ShowDialog();
+        }
         private void toolStripItem_Xoa_Click(object sender, EventArgs args)
         {
             DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa sản phẩm", "thông báo", MessageBoxButtons.OKCancel);
             if (result == DialogResult.OK)
             {
-                string sql;
-                string a = dataGridView_Customer.Rows[mouseLocation.RowIndex].Cells["idKH"].Value.ToString();
-                sql = "DELETE FROM KhachHang WHERE idKH = '" + a.Trim() + "'";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = DataBaseConnection.GetSqlConnection();
-                cmd.CommandText = sql;
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
+                KhachHang_Xoa();
             }
             else
             {
@@ -161,12 +168,40 @@ namespace DBMS_NHOM_10.Forms
             }
 
         }
+        public void KhachHang_Xoa()
+        {
+            string err;
+            try
+            {
+                string sql;
+                string a = dataGridView_Customer.Rows[mouseLocation.RowIndex].Cells["idKH"].Value.ToString();
+                sql = "exec proc_KhachHang_XoaKH '" + a.Trim() + "'";
+                SqlCommand cmd = new SqlCommand();
+                cmd.Connection = DataBaseConnection.GetSqlConnection();
+                cmd.CommandText = sql;
+                cmd.ExecuteNonQuery();
+                err = "Xóa Thành Công";
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
 
         private void dataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs location)
         {
             mouseLocation = location;
         }
 
-
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM v_khachhang";
+            SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+            DataTable table = new DataTable();
+            dap.Fill(table);
+            dataGridView_Customer.DataSource = table;
+            txb_TimKiem_sdt.Text = "";
+        }
     }
 }

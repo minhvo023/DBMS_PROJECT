@@ -41,10 +41,9 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle10 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel6 = new System.Windows.Forms.Panel();
             this.panel4 = new System.Windows.Forms.Panel();
-            this.btnTrangThaiHD = new System.Windows.Forms.Button();
             this.cbb_timkiem_tt = new System.Windows.Forms.ComboBox();
             this.btn_reset = new System.Windows.Forms.Button();
-            this.btnDateHD = new System.Windows.Forms.Button();
+            this.btn_timkiemHD = new System.Windows.Forms.Button();
             this.btn_cthd = new System.Windows.Forms.Button();
             this.dataGridView_CTHD_kh = new System.Windows.Forms.DataGridView();
             this.dateTimePicker_HD = new System.Windows.Forms.DateTimePicker();
@@ -78,10 +77,9 @@
             // panel4
             // 
             this.panel4.BackColor = System.Drawing.Color.PowderBlue;
-            this.panel4.Controls.Add(this.btnTrangThaiHD);
             this.panel4.Controls.Add(this.cbb_timkiem_tt);
             this.panel4.Controls.Add(this.btn_reset);
-            this.panel4.Controls.Add(this.btnDateHD);
+            this.panel4.Controls.Add(this.btn_timkiemHD);
             this.panel4.Controls.Add(this.btn_cthd);
             this.panel4.Controls.Add(this.dataGridView_CTHD_kh);
             this.panel4.Controls.Add(this.dateTimePicker_HD);
@@ -92,22 +90,11 @@
             this.panel4.Size = new System.Drawing.Size(1448, 212);
             this.panel4.TabIndex = 16;
             // 
-            // btnTrangThaiHD
-            // 
-            this.btnTrangThaiHD.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnTrangThaiHD.Location = new System.Drawing.Point(128, 159);
-            this.btnTrangThaiHD.Name = "btnTrangThaiHD";
-            this.btnTrangThaiHD.Size = new System.Drawing.Size(151, 42);
-            this.btnTrangThaiHD.TabIndex = 21;
-            this.btnTrangThaiHD.Text = "Tìm Kiếm";
-            this.btnTrangThaiHD.UseVisualStyleBackColor = true;
-            this.btnTrangThaiHD.Click += new System.EventHandler(this.btnTrangThaiHD_Click);
-            // 
             // cbb_timkiem_tt
             // 
             this.cbb_timkiem_tt.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.cbb_timkiem_tt.FormattingEnabled = true;
-            this.cbb_timkiem_tt.Location = new System.Drawing.Point(86, 120);
+            this.cbb_timkiem_tt.Location = new System.Drawing.Point(86, 103);
             this.cbb_timkiem_tt.Name = "cbb_timkiem_tt";
             this.cbb_timkiem_tt.Size = new System.Drawing.Size(255, 33);
             this.cbb_timkiem_tt.TabIndex = 20;
@@ -124,16 +111,16 @@
             this.btn_reset.UseVisualStyleBackColor = true;
             this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
-            // btnDateHD
+            // btn_timkiemHD
             // 
-            this.btnDateHD.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btnDateHD.Location = new System.Drawing.Point(128, 58);
-            this.btnDateHD.Name = "btnDateHD";
-            this.btnDateHD.Size = new System.Drawing.Size(151, 42);
-            this.btnDateHD.TabIndex = 18;
-            this.btnDateHD.Text = "Tìm Kiếm";
-            this.btnDateHD.UseVisualStyleBackColor = true;
-            this.btnDateHD.Click += new System.EventHandler(this.btnDateHD_Click);
+            this.btn_timkiemHD.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_timkiemHD.Location = new System.Drawing.Point(128, 152);
+            this.btn_timkiemHD.Name = "btn_timkiemHD";
+            this.btn_timkiemHD.Size = new System.Drawing.Size(151, 42);
+            this.btn_timkiemHD.TabIndex = 18;
+            this.btn_timkiemHD.Text = "Tìm Kiếm";
+            this.btn_timkiemHD.UseVisualStyleBackColor = true;
+            this.btn_timkiemHD.Click += new System.EventHandler(this.btn_timkiemHD_Click);
             // 
             // btn_cthd
             // 
@@ -190,7 +177,7 @@
             // dateTimePicker_HD
             // 
             this.dateTimePicker_HD.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.dateTimePicker_HD.Location = new System.Drawing.Point(86, 22);
+            this.dateTimePicker_HD.Location = new System.Drawing.Point(86, 49);
             this.dateTimePicker_HD.Name = "dateTimePicker_HD";
             this.dateTimePicker_HD.Size = new System.Drawing.Size(255, 30);
             this.dateTimePicker_HD.TabIndex = 17;
@@ -392,9 +379,8 @@
         private System.Windows.Forms.Button btn_cthd;
         private System.Windows.Forms.Panel panel4;
         private System.Windows.Forms.DateTimePicker dateTimePicker_HD;
-        private System.Windows.Forms.Button btnDateHD;
+        private System.Windows.Forms.Button btn_timkiemHD;
         private System.Windows.Forms.Button btn_reset;
-        private System.Windows.Forms.Button btnTrangThaiHD;
         private System.Windows.Forms.ComboBox cbb_timkiem_tt;
     }
 }

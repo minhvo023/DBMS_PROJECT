@@ -8,6 +8,7 @@ using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -35,17 +36,17 @@ namespace DBMS_NHOM_10.Forms_branch
         private void FormTaoHoaDon_Load(object sender, EventArgs e)
         {
 
-            txtTongTien.Text = "0";
+            txb_TriGiaHD.Text = "0";
 
-            Functions.FillCombo("SELECT idNV, Ho_Ten FROM NhanVien", cboMaNhanVien, "idNV", "idNV");
-            cboMaNhanVien.SelectedIndex = -1;
+            Functions.FillCombo("SELECT idNV, Ho_Ten FROM NhanVien", cbo_idNV, "idNV", "idNV");
+            cbo_idNV.SelectedIndex = -1;
 
             foreach (DataGridViewRow row in dgv_giohangdt.Rows)
             {
                 string value = row.Cells[0].Value.ToString().Trim();
-                cboMaHang.Items.Add(value);   
+                cbo_idDT.Items.Add(value);   
             }
-            cboMaHang.SelectedIndex = -1;
+            cbo_idDT.SelectedIndex = -1;
 
             LoadDataGridView();
         }
@@ -55,7 +56,7 @@ namespace DBMS_NHOM_10.Forms_branch
         {
             string sql;
             sql = "SELECT a.idDienThoai, b.TenDienThoai, a.SoLuong, b.GiaBan,a.TongTien " +
-                "FROM ChiTietHoaDon AS a, DienThoai AS b WHERE a.idHD = N'" + txtMaHDBan.Text.Trim() + "' AND a.idDienThoai=b.idDienThoai";
+                "FROM ChiTietHoaDon AS a, DienThoai AS b WHERE a.idHD = N'" + txb_idHD.Text.Trim() + "' AND a.idDienThoai=b.idDienThoai";
             tblCTHDB = Functions.GetDataToTable(sql);
 
             dgvHDBanHang.DataSource = tblCTHDB;
@@ -65,38 +66,30 @@ namespace DBMS_NHOM_10.Forms_branch
             dgvHDBanHang.Columns[3].HeaderText = "Đơn giá";
             dgvHDBanHang.Columns[4].HeaderText = "Thành tiền";
         }
-
-        private void btnThem_Click(object sender, EventArgs e)
-        {
-            btnLuu.Enabled = true;
-            btnThem.Enabled = false;
-            openControl();
-            string str = "SELECT count(idHD) FROM HoaDon";
-            int k = int.Parse(Functions.GetFieldValues(str)) + 1;
-            string formattedResult = k.ToString("D2"); // Định dạng số nguyên k với 2 chữ số
-            txtMaHDBan.Text = "HD_" + formattedResult;
-            LoadDataGridView();
-        }
-
         
         private void openControl()
         {
-            txtNgayBan.Text = DateTime.Now.ToShortDateString();
-            cboMaHang.Enabled= true;
-            cboMaNhanVien.Enabled= true;
-            btn_Tim.Enabled= true;
-            txb_TimKH.ReadOnly=false;
+            txb_Ngay.Text = DateTime.Now.ToString("dd/MM/yyyy");
+            cbo_idDT.Enabled= true;
+            cbo_idNV.Enabled= true;
+            btn_Tim_sdtKH.Enabled= true;
+            txb_Tim_KH.ReadOnly=false;
+            cbo_idDT.Text = "";
+            txb_SoLuong.Text = "";
+            txb_TenDT.Text = "";
+            txb_DonGia.Text = "";
+            txb_ThanhTien.Text = "0";
         }
 
 
         private void cboMaNhanVien_SelectedIndexChanged(object sender, EventArgs e)
         {
             string str;
-            if (cboMaNhanVien.Text == "")
-                txtTenNhanVien.Text = "";
+            if (cbo_idNV.Text == "")
+                txb_TenNV.Text = "";
             // Khi chọn Mã nhân viên thì tên nhân viên tự động hiện ra
-            str = "Select Ho_Ten from NhanVien where idNV =N'" + cboMaNhanVien.SelectedValue + "'";
-            txtTenNhanVien.Text = Functions.GetFieldValues(str);
+            str = "Select Ho_Ten from NhanVien where idNV = N'" + cbo_idNV.SelectedValue + "'";
+            txb_TenNV.Text = Functions.GetFieldValues(str);
         }
 
 
@@ -104,86 +97,81 @@ namespace DBMS_NHOM_10.Forms_branch
         private void cboMaHang_SelectedIndexChanged(object sender, EventArgs e)
         {
             string str;
-            if (cboMaHang.Text == "")
+            if (cbo_idDT.Text == "")
             {
-                txtTenHang.Text = "";
-                txtDonGiaBan.Text = "";
+                txb_TenDT.Text = "";
+                txb_DonGia.Text = "";
             }
             // Khi chọn mã hàng thì các thông tin về hàng hiện ra
-            str = "SELECT TenDienThoai FROM DienThoai WHERE idDienThoai =N'" + cboMaHang.Text + "'";
-            txtTenHang.Text = Functions.GetFieldValues(str);
-            str = "SELECT GiaBan FROM DienThoai WHERE idDienThoai =N'" + cboMaHang.Text + "'";
-            txtDonGiaBan.Text = Functions.GetFieldValues(str);
+            str = "SELECT TenDienThoai FROM DienThoai WHERE idDienThoai =N'" + cbo_idDT.Text + "'";
+            txb_TenDT.Text = Functions.GetFieldValues(str);
+            str = "SELECT GiaBan FROM DienThoai WHERE idDienThoai =N'" + cbo_idDT.Text + "'";
+            txb_DonGia.Text = Functions.GetFieldValues(str);
 
-            int selectedIndex = cboMaHang.SelectedIndex;
+            int selectedIndex = cbo_idDT.SelectedIndex;
             string value = dgv_giohangdt.Rows[selectedIndex].Cells["SoLuong"].Value.ToString().Trim();
-            txtSoLuong.Text = value;
+            txb_SoLuong.Text = value;
 
         }
+        private void btnThem_Click(object sender, EventArgs e)
+        {
+            btnLuu.Enabled = true;
+            btnThem.Enabled = false;
+            openControl();
 
+            string str = "SELECT MAX(idHD) FROM HoaDon";
+            string k = Functions.GetFieldValues(str);
+            Match match = Regex.Match(k, @"\d+");
+            int kq = int.Parse(match.Value.ToString()) + 1;
+            string formattedResult = kq.ToString("D2"); // Định dạng số nguyên k với 2 chữ số
+
+            txb_idHD.Text = "HD_" + formattedResult;
+            LoadDataGridView();
+        }
 
         private void btnLuu_Click(object sender, EventArgs e)
         {
-            // Mã hóa đơn chưa có, tiến hành lưu các thông tin chung
-            if (cboMaNhanVien.Text.Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập nhân viên", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cboMaNhanVien.Focus();
-                return;
-            }
-            if (txbMaKhach.Text.Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập khách hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txbMaKhach.Focus();
-                return;
-            }
-
-            if (cboMaHang.Text.Trim().Length == 0)
-            {
-                MessageBox.Show("Bạn phải nhập mã hàng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                cboMaHang.Focus();
-                return;
-            }
-            if ((txtSoLuong.Text.Trim().Length == 0) || (txtSoLuong.Text == "0"))
-            {
-                MessageBox.Show("Bạn phải nhập số lượng", "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                txtSoLuong.Text = "";
-                txtSoLuong.Focus();
-                return;
-            }
 
             tao_hoadon_cthd();
-            ResetValuesHang();
         }
 
         public void tao_hoadon_cthd()
         {
-            string sql;
-            double sl;
 
-            sql = "INSERT INTO HoaDon(idHD,idNV,idKH, Ngay, TriGiaHD, TrangThai) VALUES (N'" + txtMaHDBan.Text.Trim() + "','" +
-               cboMaNhanVien.Text.Trim() +"','"+txbMaKhach.Text.Trim() +"','"+
-                Functions.ConvertDateTime(txtNgayBan.Text.Trim()) + "'," + txtTongTien.Text + ", '" + "Đã thanh toán" + "')";
-            Functions.RunSQL(sql);
+            string err = "";
+            
+            try
+            {
+                tong = Convert.ToDouble(txb_ThanhTien.Text);
+                Tongmoi = tong + Tongmoi;
+                txb_TriGiaHD.Text = Tongmoi.ToString();
 
-            sql = "INSERT INTO ChiTietHoaDon(idHD,idDienThoai,SoLuong,DonGia,TongTien) VALUES(N'" + txtMaHDBan.Text.Trim() + "',N'" + cboMaHang.Text + "'," + txtSoLuong.Text + "," + txtDonGiaBan.Text + "," + txtThanhTien.Text + ")";
-            Functions.RunSQL(sql);
-            LoadDataGridView();
+                SqlConnection connection = DataBaseConnection.GetSqlConnection();
+                SqlCommand cmd = new SqlCommand("proc_HoaDon_Insert", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idHD", txb_idHD.Text.Trim());
+                cmd.Parameters.AddWithValue("@idNV", cbo_idNV.Text.Trim());
+                cmd.Parameters.AddWithValue("@idKH", txb_idKH.Text.Trim());
+                cmd.Parameters.AddWithValue("@idDienThoai", cbo_idDT.Text.Trim());
+                cmd.Parameters.AddWithValue("@Ngay", txb_Ngay.Text.Trim());
+                cmd.Parameters.AddWithValue("@TriGiaHD", txb_TriGiaHD.Text.Trim());
+                cmd.Parameters.AddWithValue("@SoLuong", txb_SoLuong.Text.Trim());
+                cmd.Parameters.AddWithValue("@DonGia", txb_DonGia.Text.Trim());
+                cmd.Parameters.AddWithValue("@TongTien", txb_ThanhTien.Text.Trim());
 
-            // Cập nhật lại số lượng của mặt hàng vào bảng tblHang
-            sl = Convert.ToDouble(Functions.GetFieldValues("SELECT SoLuong FROM DienThoai WHERE idDienThoai = N'" + cboMaHang.Text + "'"));
-            SLcon = sl - Convert.ToDouble(txtSoLuong.Text);
-            sql = "UPDATE DienThoai SET SoLuong =" + SLcon + " WHERE idDienThoai= N'" + cboMaHang.Text + "'";
-            Functions.RunSQL(sql);
+                cmd.ExecuteNonQuery();
+                lblBangChu.Text = "Bằng chữ: " + Functions.NumberToWords((int)Tongmoi);
 
-            // Cập nhật lại tổng tiền cho hóa đơn bán
-            tong = Convert.ToDouble(txtThanhTien.Text);
-            Tongmoi = tong + Tongmoi;
-            txtTongTien.Text = Tongmoi.ToString();
-            sql = "UPDATE HoaDon SET TriGiaHD =" + Tongmoi + " WHERE idHD = N'" + txtMaHDBan.Text.Trim() + "'";
-            Functions.RunSQL(sql);
+                err = "Lưu thông tin thành công";
+                ResetValuesHang();
 
-            lblBangChu.Text = "Bằng chữ: " + Functions.ChuyenSoSangChu(Tongmoi.ToString());
+            }
+            catch (Exception ex)
+            {
+                err = ex.Message;
+            }
+            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
 
@@ -191,18 +179,18 @@ namespace DBMS_NHOM_10.Forms_branch
         private void txtSoLuong_TextChanged(object sender, EventArgs e)
         {
             double tt, sl, dg;
-            if (txtSoLuong.Text == "")
+            if (txb_SoLuong.Text == "")
                 sl = 0;
             else
-                sl = Convert.ToDouble(txtSoLuong.Text);
-            if (txtDonGiaBan.Text == "")
+                sl = Convert.ToDouble(txb_SoLuong.Text);
+            if (txb_DonGia.Text == "")
                 dg = 0;
             else
-                dg = Convert.ToDouble(txtDonGiaBan.Text);
+                dg = Convert.ToDouble(txb_DonGia.Text);
 
             tt = sl * dg;
 
-            txtThanhTien.Text = tt.ToString();
+            txb_ThanhTien.Text = tt.ToString();
             
         }
 
@@ -210,14 +198,14 @@ namespace DBMS_NHOM_10.Forms_branch
 
         private void ResetValuesHang()
         {
-            cboMaHang.Items.Remove(cboMaHang.Text);
-            dgv_giohangdt.Rows.RemoveAt(cboMaHang.SelectedIndex+1);
-            cboMaHang.Text = "";
-            txtSoLuong.Text = "";
-            txtTenHang.Text = "";
-            txtDonGiaBan.Text = "";
-            txtThanhTien.Text = "0";
-            if (cboMaHang.Items.Count == 0)
+            cbo_idDT.Items.Remove(cbo_idDT.Text);
+            dgv_giohangdt.Rows.RemoveAt(cbo_idDT.SelectedIndex+1);
+            cbo_idDT.Text = "";
+            txb_SoLuong.Text = "";
+            txb_TenDT.Text = "";
+            txb_DonGia.Text = "";
+            txb_ThanhTien.Text = "0";
+            if (cbo_idDT.Items.Count == 0)
             {
                 MessageBox.Show("Hóa Đơn Đã Hoàn Thành", "Thông báo", MessageBoxButtons.OK);
                 btn_dongForm.Visible= true;
@@ -226,25 +214,31 @@ namespace DBMS_NHOM_10.Forms_branch
 
         private void btn_LuuKH_Click(object sender, EventArgs e)
         {
-            if(txtTenKhach.Text == "" || txtDiaChiKH.Text == "")
+            KhachHang_ThemHoacSua();
+
+        }
+
+        public void KhachHang_ThemHoacSua()
+        {
+
+            string err;
+            try
             {
-                MessageBox.Show("Vui lòng điền đầy đủ thông tin", "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                SqlConnection connection = DataBaseConnection.GetSqlConnection();
+                SqlCommand cmd = new SqlCommand("proc_KhachHang_InsertOrUpdate", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idKH", txb_idKH.Text.Trim());
+                cmd.Parameters.AddWithValue("@TenKH", txb_TenKH.Text.Trim());
+                cmd.Parameters.AddWithValue("@soDT_KH", txb_sdtKH.Text.Trim());
+                cmd.Parameters.AddWithValue("@DiaChi", txb_DiaChiKH.Text.Trim());
+                cmd.ExecuteNonQuery();
+                err = "Thao tác Thành Công!";
             }
-            else
+            catch (Exception ex)
             {
-                string sql = "INSERT INTO KhachHang(idKH,TenKH,soDT_KH,DiaChi) VALUES(N'" + txbMaKhach.Text.Trim() + "',N'" + txtTenKhach.Text + "','" + txtSDT_KH.Text + "','" + txtDiaChiKH.Text + "')";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = DataBaseConnection.GetSqlConnection(); //Gán kết nối
-                cmd.CommandText = sql;
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show("TÊN ĐÃ TỒN TẠI");
-                }
+                err = ex.Message;
             }
+            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
         }
 
@@ -253,47 +247,54 @@ namespace DBMS_NHOM_10.Forms_branch
             FormTaoHoaDon.ActiveForm.Close();
         }
 
+
         private void btn_Tim_Click(object sender, EventArgs e)
         {
             Search_KhachHang();
         }
         public void Search_KhachHang()
         {
-            string value = txb_TimKH.Text.Trim();
-            if (value.Length != 10)
+            string value = txb_Tim_KH.Text.Trim();
+            try
             {
-                MessageBox.Show("Số điện thoại không chính xác");
-            }
-            else
-            {
-                string query = "exec proc_timkiemkhachhang_sdt '" + value +"'";
+                string query = "exec proc_KhachHang_TK_sdt '" + value + "'";
                 SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
                 DataTable dataTable = new DataTable();
                 adapter.Fill(dataTable);
-                if(dataTable.Rows.Count > 0)
+                DataRow r = dataTable.Rows[0];
+                txb_idKH.Text = r["idKH"].ToString();
+                txb_TenKH.Text = r["TenKH"].ToString();
+                txb_sdtKH.Text = r["soDT_KH"].ToString();
+                txb_DiaChiKH.Text = r["DiaChi"].ToString();
+
+
+            }
+            catch(Exception ex)
+            {
+                if(ex.Message == "Không tìm thấy! - Hãy tạo thông tin!")
                 {
-                    DataRow r = dataTable.Rows[0];
-                    txbMaKhach.Text = r["idKH"].ToString();
-                    txtTenKhach.Text = r["TenKH"].ToString();
-                    txtSDT_KH.Text = r["soDT_KH"].ToString();
-                    txtDiaChiKH.Text = r["DiaChi"].ToString();
+                    string str = "SELECT MAX(idKH) FROM KhachHang";
+                    string k = Functions.GetFieldValues(str);
+                    Match match = Regex.Match(k, @"\d+");
+                    int kq = int.Parse(match.Value.ToString()) + 1;
+                    string formattedResult = kq.ToString("D2"); // Định dạng số nguyên k với 2 chữ số
+
+                    txb_idKH.Text = "KH_" + formattedResult;
+                    txb_sdtKH.Text = value;
+
+                    txb_TenKH.Text = "";
+                    txb_DiaChiKH.Text = "";
+                    txb_TenKH.ReadOnly = false;
+                    txb_DiaChiKH.ReadOnly = false;
+                    btn_LuuKH.Visible = true;
+                    MessageBox.Show(ex.Message);
                 }
                 else
                 {
-                    string str = "SELECT count(idKH) FROM KhachHang";
-                    int k = int.Parse(Functions.GetFieldValues(str)) + 1;
-                    string formattedResult = k.ToString("D2"); // Định dạng số nguyên k với 2 chữ số
-
-                    txbMaKhach.Text = "KH_" + formattedResult;
-                    txtSDT_KH.Text = value;
-
-                    lb_tb.Visible= true;
-                    txtTenKhach.ReadOnly= false;
-                    txtSDT_KH.ReadOnly = false;
-                    txtDiaChiKH.ReadOnly = false;
-                    btn_LuuKH.Visible = true;
+                    MessageBox.Show(ex.Message);
                 }
             }
+            
         }
     }
 }

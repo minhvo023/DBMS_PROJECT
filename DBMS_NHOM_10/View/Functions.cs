@@ -5,6 +5,7 @@ using System.Data;
 using System.Drawing;
 using System.Linq;
 using System.Text;
+using System.Globalization;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 using System.IO;
@@ -76,10 +77,63 @@ namespace DBMS_NHOM_10.View
             return dt;
         }
 
-        public static string ChuyenSoSangChu(string number)
+        public static string NumberToWords(int number)
         {
 
-            return number;
+            /*if (number == 0)
+            {
+                return "Zero";
+            }
+
+            if (number < 0)
+            {
+                return "Negative " + NumberToWords(Math.Abs(number));
+            }
+
+            string words = "";
+
+            if ((number / 1000000) > 0)
+            {
+                words += NumberToWords(number / 1000000) + " Triệu ";
+                number %= 1000000;
+            }
+
+            if ((number / 1000) > 0)
+            {
+                words += NumberToWords(number / 1000) + " Nghìn ";
+                number %= 1000;
+            }
+
+            if ((number / 100) > 0)
+            {
+                words += NumberToWords(number / 100) + " Trăm ";
+                number %= 100;
+            }
+
+            if (number > 0)
+            {
+                if (words != "")
+                {
+                    words += "và ";
+                }
+                string[] unitsMap = new string[] { "Không", "Một", "Hai", "Ba", "Bốn", "Năm", "Sáu", "Bảy", "Tám", "Chín" };
+                string[] tensMap = new string[] { "Không", "Mười", "Hai Mươi", "Ba Mươi", "Bốn Mươi", "Năm Mươi", "Sáu Mươi", "Bảy Mươi", "Tám Mươi", "Chín Mươi" };
+
+                if (number < 20)
+                {
+                    words += unitsMap[number];
+                }
+                else
+                {
+                    words += tensMap[number / 10];
+                    if ((number % 10) > 0)
+                    {
+                        words += "-" + unitsMap[number % 10];
+                    }
+                }
+            }*/
+
+            return "-.-";
         }
 
     }

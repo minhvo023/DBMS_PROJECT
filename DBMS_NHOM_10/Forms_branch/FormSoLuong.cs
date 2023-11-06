@@ -12,11 +12,11 @@ using System.Windows.Forms;
 namespace DBMS_NHOM_10.Forms_branch
 {
 
-    public partial class soluong : Form
+    public partial class FormSoLuong : Form
     {
         public delegate void ssoluong(string text);
         public ssoluong sl;
-        public soluong()
+        public FormSoLuong()
         {
             InitializeComponent();
         }
@@ -30,6 +30,26 @@ namespace DBMS_NHOM_10.Forms_branch
                     sl(txbInputSoluong.Text);
                 }
             }
+        }
+
+        private void btn_Cancel_Click(object sender, EventArgs e)
+        {
+            FormSoLuong.ActiveForm.Close();
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel1_Paint(object sender, PaintEventArgs e)
+        {
+
         }
     }
 }

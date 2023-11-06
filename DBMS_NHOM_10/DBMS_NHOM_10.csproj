@@ -47,6 +47,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="BUS\DienThoai_BUS.cs" />
     <Compile Include="DataBaseConnection.cs" />
     <Compile Include="Forms_branch\FormEditDienThoai.cs">
       <SubType>Form</SubType>
@@ -54,11 +55,17 @@
     <Compile Include="Forms_branch\FormEditDienThoai.Designer.cs">
       <DependentUpon>FormEditDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms_branch\FormEditKH.cs">
+    <Compile Include="Forms_branch\FormEditKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms_branch\FormEditKH.Designer.cs">
-      <DependentUpon>FormEditKH.cs</DependentUpon>
+    <Compile Include="Forms_branch\FormEditKhachHang.Designer.cs">
+      <DependentUpon>FormEditKhachHang.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_branch\FormEditNhanVien.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms_branch\FormEditNhanVien.Designer.cs">
+      <DependentUpon>FormEditNhanVien.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms_branch\FormTaoHoaDon.cs">
       <SubType>Form</SubType>
@@ -66,11 +73,11 @@
     <Compile Include="Forms_branch\FormTaoHoaDon.Designer.cs">
       <DependentUpon>FormTaoHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms_branch\soluong.cs">
+    <Compile Include="Forms_branch\FormSoLuong.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms_branch\soluong.Designer.cs">
-      <DependentUpon>soluong.cs</DependentUpon>
+    <Compile Include="Forms_branch\FormSoLuong.Designer.cs">
+      <DependentUpon>FormSoLuong.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms\Form_NV.cs">
       <SubType>Form</SubType>
@@ -118,9 +125,11 @@
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeColor.cs" />
     <Compile Include="View\Functions.cs" />
-    <Compile Include="View\Procedure.cs" />
     <EmbeddedResource Include="Forms\FormEmployee.resx">
       <DependentUpon>FormEmployee.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormSetting.resx">
+      <DependentUpon>FormSetting.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormShift.resx">
       <DependentUpon>FormShift.cs</DependentUpon>
@@ -128,14 +137,17 @@
     <EmbeddedResource Include="Forms_branch\FormEditDienThoai.resx">
       <DependentUpon>FormEditDienThoai.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms_branch\FormEditKH.resx">
-      <DependentUpon>FormEditKH.cs</DependentUpon>
+    <EmbeddedResource Include="Forms_branch\FormEditKhachHang.resx">
+      <DependentUpon>FormEditKhachHang.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms_branch\FormEditNhanVien.resx">
+      <DependentUpon>FormEditNhanVien.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms_branch\FormTaoHoaDon.resx">
       <DependentUpon>FormTaoHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms_branch\soluong.resx">
-      <DependentUpon>soluong.cs</DependentUpon>
+    <EmbeddedResource Include="Forms_branch\FormSoLuong.resx">
+      <DependentUpon>FormSoLuong.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms\FormCustomers.resx">
       <DependentUpon>FormCustomers.cs</DependentUpon>

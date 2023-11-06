@@ -9,6 +9,7 @@ using System.Drawing;
 using System.IO;
 using System.Linq;
 using System.Text;
+using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Windows.Forms;
 
@@ -30,6 +31,7 @@ namespace DBMS_NHOM_10.Forms_branch
                 check = "Sửa";
                 Functions.FillCombo("SELECT TenHangDT FROM HangDienThoai", cbbHang, "TenHangDT", "TenHangDT");
                 cbbHang.SelectedIndex = -1;
+
                 Functions.FillCombo("SELECT DISTINCT DungLuong FROM DienThoai", cbbDungLuong, "DungLuong", "DungLuong");
                 cbbHang.SelectedIndex = -1;
 
@@ -54,10 +56,11 @@ namespace DBMS_NHOM_10.Forms_branch
             {
                 check = "Thêm";
 
-                string str;
-                str = "SELECT count(idDienThoai) FROM DienThoai";
-                int k = int.Parse(Functions.GetFieldValues(str)) + 1;
-                string formattedResult = k.ToString("D2"); // Định dạng số nguyên k với 2 chữ số
+                string str = "SELECT MAX(idDienThoai) FROM DienThoai";
+                string k = Functions.GetFieldValues(str);
+                Match match = Regex.Match(k, @"\d+");
+                int kq = int.Parse(match.Value.ToString()) + 1;
+                string formattedResult = kq.ToString("D2"); // Định dạng số nguyên k với 2 chữ số
 
                 Functions.FillCombo("SELECT TenHangDT FROM HangDienThoai", cbbHang, "TenHangDT", "TenHangDT");
                 cbbHang.SelectedIndex = -1;
@@ -76,57 +79,56 @@ namespace DBMS_NHOM_10.Forms_branch
             }
         }
 
-        byte[] ImageToByteArray(Image image)
-        {
-            MemoryStream stream = new MemoryStream();
-            image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
-            return stream.ToArray();
-        }
+        
         private void btn_luu_Click(object sender, EventArgs e)
         {
+
+            byte[] ImageToByteArray(Image image)
+            {
+                MemoryStream stream = new MemoryStream();
+                image.Save(stream, System.Drawing.Imaging.ImageFormat.Png);
+                return stream.ToArray();
+            }
             byte[] b = null;
             if (pictureBox_DT.Image != null)
             {
                 b = ImageToByteArray(pictureBox_DT.Image);
-                
             }
-            if (txb_ten.Text == "" || cbbHang.Text == "" || cbbDungLuong.Text == "" || txb_mausac.Text == "" || txb_soluong.Text == "" || txb_gia.Text == "")
-            {
-                MessageBox.Show("VUi lòng nhập đầy đủ thông tin", "Thông báo", MessageBoxButtons.OK);
-            }
-            
-            else
-            {
-                them_sua_dienthoai(b);
-            }
+
+            them_sua_dienthoai(b);
             
         }
 
-        public void them_sua_dienthoai(byte[] b)
+        public void them_sua_dienthoai(Byte[] b)
         {
-            SqlConnection connection = DataBaseConnection.GetSqlConnection();
-            SqlCommand cmd = new SqlCommand("proc_InsertOrUpdateDienThoai", connection);
-            cmd.CommandType = CommandType.StoredProcedure;
-            cmd.Parameters.AddWithValue("@idDienThoai", txb_id.Text.Trim());
-            cmd.Parameters.AddWithValue("@TenDienThoai", txb_ten.Text.Trim());
-            cmd.Parameters.AddWithValue("@TenHangDT", cbbHang.SelectedValue);
-            cmd.Parameters.AddWithValue("@MauSac", txb_mausac.Text.Trim());
-            cmd.Parameters.AddWithValue("@DungLuong", cbbDungLuong.SelectedValue);
-            cmd.Parameters.AddWithValue("@GiaBan", txb_gia.Text.Trim());
-            cmd.Parameters.AddWithValue("@SoLuong", txb_soluong.Text.Trim());
-            cmd.Parameters.AddWithValue("@TinhTrang", txb_tinhtrang.Text.Trim());
-            cmd.Parameters.AddWithValue("@HinhAnh", b);
-
+            
+            string err = "";
             try
             {
-                cmd.ExecuteNonQuery(); //Thực hiện câu lệnh SQL
-                MessageBox.Show("Lưu thông tin thành công - Hãy REFRESH", "Thông báo", MessageBoxButtons.OK);
+
+                SqlConnection connection = DataBaseConnection.GetSqlConnection();
+                SqlCommand cmd = new SqlCommand("proc_DienThoai_InsertOrUpdate", connection);
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idDienThoai", txb_id.Text.Trim());
+                cmd.Parameters.AddWithValue("@TenDienThoai", txb_ten.Text.Trim());
+                cmd.Parameters.AddWithValue("@TenHangDT", cbbHang.SelectedValue);
+                cmd.Parameters.AddWithValue("@MauSac", txb_mausac.Text.Trim());
+                cmd.Parameters.AddWithValue("@DungLuong", cbbDungLuong.SelectedValue);
+                cmd.Parameters.AddWithValue("@GiaBan", txb_gia.Text.Trim());
+                cmd.Parameters.AddWithValue("@SoLuong", txb_soluong.Text.Trim());
+                cmd.Parameters.AddWithValue("@TinhTrang", txb_tinhtrang.Text.Trim());
+                cmd.Parameters.AddWithValue("@HinhAnh", b);
+
+                cmd.ExecuteNonQuery();
+                err = "Lưu thông tin thành công";
                 FormEditDienThoai.ActiveForm.Close();
             }
             catch (Exception ex)
             {
-                MessageBox.Show(ex.ToString());
+                err = ex.Message;
             }
+            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+
         }
 
         private void btn_huy_Click(object sender, EventArgs e)

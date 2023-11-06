@@ -33,6 +33,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormCustomers));
             this.panel6 = new System.Windows.Forms.Panel();
             this.label1 = new System.Windows.Forms.Label();
             this.btn_lsmh = new System.Windows.Forms.Button();
@@ -44,6 +45,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView_Customer = new System.Windows.Forms.DataGridView();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_lsmh)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_Customer)).BeginInit();
@@ -52,6 +54,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel6.Controls.Add(this.btn_reset);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.btn_lsmh);
             this.panel6.Controls.Add(this.dataGridView_lsmh);
@@ -221,6 +224,18 @@
             this.dataGridView_Customer.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
             this.dataGridView_Customer.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
             // 
+            // btn_reset
+            // 
+            this.btn_reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
+            this.btn_reset.Location = new System.Drawing.Point(0, 0);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(67, 63);
+            this.btn_reset.TabIndex = 20;
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
             // FormCustomers
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
@@ -255,5 +270,6 @@
         private System.Windows.Forms.Button btnSearch_sđt;
         private System.Windows.Forms.Button btn_lsmh;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_reset;
     }
 }

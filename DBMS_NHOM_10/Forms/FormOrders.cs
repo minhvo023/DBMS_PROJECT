@@ -21,14 +21,16 @@ namespace DBMS_NHOM_10.Forms
         {
             InitializeComponent();
             danhsach_hoadon();
-            Functions.FillCombo("SELECT DISTINCT TrangThai FROM HoaDon", cbb_timkiem_tt, "TrangThai", "TrangThai");
-            cbb_timkiem_tt.SelectedIndex = -1;
+
+            cbb_timkiem_tt.Items.Add("Hoàn Thành");
+            cbb_timkiem_tt.Items.Add("Đã Hủy");
+
             AddContextMenu();
         }
 
         public void danhsach_hoadon()
         {
-            string query = "SELECT * FROM HoaDon";
+            string query = "SELECT * FROM v_hoadon";
 
             SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
             DataTable table = new DataTable();
@@ -51,12 +53,17 @@ namespace DBMS_NHOM_10.Forms
         ToolStripMenuItem toolStripItem1 = new ToolStripMenuItem();
         ToolStripMenuItem toolStripItem2 = new ToolStripMenuItem();
 
+        ToolStripMenuItem toolStripItem3 = new ToolStripMenuItem();
+
+
         private void AddContextMenu()
         {
             toolStripItem1.Text = "Chi Tiết Hóa Đơn";
             toolStripItem1.Click += new EventHandler(toolStripItem1_Click);
-            toolStripItem2.Text = "Xóa Hóa Đơn";
+            toolStripItem2.Text = "Xóa Hóa Đơn - NV";
             toolStripItem2.Click += new EventHandler(toolStripItem2_Click);
+            toolStripItem3.Text = "Xóa Hóa Đơn - QL";
+            toolStripItem3.Click += new EventHandler(toolStripItem3_Click);
             ContextMenuStrip strip = new ContextMenuStrip();
 
             foreach (DataGridViewColumn column in dataGridView_Order.Columns)
@@ -65,7 +72,7 @@ namespace DBMS_NHOM_10.Forms
                 column.ContextMenuStrip = strip;
                 column.ContextMenuStrip.Items.Add(toolStripItem1);
                 column.ContextMenuStrip.Items.Add(toolStripItem2);
-
+                column.ContextMenuStrip.Items.Add(toolStripItem3);
             }
         }
 
@@ -77,50 +84,83 @@ namespace DBMS_NHOM_10.Forms
             string value1 = dataGridView_Order.Rows[mouseLocation.RowIndex].Cells["TrangThai"].Value.ToString();
 
             
-            btn_cthd.Text = "ID Hóa Đơn: "+value+"\nTrạng Thái: "+value1;
+            btn_cthd.Text = "ID Hóa Đơn: "+value.Trim()+"\nTrạng Thái: "+value1;
+            HoaDon_ChiTietHoaDon(value);
 
+            dataGridView_CTHD_kh.Columns["idKH"].HeaderText = "ID Khách";
+            dataGridView_CTHD_kh.Columns["TenKH"].HeaderText = "Họ và Tên";
+            dataGridView_CTHD_kh.Columns["soDT_KH"].HeaderText = "SĐT";
+            dataGridView_CTHD_kh.Columns["DiaChi"].HeaderText = "Địa Chỉ";
 
-            using (SqlConnection connection = DataBaseConnection.GetSqlConnection())
-            using (SqlCommand cmd = new SqlCommand("proc_ChiTietHoaDon", connection))
+            dataGridView_CTDH_nv.Columns["idNV"].HeaderText = "ID Nhân Viên";
+            dataGridView_CTDH_nv.Columns["Ho_Ten"].HeaderText = "Họ và Tên";
+            dataGridView_CTDH_nv.Columns["TenCV"].HeaderText = "Vị Trí";
+
+            dataGridView_CTHD_dt.Columns["idDienThoai"].HeaderText = "ID Điện Thoại";
+            dataGridView_CTHD_dt.Columns["TenDienThoai"].HeaderText = "Tên";
+            dataGridView_CTHD_dt.Columns["TenHangDT"].HeaderText = "Hãng";
+            dataGridView_CTHD_dt.Columns["MauSac"].HeaderText = "Màu sắc";
+            dataGridView_CTHD_dt.Columns["DungLuong"].HeaderText = "Dung lượng";
+            dataGridView_CTHD_dt.Columns["GiaBan"].HeaderText = "Giá";
+            dataGridView_CTHD_dt.Columns["SoLuong"].HeaderText = "Số lượng";
+
+        }
+
+        public void HoaDon_ChiTietHoaDon(string value)
+        {
+            try
             {
+                SqlConnection connection = DataBaseConnection.GetSqlConnection();
+                SqlCommand cmd = new SqlCommand("proc_HoaDon_ChiTietHoaDon", connection);
                 cmd.CommandType = CommandType.StoredProcedure;
-                cmd.Parameters.AddWithValue("@id_hoadon", value); // Thay thế yourHoaDonID bằng giá trị thực tế.
+                cmd.Parameters.AddWithValue("@id_hoadon", value);
 
-
-                // Khởi tạo các DataTable cho từng bảng kết quả
                 DataTable khachHangTable = new DataTable();
                 DataTable nhanVienTable = new DataTable();
                 DataTable dienThoaiTable = new DataTable();
 
-                using (SqlDataReader reader = cmd.ExecuteReader())
-                {
-                    // Đọc và lưu trữ bảng kết quả Khách hàng
-                    khachHangTable.Load(reader);
+                SqlDataReader reader = cmd.ExecuteReader();
+                // Đọc và lưu trữ bảng kết quả Khách hàng
+                khachHangTable.Load(reader);
 
-                    // Chuyển sang bảng kết quả Nhân viên
-                    nhanVienTable.Load(reader);
+                // Chuyển sang bảng kết quả Nhân viên
+                nhanVienTable.Load(reader);
 
-                    // Chuyển sang bảng kết quả Điện thoại
-                    dienThoaiTable.Load(reader);
-                }
+                // Chuyển sang bảng kết quả Điện thoại
+                dienThoaiTable.Load(reader);
 
-                // Hiển thị dữ liệu từ các DataTable trên các iều khiển DataGridView hoặc ListView, ListBox, ...
                 dataGridView_CTHD_kh.DataSource = khachHangTable;
                 dataGridView_CTDH_nv.DataSource = nhanVienTable;
                 dataGridView_CTHD_dt.DataSource = dienThoaiTable;
             }
-
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+            }
         }
 
         private void toolStripItem2_Click(object sender, EventArgs args)
         {
+            Xoa_HoaDon(0);
+            load_refresh();
+
+        }
+        private void toolStripItem3_Click(object sender, EventArgs args)
+        {
+            Xoa_HoaDon(1);
+            load_refresh();
+
+        }
+
+        public void Xoa_HoaDon(int pq)
+        {
             string value = dataGridView_Order.Rows[mouseLocation.RowIndex].Cells["idHD"].Value.ToString();
-            string sql = "DELETE FROM HoaDon WHERE idHD = '" + value + "'";
-            DialogResult result = MessageBox.Show("Bạn Có Chắc Chắn Muốn Xóa Hóa Đơn "+value, "Thông Báo", MessageBoxButtons.OK);
+            string sql = "exec proc_HoaDon_Delete '" + value + "'," + pq;
+            DialogResult result = MessageBox.Show("Bạn Có Chắc Chắn Muốn Xóa Hóa Đơn " + value, "Thông Báo", MessageBoxButtons.OK);
             if (result == DialogResult.OK)
             {
                 SqlCommand cmd = new SqlCommand();
-                cmd.Connection = DataBaseConnection.GetSqlConnection(); //Gán kết nối
+                cmd.Connection = DataBaseConnection.GetSqlConnection(); ;
                 cmd.CommandText = sql;
                 try
                 {
@@ -128,61 +168,47 @@ namespace DBMS_NHOM_10.Forms
                 }
                 catch (Exception ex)
                 {
-                    MessageBox.Show(ex.ToString());
+                    MessageBox.Show(ex.Message);
                 }
-                load_refresh();
             }
-            Refresh();
-
         }
-
         private void dataGridView_CellMouseEnter(object sender,DataGridViewCellEventArgs location)
         {
             mouseLocation = location;
         }
 
-        private void btnDateHD_Click(object sender, EventArgs e)
+        private void btn_timkiemHD_Click(object sender, EventArgs e)
         {
 
-            timkiemhoadon_date();
+            TimKiemHD_NgayHoacTrangThai();
 
             btn_cthd.Text = "ID Hóa Đơn:";
             dataGridView_CTDH_nv.DataSource = null;
             dataGridView_CTHD_dt.DataSource = null;
             dataGridView_CTHD_kh.DataSource = null;
         }
-        public void timkiemhoadon_date()
+        public void TimKiemHD_NgayHoacTrangThai()
         {
-            DateTime dateTime = dateTimePicker_HD.Value;
+            try
+            {
+                DateTime dateTime = dateTimePicker_HD.Value;
 
-            string dateString = dateTime.ToString();
-            string query = "exec proc_timkiemhoadon_date_and_status" + " N'" + dateString + "',null";
+                string dateString = dateTime.ToString("dd/MM/yyyy");
+                string query = "exec proc_HoaDon_TK_NgayHoacTrangThai" + " N'" + dateString + "', N'"+ cbb_timkiem_tt.Text.Trim() +"'";
 
-            SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
+                SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable dataTable = new DataTable();
+                adapter.Fill(dataTable);
 
-            dataGridView_Order.DataSource= dataTable;
-        }
-        private void btnTrangThaiHD_Click(object sender, EventArgs e)
-        {
-            timkiemhoadon_status();
-            btn_cthd.Text = "ID Hóa Đơn:";
-            dataGridView_CTDH_nv.DataSource = null;
-            dataGridView_CTHD_dt.DataSource = null;
-            dataGridView_CTHD_kh.DataSource = null;
-
-        }
-        public void timkiemhoadon_status()
-        {
-            
-            string query = "exec proc_timkiemhoadon_date_and_status" + " null,N'" + cbb_timkiem_tt.SelectedValue + "'";
-
-            SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-            DataTable dataTable = new DataTable();
-            adapter.Fill(dataTable);
-
-            dataGridView_Order.DataSource = dataTable;
+                dataGridView_Order.DataSource = dataTable;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message, "Thông Báo",MessageBoxButtons.OK ,MessageBoxIcon.Error);
+                cbb_timkiem_tt.Text = "";
+                DateTime dateTime = DateTime.Now;
+                dateTimePicker_HD.Value = dateTime;
+            }
         }
 
         private void btn_reset_Click(object sender, EventArgs e)
@@ -191,7 +217,7 @@ namespace DBMS_NHOM_10.Forms
         }
         public void load_refresh()
         {
-            string query = "SELECT * FROM HoaDon";
+            string query = "SELECT * FROM v_hoadon";
 
             btn_cthd.Text = "ID Hóa Đơn:";
             cbb_timkiem_tt.Text = "";

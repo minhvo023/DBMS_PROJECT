@@ -29,7 +29,7 @@ namespace DBMS_NHOM_10.Forms
 
         public void danhsach_dienthoai()
         {
-            string query = "SELECT * FROM DienThoai";
+            string query = "SELECT * FROM v_dienthoai";
             SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
             DataTable table = new DataTable();
             dap.Fill(table);
@@ -121,14 +121,13 @@ namespace DBMS_NHOM_10.Forms
         {
             CollapseMenu();
             btnHang.Text = btnHangAll.Text;
-            btnHang.Tag = 0;
+            btnHang.Tag = "";
 
         }
 
         private void btnGia_Click(object sender, EventArgs e)
         {
             CollapseMenuGia();
-            btnGia.Tag = 0;
         }
 
         private void CollapseMenuGia()
@@ -152,7 +151,7 @@ namespace DBMS_NHOM_10.Forms
         {
             CollapseMenuGia();
             btnGia.Text = btnGiaAll.Text;
-            btnGia.Tag = 0;
+            btnGia.Tag = "";
 
         }
 
@@ -188,41 +187,6 @@ namespace DBMS_NHOM_10.Forms
         private void btnTimKiem_TenDT_Click(object sender, EventArgs e)
         {
             timkiemDT_Ten();
-        }
-        public void timkiemDT_hang_gia()
-        {
-            string value1 = btnHang.Tag.ToString();
-            string value2 = btnGia.Tag.ToString();
-
-            string query = "exec proc_TimKiemHangGiaDT " + value1 + "," + "'" + value2 + "'" + "";
-
-            SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            DataTable dt = table;
-            dataGridView_Product.DataSource = dt;
-        }
-        public void timkiemDT_Ten()
-        {
-            string value = txbSearch.Text;
-            string query;
-            btnGia.Text = "Giá";
-            btnHang.Text = "Hãng Điện Thoại";
-
-            if (value == "")
-            {
-                query = "exec proc_TimKiemTenDT null ";
-
-            }
-            else
-            {
-                query = "exec proc_TimKiemTenDT '" + value + "'";
-            }
-            SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            DataTable dt = table;
-            dataGridView_Product.DataSource = dt;
         }
 
         private DataGridViewCellEventArgs mouseLocation;
@@ -265,101 +229,36 @@ namespace DBMS_NHOM_10.Forms
 
         private void toolStripItem_themgh_Click(object sender, EventArgs args)
         {
-            string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
-            string checktrangthai = "Select TrangThai from DienThoai where idDienThoai = N'" + a + "'";
-            if (Functions.GetFieldValues(checktrangthai) == "Hết hàng")
-            {
-                MessageBox.Show("Sản phẩm đã hết hàng ", "Thông Báo", MessageBoxButtons.OK);
-            }
-            else
-            {
-                soluong slg = new soluong();
-                slg.sl = new soluong.ssoluong(loadData);
-                slg.ShowDialog();
-
-                void loadData(string soluong)
-                {
-                    string b = soluong;
-
-                    string checksoluong = "Select SoLuong from DienThoai where idDienThoai = N'" + a + "'";
-
-                    if (int.Parse(Functions.GetFieldValues(checksoluong)) >= int.Parse(b) && int.Parse(b) > 0)
-                    {
-                        string query = "exec proc_themgiohang " + a + "," + b;
-
-                        SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
-                        DataTable dt_giohang = new DataTable();
-
-                        adapter.Fill(dt_giohang);
-                        dt.Merge(dt_giohang);
-
-                        dataGridView_GioHang.DataSource = dt;
-                        dataGridView_GioHang.Columns[0].HeaderText = "ID";
-                        dataGridView_GioHang.Columns[1].HeaderText = "Tên Điện Thoại";
-                        dataGridView_GioHang.Columns[2].HeaderText = "Giá Bán";
-                        dataGridView_GioHang.Columns[3].HeaderText = "Số Lượng";
-
-                        slg.Close();
-
-                    }
-                    else
-                    {
-                        MessageBox.Show("Vui lòng nhập số lượng > 0 và <= " + Functions.GetFieldValues(checksoluong), "Thông Báo", MessageBoxButtons.OK);
-                    }
-                }
-            }
-            
-
+            FormSoLuong slg = new FormSoLuong();
+            slg.sl = new FormSoLuong.ssoluong(DienThoai_ThemGioHang);
+            slg.ShowDialog();
         }
-
-
+        
         private void toolStripItem_sua_Click(object sender, EventArgs args)
         {
             string ck = "sửa";
-            DataGridViewRow datarow = dataGridView_Product.Rows[mouseLocation.RowIndex];
-            FormEditDienThoai form_edit_dt = new FormEditDienThoai(datarow, ck);
-            form_edit_dt.ShowDialog();
-
+            DienThoai_ThemHoacSua(ck);
         }
 
         private void toolStripItem_themsp_Click(object sender, EventArgs args)
         {
             string ck = "thêm";
+            DienThoai_ThemHoacSua(ck);
+
+        }
+        public void DienThoai_ThemHoacSua(string ck)
+        {
             DataGridViewRow datarow = dataGridView_Product.Rows[mouseLocation.RowIndex];
             FormEditDienThoai form_edit_dt = new FormEditDienThoai(datarow, ck);
             form_edit_dt.ShowDialog();
-
         }
-
 
         private void toolStripItem_xoa_Click(object sender, EventArgs args)
         {
-            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa sản phẩm", "thông báo", MessageBoxButtons.OKCancel);
-            if(result == DialogResult.OK)
-            {
-                string sql;
-                string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
-                sql = "exec proc_XoaDienThoai '" + a.Trim() + "'";
-                SqlCommand cmd = new SqlCommand();
-                cmd.Connection = DataBaseConnection.GetSqlConnection();
-                cmd.CommandText = sql;
-                try
-                {
-                    cmd.ExecuteNonQuery();
-                }
-                catch (Exception ex)
-                {
-                    MessageBox.Show(ex.ToString());
-                }
-            }
-            else
-            {
-
-            }
+            DeleteDienThoai();
         }
 
-
-
+        
         private void dataGridView_CellMouseEnter(object sender,DataGridViewCellEventArgs location)
         {
             mouseLocation = location;
@@ -377,6 +276,119 @@ namespace DBMS_NHOM_10.Forms
                 FormTaoHoaDon form_thd = new FormTaoHoaDon(dt);
                 form_thd.ShowDialog();
                 dt.Clear();
+            }
+        }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            string query = "SELECT * FROM v_dienthoai";
+            SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+            DataTable table = new DataTable();
+            dap.Fill(table);
+            dataGridView_Product.DataSource = table;
+
+            btnGia.Text = "Giá";
+            btnHang.Text = "Hãng Điện Thoại";
+            txbSearch.Text = "";
+        }
+
+
+
+        public void DienThoai_ThemGioHang(string soluong)
+        {
+            try
+            {
+                string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
+                string b = soluong;
+
+                string query = "exec proc_DienThoai_ThemGioHang " + a + "," + b;
+
+                SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable dt_giohang = new DataTable();
+
+                adapter.Fill(dt_giohang);
+                dt.Merge(dt_giohang);
+
+                dataGridView_GioHang.DataSource = dt;
+                dataGridView_GioHang.Columns[0].HeaderText = "ID";
+                dataGridView_GioHang.Columns[1].HeaderText = "Tên Điện Thoại";
+                dataGridView_GioHang.Columns[2].HeaderText = "Giá Bán";
+                dataGridView_GioHang.Columns[3].HeaderText = "Số Lượng";
+
+            }
+            catch (Exception ex)
+            {
+                string err = ex.Message;
+                MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+        }
+
+        public void timkiemDT_hang_gia()
+        {
+            string value1 = btnHang.Tag.ToString();
+            string value2 = btnGia.Tag.ToString();
+
+            try
+            {
+                string query = "exec proc_DienThoai_TK_Hang_Gia '" + value1 + "','" + value2 + "'";
+
+                SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                DataTable dt = table;
+                dataGridView_Product.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void timkiemDT_Ten()
+        {
+            string value = txbSearch.Text;
+            btnGia.Text = "Giá";
+            btnHang.Text = "Hãng Điện Thoại";
+
+            try
+            {
+                string query = "exec proc_DienThoai_TK_TenDT N'" + value.Trim() + "'";
+                SqlDataAdapter dap = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                DataTable dt = table;
+                dataGridView_Product.DataSource = dt;
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
+        public void DeleteDienThoai()
+        {
+            DialogResult result = MessageBox.Show("Bạn có chắc muốn xóa sản phẩm", "thông báo", MessageBoxButtons.OKCancel);
+            if (result == DialogResult.OK)
+            {
+                string err;
+
+                try
+                {
+                    string a = dataGridView_Product.Rows[mouseLocation.RowIndex].Cells["idDienThoai"].Value.ToString();
+                    string sql = "exec proc_DienThoai_Delete '" + a.Trim() + "'";
+                    SqlCommand cmd = new SqlCommand();
+                    cmd.Connection = DataBaseConnection.GetSqlConnection();
+                    cmd.CommandText = sql;
+                    cmd.ExecuteNonQuery();
+                    err = "Xóa thành công";
+                }
+                catch (Exception ex)
+                {
+                    err = ex.Message;
+                }
+                MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Error);
+            }
+            else
+            {
+
             }
         }
 

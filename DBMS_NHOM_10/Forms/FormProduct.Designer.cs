@@ -44,6 +44,7 @@
             this.btn_TaoHoaDon = new System.Windows.Forms.Button();
             this.dataGridView_GioHang = new System.Windows.Forms.DataGridView();
             this.panel4 = new System.Windows.Forms.Panel();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.panelSearch = new System.Windows.Forms.Panel();
             this.panel8 = new System.Windows.Forms.Panel();
             this.btnHang3 = new System.Windows.Forms.Button();
@@ -199,6 +200,7 @@
             // 
             this.panel4.AutoScroll = true;
             this.panel4.BackColor = System.Drawing.Color.PaleTurquoise;
+            this.panel4.Controls.Add(this.btn_reset);
             this.panel4.Controls.Add(this.panelSearch);
             this.panel4.Controls.Add(this.panelGia);
             this.panel4.Controls.Add(this.txbSearch);
@@ -212,6 +214,18 @@
             this.panel4.Size = new System.Drawing.Size(728, 333);
             this.panel4.TabIndex = 1;
             // 
+            // btn_reset
+            // 
+            this.btn_reset.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Popup;
+            this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
+            this.btn_reset.Location = new System.Drawing.Point(0, 0);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(67, 63);
+            this.btn_reset.TabIndex = 20;
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
             // panelSearch
             // 
             this.panelSearch.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -221,7 +235,7 @@
             this.panelSearch.Controls.Add(this.btnHang);
             this.panelSearch.Location = new System.Drawing.Point(117, 24);
             this.panelSearch.Name = "panelSearch";
-            this.panelSearch.Size = new System.Drawing.Size(210, 66);
+            this.panelSearch.Size = new System.Drawing.Size(176, 66);
             this.panelSearch.TabIndex = 0;
             // 
             // panel8
@@ -232,7 +246,7 @@
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panel8.Location = new System.Drawing.Point(0, 87);
             this.panel8.Name = "panel8";
-            this.panel8.Size = new System.Drawing.Size(65, 0);
+            this.panel8.Size = new System.Drawing.Size(31, 0);
             this.panel8.TabIndex = 1;
             // 
             // btnHang3
@@ -241,7 +255,7 @@
             this.btnHang3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang3.Location = new System.Drawing.Point(0, 80);
             this.btnHang3.Name = "btnHang3";
-            this.btnHang3.Size = new System.Drawing.Size(65, 40);
+            this.btnHang3.Size = new System.Drawing.Size(31, 40);
             this.btnHang3.TabIndex = 2;
             this.btnHang3.Tag = "Xiaomi";
             this.btnHang3.Text = "Xiaomi";
@@ -254,7 +268,7 @@
             this.btnHang2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang2.Location = new System.Drawing.Point(0, 40);
             this.btnHang2.Name = "btnHang2";
-            this.btnHang2.Size = new System.Drawing.Size(65, 40);
+            this.btnHang2.Size = new System.Drawing.Size(31, 40);
             this.btnHang2.TabIndex = 1;
             this.btnHang2.Tag = "Apple";
             this.btnHang2.Text = "Apple";
@@ -267,7 +281,7 @@
             this.btnHang1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang1.Location = new System.Drawing.Point(0, 0);
             this.btnHang1.Name = "btnHang1";
-            this.btnHang1.Size = new System.Drawing.Size(65, 40);
+            this.btnHang1.Size = new System.Drawing.Size(31, 40);
             this.btnHang1.TabIndex = 0;
             this.btnHang1.Tag = "Samsung";
             this.btnHang1.Text = "Samsung";
@@ -280,7 +294,7 @@
             this.panel9.Controls.Add(this.btnHang5);
             this.panel9.Controls.Add(this.btnHang4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel9.Location = new System.Drawing.Point(65, 87);
+            this.panel9.Location = new System.Drawing.Point(31, 87);
             this.panel9.Name = "panel9";
             this.panel9.Size = new System.Drawing.Size(145, 0);
             this.panel9.TabIndex = 2;
@@ -330,7 +344,7 @@
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
             this.panel7.Location = new System.Drawing.Point(0, 55);
             this.panel7.Name = "panel7";
-            this.panel7.Size = new System.Drawing.Size(210, 32);
+            this.panel7.Size = new System.Drawing.Size(176, 32);
             this.panel7.TabIndex = 3;
             // 
             // btnHangAll
@@ -339,7 +353,7 @@
             this.btnHangAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHangAll.Location = new System.Drawing.Point(0, 0);
             this.btnHangAll.Name = "btnHangAll";
-            this.btnHangAll.Size = new System.Drawing.Size(210, 36);
+            this.btnHangAll.Size = new System.Drawing.Size(176, 36);
             this.btnHangAll.TabIndex = 0;
             this.btnHangAll.Tag = "";
             this.btnHangAll.Text = "Tất cả hãng";
@@ -352,9 +366,9 @@
             this.btnHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang.Location = new System.Drawing.Point(0, 0);
             this.btnHang.Name = "btnHang";
-            this.btnHang.Size = new System.Drawing.Size(210, 55);
+            this.btnHang.Size = new System.Drawing.Size(176, 55);
             this.btnHang.TabIndex = 0;
-            this.btnHang.Tag = "0";
+            this.btnHang.Tag = "";
             this.btnHang.Text = "Hãng Điện Thoại";
             this.btnHang.UseVisualStyleBackColor = true;
             this.btnHang.Click += new System.EventHandler(this.btnHang_Click);
@@ -428,7 +442,7 @@
             this.btnGia.Name = "btnGia";
             this.btnGia.Size = new System.Drawing.Size(115, 55);
             this.btnGia.TabIndex = 0;
-            this.btnGia.Tag = "0";
+            this.btnGia.Tag = "";
             this.btnGia.Text = "Giá";
             this.btnGia.UseVisualStyleBackColor = true;
             this.btnGia.Click += new System.EventHandler(this.btnGia_Click);
@@ -575,5 +589,6 @@
         private System.Windows.Forms.DataGridView dataGridView_GioHang;
         private System.Windows.Forms.PictureBox pictureBox1;
         private System.Windows.Forms.Button btn_TaoHoaDon;
+        private System.Windows.Forms.Button btn_reset;
     }
 }
