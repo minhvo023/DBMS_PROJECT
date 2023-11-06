@@ -48,6 +48,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="DataBaseConnection.cs" />
+    <Compile Include="Forms\FormSalary.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms\FormSalary.Designer.cs">
+      <DependentUpon>FormSalary.cs</DependentUpon>
+    </Compile>
     <Compile Include="Forms_branch\FormEditDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>

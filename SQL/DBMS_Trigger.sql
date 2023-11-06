@@ -1,4 +1,7 @@
-﻿-- Tạo trigger INSTEAD OF DELETE trên bảng HoaDon
+﻿use QuanLyCuaHangDienThoai
+go
+
+-- Tạo trigger INSTEAD OF DELETE trên bảng HoaDon
 CREATE or ALTER TRIGGER InsteadOfDeleteHoaDon
 ON HoaDon
 INSTEAD OF DELETE
@@ -58,8 +61,8 @@ AFTER INSERT, UPDATE
 AS
 BEGIN
 	-- Cập nhật trạng thái dựa trên số lượng
-	UPDATE DienThoai
-	SET TinhTrang = CASE
+	UPDATE [dbo].[DienThoai]
+	SET TrangThai = CASE
 		WHEN SoLuong = 0 THEN N'Hết hàng'
 		ELSE N'Còn hàng'
 		END

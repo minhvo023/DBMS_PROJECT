@@ -11,7 +11,7 @@ namespace DBMS_NHOM_10
     {
         public static SqlConnection GetSqlConnection()
         {
-            string connString = "Data Source=DESKTOP-UUOMSSN;Initial Catalog=QuanLyCuaHangDienThoai;User ID=sa;Password=123456";
+            string connString = "Data Source=khandeptrai\\mssqlserver01;Initial Catalog=QuanLyCuaHangDienThoai;User ID=sa;Password=123456";
             SqlConnection conn = new SqlConnection(connString);
             conn.Open();
             return conn;
