@@ -18,7 +18,11 @@ namespace DBMS_NHOM_10.Forms
             InitializeComponent();
             danhsach_ca();
         }
+<<<<<<< HEAD
 
+=======
+        
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
         public void danhsach_ca()
         {
             string query = "SELECT * FROM v_phancong";
@@ -35,6 +39,7 @@ namespace DBMS_NHOM_10.Forms
             dataGridView_ca.Columns[5].HeaderText = "Ngày làm";
 
             dateTimePicker_ca.Format = DateTimePickerFormat.Custom;
+<<<<<<< HEAD
             dateTimePicker_ca.CustomFormat = "MM/dd/yyyy";
             DateTime dateTime = DateTime.Now;
             dateTimePicker_ca.Value = dateTime;
@@ -62,6 +67,32 @@ namespace DBMS_NHOM_10.Forms
 
         }
 
+=======
+            dateTimePicker_ca.CustomFormat = "dd/MM/yyyy";
+            DateTime dateTime = DateTime.Now;
+            dateTimePicker_ca.Value = dateTime;
+        }
+        public void timkiemca_Date()
+        {
+            DateTime dateTime = dateTimePicker_ca.Value;
+            string dateString = dateTime.ToString("yyyy-MM-dd");
+            string query = "exec proc_timkiemphancong_ca " + " N'" + dateString + "'";
+            SqlDataAdapter adapter = new SqlDataAdapter(query, DataBaseConnection.GetSqlConnection());
+            DataTable dataTable = new DataTable();
+            adapter.Fill(dataTable);
+            dataGridView_ca.DataSource = dataTable;
+        }
+        
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void btn_DateCa_Click(object sender, EventArgs e)
+        {
+            timkiemca_Date();
+        }
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
 
 
         public void load_refresh()
@@ -88,12 +119,15 @@ namespace DBMS_NHOM_10.Forms
         private void btn_refresh_Click(object sender, EventArgs e)
         {
             load_refresh();
+<<<<<<< HEAD
         }
 
         private void btn_DateCa_Click_1(object sender, EventArgs e)
         {
             timkiemca();
 
+=======
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
         }
     }
 }

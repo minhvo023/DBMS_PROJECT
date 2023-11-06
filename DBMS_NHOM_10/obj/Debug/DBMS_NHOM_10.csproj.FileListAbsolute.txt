@@ -16,7 +16,31 @@ C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Form
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditDienThoai.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormEmployee.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormShift.resources
+<<<<<<< HEAD
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormSoLuong.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditKhachHang.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormSetting.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditNhanVien.resources
+=======
+C:\Users\DELL\Desktop\DBMS\DBMS_NHOM_10\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditKH.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\bin\Debug\DBMS_NHOM_10.exe.config
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\bin\Debug\DBMS_NHOM_10.exe
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\bin\Debug\DBMS_NHOM_10.pdb
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.csproj.AssemblyReference.cache
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.csproj.SuggestedBindingRedirects.cache
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormEmployee.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormShift.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditDienThoai.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditKH.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormTaoHoaDon.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.soluong.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormCustomers.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.FormMainMenu.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormOrders.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormProduct.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Properties.Resources.resources
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.csproj.GenerateResource.cache
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.csproj.CoreCompileInputs.cache
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.exe
+C:\Users\Admin\Documents\GitHub\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.pdb
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f

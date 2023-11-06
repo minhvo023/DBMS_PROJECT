@@ -131,6 +131,10 @@ namespace DBMS_NHOM_10
             OpenChildForm(new Forms.FormSetting(), sender);
 
         }
+        private void btnSalary_Click(object sender, EventArgs e)
+        {
+            OpenChildForm(new Forms.FormSalary(), sender);
+        }
 
         private void btnCloseChildForm_Click_1(object sender, EventArgs e)
         {
@@ -196,5 +200,6 @@ namespace DBMS_NHOM_10
             lblDate.Text = DateTime.Now.ToString("dd/MM/yyyy");
         }
 
+        
     }
 }

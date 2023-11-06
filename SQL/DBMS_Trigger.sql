@@ -1,5 +1,13 @@
+<<<<<<< HEAD
 ﻿-- Tạo trigger INSTEAD OF DELETE trên bảng HoaDon
 CREATE or ALTER TRIGGER HoaDon_InsteadOfDelete --DONE
+=======
+﻿use QuanLyCuaHangDienThoai
+go
+
+-- Tạo trigger INSTEAD OF DELETE trên bảng HoaDon
+CREATE or ALTER TRIGGER InsteadOfDeleteHoaDon
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
 ON HoaDon
 INSTEAD OF DELETE
 AS
@@ -59,6 +67,7 @@ ON NhanVien
 AFTER INSERT, UPDATE
 AS
 BEGIN
+<<<<<<< HEAD
     IF EXISTS ( SELECT 1 FROM inserted i WHERE DATEDIFF(YEAR, CAST(i.NgaySinh AS DATE), GETDATE()) < 18)
     BEGIN
         -- Nếu tuổi nhân viên dưới 18, thực hiện ROLLBACK và hiển thị thông báo lỗi
@@ -72,6 +81,22 @@ BEGIN
         ROLLBACK;
         RAISERROR('Số Điện Thoại Nhân Viên sai định dạng!', 16, 1);
     END
+=======
+	-- Cập nhật trạng thái dựa trên số lượng
+	UPDATE [dbo].[DienThoai]
+	SET TrangThai = CASE
+		WHEN SoLuong = 0 THEN N'Hết hàng'
+		ELSE N'Còn hàng'
+		END
+	WHERE DienThoai.idDienThoai IN (SELECT idDienThoai FROM inserted);
+
+	-- Kiểm tra và ngăn chặn cập nhật sai
+	IF (SELECT COUNT(*) FROM inserted WHERE SoLuong < 0 OR GiaBan < 0) > 0 
+	begin
+		RAISERROR ('THÔNG TIN VỀ GIÁ HOẶC SỐ LƯỢNG KHÔNG CHÍNH XÁC', 0, 0)
+		ROLLBACK;
+	END;
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
 END;
 
 

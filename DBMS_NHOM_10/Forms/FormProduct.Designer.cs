@@ -84,27 +84,30 @@
             // 
             this.panel2.BackColor = System.Drawing.Color.White;
             this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1494, 0);
+            this.panel2.Location = new System.Drawing.Point(996, 0);
+            this.panel2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(15, 708);
+            this.panel2.Size = new System.Drawing.Size(10, 460);
             this.panel2.TabIndex = 3;
             // 
             // panel3
             // 
             this.panel3.BackColor = System.Drawing.Color.White;
             this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(17, 694);
+            this.panel3.Location = new System.Drawing.Point(11, 451);
+            this.panel3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1477, 14);
+            this.panel3.Size = new System.Drawing.Size(985, 9);
             this.panel3.TabIndex = 4;
             // 
             // panel5
             // 
             this.panel5.BackColor = System.Drawing.Color.White;
             this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(17, 0);
+            this.panel5.Location = new System.Drawing.Point(11, 0);
+            this.panel5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1477, 17);
+            this.panel5.Size = new System.Drawing.Size(985, 11);
             this.panel5.TabIndex = 5;
             // 
             // panel1
@@ -112,8 +115,9 @@
             this.panel1.BackColor = System.Drawing.Color.White;
             this.panel1.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(17, 708);
+            this.panel1.Size = new System.Drawing.Size(11, 460);
             this.panel1.TabIndex = 2;
             // 
             // panel
@@ -125,17 +129,19 @@
             this.panel.Controls.Add(this.panel4);
             this.panel.Cursor = System.Windows.Forms.Cursors.Arrow;
             this.panel.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel.Location = new System.Drawing.Point(17, 17);
+            this.panel.Location = new System.Drawing.Point(11, 11);
+            this.panel.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel.Name = "panel";
-            this.panel.Size = new System.Drawing.Size(1477, 333);
+            this.panel.Size = new System.Drawing.Size(985, 216);
             this.panel.TabIndex = 6;
             // 
             // pictureBox1
             // 
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(734, 6);
+            this.pictureBox1.Location = new System.Drawing.Point(489, 4);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.pictureBox1.Name = "pictureBox1";
-            this.pictureBox1.Size = new System.Drawing.Size(40, 50);
+            this.pictureBox1.Size = new System.Drawing.Size(27, 32);
             this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
             this.pictureBox1.TabIndex = 4;
             this.pictureBox1.TabStop = false;
@@ -143,9 +149,10 @@
             // btn_TaoHoaDon
             // 
             this.btn_TaoHoaDon.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_TaoHoaDon.Location = new System.Drawing.Point(1037, 253);
+            this.btn_TaoHoaDon.Location = new System.Drawing.Point(691, 164);
+            this.btn_TaoHoaDon.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btn_TaoHoaDon.Name = "btn_TaoHoaDon";
-            this.btn_TaoHoaDon.Size = new System.Drawing.Size(164, 42);
+            this.btn_TaoHoaDon.Size = new System.Drawing.Size(109, 27);
             this.btn_TaoHoaDon.TabIndex = 3;
             this.btn_TaoHoaDon.Text = "Tạo Hóa Đơn";
             this.btn_TaoHoaDon.UseVisualStyleBackColor = true;
@@ -180,7 +187,8 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_GioHang.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView_GioHang.Location = new System.Drawing.Point(805, 42);
+            this.dataGridView_GioHang.Location = new System.Drawing.Point(537, 27);
+            this.dataGridView_GioHang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView_GioHang.Name = "dataGridView_GioHang";
             dataGridViewCellStyle3.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
             dataGridViewCellStyle3.BackColor = System.Drawing.SystemColors.Control;
@@ -193,7 +201,7 @@
             this.dataGridView_GioHang.RowHeadersVisible = false;
             this.dataGridView_GioHang.RowHeadersWidth = 62;
             this.dataGridView_GioHang.RowTemplate.Height = 28;
-            this.dataGridView_GioHang.Size = new System.Drawing.Size(635, 175);
+            this.dataGridView_GioHang.Size = new System.Drawing.Size(423, 114);
             this.dataGridView_GioHang.TabIndex = 2;
             // 
             // panel4
@@ -210,8 +218,9 @@
             this.panel4.Cursor = System.Windows.Forms.Cursors.Default;
             this.panel4.Dock = System.Windows.Forms.DockStyle.Left;
             this.panel4.Location = new System.Drawing.Point(0, 0);
+            this.panel4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel4.Name = "panel4";
-            this.panel4.Size = new System.Drawing.Size(728, 333);
+            this.panel4.Size = new System.Drawing.Size(485, 216);
             this.panel4.TabIndex = 1;
             // 
             // btn_reset
@@ -233,9 +242,14 @@
             this.panelSearch.Controls.Add(this.panel9);
             this.panelSearch.Controls.Add(this.panel7);
             this.panelSearch.Controls.Add(this.btnHang);
-            this.panelSearch.Location = new System.Drawing.Point(117, 24);
+            this.panelSearch.Location = new System.Drawing.Point(78, 16);
+            this.panelSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelSearch.Name = "panelSearch";
+<<<<<<< HEAD
             this.panelSearch.Size = new System.Drawing.Size(176, 66);
+=======
+            this.panelSearch.Size = new System.Drawing.Size(140, 43);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.panelSearch.TabIndex = 0;
             // 
             // panel8
@@ -244,18 +258,28 @@
             this.panel8.Controls.Add(this.btnHang2);
             this.panel8.Controls.Add(this.btnHang1);
             this.panel8.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel8.Location = new System.Drawing.Point(0, 87);
+            this.panel8.Location = new System.Drawing.Point(0, 57);
+            this.panel8.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel8.Name = "panel8";
+<<<<<<< HEAD
             this.panel8.Size = new System.Drawing.Size(31, 0);
+=======
+            this.panel8.Size = new System.Drawing.Size(43, 0);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.panel8.TabIndex = 1;
             // 
             // btnHang3
             // 
             this.btnHang3.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHang3.Location = new System.Drawing.Point(0, 80);
+            this.btnHang3.Location = new System.Drawing.Point(0, 52);
+            this.btnHang3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang3.Name = "btnHang3";
+<<<<<<< HEAD
             this.btnHang3.Size = new System.Drawing.Size(31, 40);
+=======
+            this.btnHang3.Size = new System.Drawing.Size(43, 26);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.btnHang3.TabIndex = 2;
             this.btnHang3.Tag = "Xiaomi";
             this.btnHang3.Text = "Xiaomi";
@@ -266,9 +290,14 @@
             // 
             this.btnHang2.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHang2.Location = new System.Drawing.Point(0, 40);
+            this.btnHang2.Location = new System.Drawing.Point(0, 26);
+            this.btnHang2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang2.Name = "btnHang2";
+<<<<<<< HEAD
             this.btnHang2.Size = new System.Drawing.Size(31, 40);
+=======
+            this.btnHang2.Size = new System.Drawing.Size(43, 26);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.btnHang2.TabIndex = 1;
             this.btnHang2.Tag = "Apple";
             this.btnHang2.Text = "Apple";
@@ -280,8 +309,13 @@
             this.btnHang1.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang1.Location = new System.Drawing.Point(0, 0);
+            this.btnHang1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang1.Name = "btnHang1";
+<<<<<<< HEAD
             this.btnHang1.Size = new System.Drawing.Size(31, 40);
+=======
+            this.btnHang1.Size = new System.Drawing.Size(43, 26);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.btnHang1.TabIndex = 0;
             this.btnHang1.Tag = "Samsung";
             this.btnHang1.Text = "Samsung";
@@ -294,18 +328,24 @@
             this.panel9.Controls.Add(this.btnHang5);
             this.panel9.Controls.Add(this.btnHang4);
             this.panel9.Dock = System.Windows.Forms.DockStyle.Right;
+<<<<<<< HEAD
             this.panel9.Location = new System.Drawing.Point(31, 87);
+=======
+            this.panel9.Location = new System.Drawing.Point(43, 57);
+            this.panel9.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.panel9.Name = "panel9";
-            this.panel9.Size = new System.Drawing.Size(145, 0);
+            this.panel9.Size = new System.Drawing.Size(97, 0);
             this.panel9.TabIndex = 2;
             // 
             // btnHang6
             // 
             this.btnHang6.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHang6.Location = new System.Drawing.Point(0, 80);
+            this.btnHang6.Location = new System.Drawing.Point(0, 52);
+            this.btnHang6.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang6.Name = "btnHang6";
-            this.btnHang6.Size = new System.Drawing.Size(145, 40);
+            this.btnHang6.Size = new System.Drawing.Size(97, 26);
             this.btnHang6.TabIndex = 2;
             this.btnHang6.Tag = "Realme";
             this.btnHang6.Text = "Realme";
@@ -316,9 +356,10 @@
             // 
             this.btnHang5.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnHang5.Location = new System.Drawing.Point(0, 40);
+            this.btnHang5.Location = new System.Drawing.Point(0, 26);
+            this.btnHang5.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang5.Name = "btnHang5";
-            this.btnHang5.Size = new System.Drawing.Size(145, 40);
+            this.btnHang5.Size = new System.Drawing.Size(97, 26);
             this.btnHang5.TabIndex = 1;
             this.btnHang5.Tag = "Vivo";
             this.btnHang5.Text = "Vivo";
@@ -330,8 +371,9 @@
             this.btnHang4.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang4.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang4.Location = new System.Drawing.Point(0, 0);
+            this.btnHang4.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang4.Name = "btnHang4";
-            this.btnHang4.Size = new System.Drawing.Size(145, 40);
+            this.btnHang4.Size = new System.Drawing.Size(97, 26);
             this.btnHang4.TabIndex = 0;
             this.btnHang4.Tag = "Oppo";
             this.btnHang4.Text = "Oppo";
@@ -342,9 +384,14 @@
             // 
             this.panel7.Controls.Add(this.btnHangAll);
             this.panel7.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel7.Location = new System.Drawing.Point(0, 55);
+            this.panel7.Location = new System.Drawing.Point(0, 36);
+            this.panel7.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panel7.Name = "panel7";
+<<<<<<< HEAD
             this.panel7.Size = new System.Drawing.Size(176, 32);
+=======
+            this.panel7.Size = new System.Drawing.Size(140, 21);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.panel7.TabIndex = 3;
             // 
             // btnHangAll
@@ -352,8 +399,13 @@
             this.btnHangAll.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHangAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHangAll.Location = new System.Drawing.Point(0, 0);
+            this.btnHangAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHangAll.Name = "btnHangAll";
+<<<<<<< HEAD
             this.btnHangAll.Size = new System.Drawing.Size(176, 36);
+=======
+            this.btnHangAll.Size = new System.Drawing.Size(140, 23);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.btnHangAll.TabIndex = 0;
             this.btnHangAll.Tag = "";
             this.btnHangAll.Text = "Tất cả hãng";
@@ -365,8 +417,13 @@
             this.btnHang.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnHang.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnHang.Location = new System.Drawing.Point(0, 0);
+            this.btnHang.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnHang.Name = "btnHang";
+<<<<<<< HEAD
             this.btnHang.Size = new System.Drawing.Size(176, 55);
+=======
+            this.btnHang.Size = new System.Drawing.Size(140, 36);
+>>>>>>> c481522968e632d9481f2736cdd6ad635c3ff68f
             this.btnHang.TabIndex = 0;
             this.btnHang.Tag = "";
             this.btnHang.Text = "Hãng Điện Thoại";
@@ -381,18 +438,20 @@
             this.panelGia.Controls.Add(this.btnGia1);
             this.panelGia.Controls.Add(this.btnGiaAll);
             this.panelGia.Controls.Add(this.btnGia);
-            this.panelGia.Location = new System.Drawing.Point(333, 24);
+            this.panelGia.Location = new System.Drawing.Point(222, 16);
+            this.panelGia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.panelGia.Name = "panelGia";
-            this.panelGia.Size = new System.Drawing.Size(115, 66);
+            this.panelGia.Size = new System.Drawing.Size(77, 43);
             this.panelGia.TabIndex = 0;
             // 
             // btnGia3
             // 
             this.btnGia3.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGia3.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGia3.Location = new System.Drawing.Point(0, 175);
+            this.btnGia3.Location = new System.Drawing.Point(0, 114);
+            this.btnGia3.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGia3.Name = "btnGia3";
-            this.btnGia3.Size = new System.Drawing.Size(115, 40);
+            this.btnGia3.Size = new System.Drawing.Size(77, 26);
             this.btnGia3.TabIndex = 4;
             this.btnGia3.Text = "> 25tr";
             this.btnGia3.UseVisualStyleBackColor = true;
@@ -402,9 +461,10 @@
             // 
             this.btnGia2.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGia2.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGia2.Location = new System.Drawing.Point(0, 135);
+            this.btnGia2.Location = new System.Drawing.Point(0, 88);
+            this.btnGia2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGia2.Name = "btnGia2";
-            this.btnGia2.Size = new System.Drawing.Size(115, 40);
+            this.btnGia2.Size = new System.Drawing.Size(77, 26);
             this.btnGia2.TabIndex = 3;
             this.btnGia2.Text = "Từ 10tr - 25tr";
             this.btnGia2.UseVisualStyleBackColor = true;
@@ -414,9 +474,10 @@
             // 
             this.btnGia1.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGia1.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGia1.Location = new System.Drawing.Point(0, 95);
+            this.btnGia1.Location = new System.Drawing.Point(0, 62);
+            this.btnGia1.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGia1.Name = "btnGia1";
-            this.btnGia1.Size = new System.Drawing.Size(115, 40);
+            this.btnGia1.Size = new System.Drawing.Size(77, 26);
             this.btnGia1.TabIndex = 2;
             this.btnGia1.Text = "< 10tr";
             this.btnGia1.UseVisualStyleBackColor = true;
@@ -426,9 +487,10 @@
             // 
             this.btnGiaAll.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGiaAll.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnGiaAll.Location = new System.Drawing.Point(0, 55);
+            this.btnGiaAll.Location = new System.Drawing.Point(0, 36);
+            this.btnGiaAll.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGiaAll.Name = "btnGiaAll";
-            this.btnGiaAll.Size = new System.Drawing.Size(115, 40);
+            this.btnGiaAll.Size = new System.Drawing.Size(77, 26);
             this.btnGiaAll.TabIndex = 1;
             this.btnGiaAll.Text = "Tất cả giá";
             this.btnGiaAll.UseVisualStyleBackColor = true;
@@ -439,8 +501,9 @@
             this.btnGia.Dock = System.Windows.Forms.DockStyle.Top;
             this.btnGia.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnGia.Location = new System.Drawing.Point(0, 0);
+            this.btnGia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnGia.Name = "btnGia";
-            this.btnGia.Size = new System.Drawing.Size(115, 55);
+            this.btnGia.Size = new System.Drawing.Size(77, 36);
             this.btnGia.TabIndex = 0;
             this.btnGia.Tag = "";
             this.btnGia.Text = "Giá";
@@ -450,26 +513,29 @@
             // txbSearch
             // 
             this.txbSearch.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txbSearch.Location = new System.Drawing.Point(117, 180);
+            this.txbSearch.Location = new System.Drawing.Point(78, 117);
+            this.txbSearch.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.txbSearch.Name = "txbSearch";
-            this.txbSearch.Size = new System.Drawing.Size(344, 30);
+            this.txbSearch.Size = new System.Drawing.Size(231, 23);
             this.txbSearch.TabIndex = 2;
             // 
             // button2
             // 
             this.button2.BackColor = System.Drawing.Color.White;
             this.button2.Enabled = false;
-            this.button2.Location = new System.Drawing.Point(104, 126);
+            this.button2.Location = new System.Drawing.Point(69, 82);
+            this.button2.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.button2.Name = "button2";
-            this.button2.Size = new System.Drawing.Size(477, 14);
+            this.button2.Size = new System.Drawing.Size(318, 9);
             this.button2.TabIndex = 4;
             this.button2.UseVisualStyleBackColor = false;
             // 
             // btnTimKiem_TenDT
             // 
-            this.btnTimKiem_TenDT.Location = new System.Drawing.Point(468, 177);
+            this.btnTimKiem_TenDT.Location = new System.Drawing.Point(312, 115);
+            this.btnTimKiem_TenDT.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTimKiem_TenDT.Name = "btnTimKiem_TenDT";
-            this.btnTimKiem_TenDT.Size = new System.Drawing.Size(113, 40);
+            this.btnTimKiem_TenDT.Size = new System.Drawing.Size(75, 26);
             this.btnTimKiem_TenDT.TabIndex = 3;
             this.btnTimKiem_TenDT.Text = "Tìm Kiếm";
             this.btnTimKiem_TenDT.UseVisualStyleBackColor = true;
@@ -479,9 +545,10 @@
             // 
             this.btnTimKiem_Hang_Gia.Image = ((System.Drawing.Image)(resources.GetObject("btnTimKiem_Hang_Gia.Image")));
             this.btnTimKiem_Hang_Gia.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnTimKiem_Hang_Gia.Location = new System.Drawing.Point(523, 27);
+            this.btnTimKiem_Hang_Gia.Location = new System.Drawing.Point(349, 18);
+            this.btnTimKiem_Hang_Gia.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.btnTimKiem_Hang_Gia.Name = "btnTimKiem_Hang_Gia";
-            this.btnTimKiem_Hang_Gia.Size = new System.Drawing.Size(58, 53);
+            this.btnTimKiem_Hang_Gia.Size = new System.Drawing.Size(39, 34);
             this.btnTimKiem_Hang_Gia.TabIndex = 1;
             this.btnTimKiem_Hang_Gia.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnTimKiem_Hang_Gia.UseVisualStyleBackColor = true;
@@ -517,28 +584,30 @@
             dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_Product.DefaultCellStyle = dataGridViewCellStyle6;
             this.dataGridView_Product.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.dataGridView_Product.Location = new System.Drawing.Point(17, 350);
+            this.dataGridView_Product.Location = new System.Drawing.Point(11, 227);
+            this.dataGridView_Product.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.dataGridView_Product.Name = "dataGridView_Product";
             this.dataGridView_Product.ReadOnly = true;
             this.dataGridView_Product.RowHeadersVisible = false;
             this.dataGridView_Product.RowHeadersWidth = 62;
             this.dataGridView_Product.RowTemplate.Height = 28;
             this.dataGridView_Product.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
-            this.dataGridView_Product.Size = new System.Drawing.Size(1477, 344);
+            this.dataGridView_Product.Size = new System.Drawing.Size(985, 224);
             this.dataGridView_Product.TabIndex = 12;
             this.dataGridView_Product.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
             // 
             // FormProduct
             // 
-            this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
+            this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1509, 708);
+            this.ClientSize = new System.Drawing.Size(1006, 460);
             this.Controls.Add(this.dataGridView_Product);
             this.Controls.Add(this.panel);
             this.Controls.Add(this.panel5);
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel2);
             this.Controls.Add(this.panel1);
+            this.Margin = new System.Windows.Forms.Padding(2, 2, 2, 2);
             this.Name = "FormProduct";
             this.Text = "Danh Sách Điện Thoại";
             this.panel.ResumeLayout(false);
