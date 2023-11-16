@@ -12,8 +12,8 @@ namespace DBMS_NHOM_10
         public static Color PrimaryColor { get; set; }
         public static Color SecondaryColor { get; set; }
         public static List<string> ColorList = new List<string>() { "#009688",
-                                                                    "#607D8B",
-                                                                    "#5978BB",
+                                                                    "#1C82B5",
+                                                                    "#38B9BB",
                                                                     "#018790",
                                                                     "#00B0AD",
                                                                     "#126881",

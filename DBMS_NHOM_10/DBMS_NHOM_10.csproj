@@ -47,13 +47,12 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BUS\DienThoai_BUS.cs" />
-    <Compile Include="DataBaseConnection.cs" />
-    <Compile Include="Forms\FormSalary.cs">
+    <Compile Include="DBConnection.cs" />
+    <Compile Include="Forms\FormTaiChinh.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormSalary.Designer.cs">
-      <DependentUpon>FormSalary.cs</DependentUpon>
+    <Compile Include="Forms\FormTaiChinh.Designer.cs">
+      <DependentUpon>FormTaiChinh.cs</DependentUpon>
     </Compile>
     <Compile Include="Forms_branch\FormEditDienThoai.cs">
       <SubType>Form</SubType>
@@ -73,72 +72,82 @@
     <Compile Include="Forms_branch\FormEditNhanVien.Designer.cs">
       <DependentUpon>FormEditNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms_branch\FormTaoHoaDon.cs">
+    <Compile Include="Forms_branch\FormEditHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms_branch\FormTaoHoaDon.Designer.cs">
-      <DependentUpon>FormTaoHoaDon.cs</DependentUpon>
+    <Compile Include="Forms_branch\FormEditHoaDon.Designer.cs">
+      <DependentUpon>FormEditHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms_branch\FormSoLuong.cs">
+    <Compile Include="Forms_branch\FormSoLuongGioHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms_branch\FormSoLuong.Designer.cs">
-      <DependentUpon>FormSoLuong.cs</DependentUpon>
+    <Compile Include="Forms_branch\FormSoLuongGioHang.Designer.cs">
+      <DependentUpon>FormSoLuongGioHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\Form_NV.cs">
+    <Compile Include="Forms\Form_Main.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\Form_NV.Designer.cs">
-      <DependentUpon>Form_NV.cs</DependentUpon>
+    <Compile Include="Forms\Form_Main.Designer.cs">
+      <DependentUpon>Form_Main.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormCustomers.cs">
+    <Compile Include="Forms\FormKhachHang.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormCustomers.Designer.cs">
-      <DependentUpon>FormCustomers.cs</DependentUpon>
+    <Compile Include="Forms\FormKhachHang.Designer.cs">
+      <DependentUpon>FormKhachHang.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormShift.cs">
+    <Compile Include="Forms\FormPhanCa.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormShift.Designer.cs">
-      <DependentUpon>FormShift.cs</DependentUpon>
+    <Compile Include="Forms\FormPhanCa.Designer.cs">
+      <DependentUpon>FormPhanCa.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormOrders.cs">
+    <Compile Include="Forms\FormHoaDon.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormOrders.Designer.cs">
-      <DependentUpon>FormOrders.cs</DependentUpon>
+    <Compile Include="Forms\FormHoaDon.Designer.cs">
+      <DependentUpon>FormHoaDon.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormProduct.cs">
+    <Compile Include="Forms\FormDienThoai.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormProduct.Designer.cs">
-      <DependentUpon>FormProduct.cs</DependentUpon>
+    <Compile Include="Forms\FormDienThoai.Designer.cs">
+      <DependentUpon>FormDienThoai.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormEmployee.cs">
+    <Compile Include="Forms\FormNhanVien.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormEmployee.Designer.cs">
-      <DependentUpon>FormEmployee.cs</DependentUpon>
+    <Compile Include="Forms\FormNhanVien.Designer.cs">
+      <DependentUpon>FormNhanVien.cs</DependentUpon>
     </Compile>
-    <Compile Include="Forms\FormSetting.cs">
+    <Compile Include="Forms\FormTaiKhoan.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="Forms\FormSetting.Designer.cs">
-      <DependentUpon>FormSetting.cs</DependentUpon>
+    <Compile Include="Forms\FormTaiKhoan.Designer.cs">
+      <DependentUpon>FormTaiKhoan.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Forms_branch\Form_Login.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Forms_branch\Form_Login.Designer.cs">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </Compile>
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ThemeColor.cs" />
-    <Compile Include="View\Functions.cs" />
-    <EmbeddedResource Include="Forms\FormEmployee.resx">
-      <DependentUpon>FormEmployee.cs</DependentUpon>
+    <Compile Include="Functions.cs" />
+    <EmbeddedResource Include="Forms\FormNhanVien.resx">
+      <DependentUpon>FormNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormSetting.resx">
-      <DependentUpon>FormSetting.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormTaiChinh.resx">
+      <DependentUpon>FormTaiChinh.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormShift.resx">
-      <DependentUpon>FormShift.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormTaiKhoan.resx">
+      <DependentUpon>FormTaiKhoan.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms\FormPhanCa.resx">
+      <DependentUpon>FormPhanCa.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
     <EmbeddedResource Include="Forms_branch\FormEditDienThoai.resx">
       <DependentUpon>FormEditDienThoai.cs</DependentUpon>
@@ -149,23 +158,27 @@
     <EmbeddedResource Include="Forms_branch\FormEditNhanVien.resx">
       <DependentUpon>FormEditNhanVien.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms_branch\FormTaoHoaDon.resx">
-      <DependentUpon>FormTaoHoaDon.cs</DependentUpon>
+    <EmbeddedResource Include="Forms_branch\FormEditHoaDon.resx">
+      <DependentUpon>FormEditHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms_branch\FormSoLuong.resx">
-      <DependentUpon>FormSoLuong.cs</DependentUpon>
+    <EmbeddedResource Include="Forms_branch\FormSoLuongGioHang.resx">
+      <DependentUpon>FormSoLuongGioHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormCustomers.resx">
-      <DependentUpon>FormCustomers.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormKhachHang.resx">
+      <DependentUpon>FormKhachHang.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\Form_NV.resx">
-      <DependentUpon>Form_NV.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\Form_Main.resx">
+      <DependentUpon>Form_Main.cs</DependentUpon>
+      <SubType>Designer</SubType>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormOrders.resx">
-      <DependentUpon>FormOrders.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormHoaDon.resx">
+      <DependentUpon>FormHoaDon.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Forms\FormProduct.resx">
-      <DependentUpon>FormProduct.cs</DependentUpon>
+    <EmbeddedResource Include="Forms\FormDienThoai.resx">
+      <DependentUpon>FormDienThoai.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Forms_branch\Form_Login.resx">
+      <DependentUpon>Form_Login.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\Resources.resx">
       <Generator>ResXFileCodeGenerator</Generator>

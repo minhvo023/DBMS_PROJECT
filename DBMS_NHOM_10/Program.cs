@@ -1,4 +1,5 @@
-﻿using System;
+﻿using DBMS_NHOM_10.Forms_branch;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -16,7 +17,7 @@ namespace DBMS_NHOM_10
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FormMainMenu());
+            Application.Run(new Form_Login());
         }
     }
 }
