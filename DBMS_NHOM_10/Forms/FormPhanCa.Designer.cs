@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormPhanCa));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -271,7 +270,7 @@
             this.btn_resetTK1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_resetTK1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_resetTK1.ForeColor = System.Drawing.Color.White;
-            this.btn_resetTK1.Image = ((System.Drawing.Image)(resources.GetObject("btn_resetTK1.Image")));
+            this.btn_resetTK1.Image = global::DBMS_NHOM_10.Properties.Resources.Loading;
             this.btn_resetTK1.Location = new System.Drawing.Point(218, 166);
             this.btn_resetTK1.Name = "btn_resetTK1";
             this.btn_resetTK1.Size = new System.Drawing.Size(50, 50);
@@ -383,7 +382,7 @@
             this.btn_resetTK.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_resetTK.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_resetTK.ForeColor = System.Drawing.Color.White;
-            this.btn_resetTK.Image = ((System.Drawing.Image)(resources.GetObject("btn_resetTK.Image")));
+            this.btn_resetTK.Image = global::DBMS_NHOM_10.Properties.Resources.Loading;
             this.btn_resetTK.Location = new System.Drawing.Point(218, 166);
             this.btn_resetTK.Name = "btn_resetTK";
             this.btn_resetTK.Size = new System.Drawing.Size(50, 50);

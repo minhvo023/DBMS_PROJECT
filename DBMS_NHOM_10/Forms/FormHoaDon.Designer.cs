@@ -28,7 +28,6 @@
         /// </summary>
         private void InitializeComponent()
         {
-            System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormHoaDon));
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle3 = new System.Windows.Forms.DataGridViewCellStyle();
@@ -47,7 +46,6 @@
             this.txb_NamHD = new System.Windows.Forms.TextBox();
             this.txb_ThangHD = new System.Windows.Forms.TextBox();
             this.txb_NgayHD = new System.Windows.Forms.TextBox();
-            this.btn_reset = new System.Windows.Forms.Button();
             this.cbb_timkiem_tt = new System.Windows.Forms.ComboBox();
             this.btn_timkiemHD = new System.Windows.Forms.Button();
             this.btn_cthd = new System.Windows.Forms.Button();
@@ -59,6 +57,7 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView_Order = new System.Windows.Forms.DataGridView();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CTHD_kh)).BeginInit();
@@ -114,10 +113,10 @@
             // 
             this.label3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.label3.AutoSize = true;
-            this.label3.Font = new System.Drawing.Font("Times New Roman", 9F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.label3.Location = new System.Drawing.Point(105, 71);
+            this.label3.Font = new System.Drawing.Font("Times New Roman", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.label3.Location = new System.Drawing.Point(103, 72);
             this.label3.Name = "label3";
-            this.label3.Size = new System.Drawing.Size(170, 20);
+            this.label3.Size = new System.Drawing.Size(182, 22);
             this.label3.TabIndex = 33;
             this.label3.Text = "(Ngày / Tháng / Năm)";
             // 
@@ -155,20 +154,6 @@
             this.txb_NgayHD.Size = new System.Drawing.Size(43, 30);
             this.txb_NgayHD.TabIndex = 28;
             // 
-            // btn_reset
-            // 
-            this.btn_reset.FlatAppearance.BorderSize = 0;
-            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reset.ForeColor = System.Drawing.Color.White;
-            this.btn_reset.Image = ((System.Drawing.Image)(resources.GetObject("btn_reset.Image")));
-            this.btn_reset.Location = new System.Drawing.Point(6, 6);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(52, 49);
-            this.btn_reset.TabIndex = 27;
-            this.btn_reset.UseVisualStyleBackColor = true;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
-            // 
             // cbb_timkiem_tt
             // 
             this.cbb_timkiem_tt.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -201,7 +186,7 @@
             this.btn_cthd.BackColor = System.Drawing.Color.White;
             this.btn_cthd.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_cthd.ForeColor = System.Drawing.Color.Black;
-            this.btn_cthd.Location = new System.Drawing.Point(397, 49);
+            this.btn_cthd.Location = new System.Drawing.Point(408, 51);
             this.btn_cthd.Name = "btn_cthd";
             this.btn_cthd.Size = new System.Drawing.Size(287, 112);
             this.btn_cthd.TabIndex = 16;
@@ -237,14 +222,14 @@
             dataGridViewCellStyle2.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle2.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_CTHD_kh.DefaultCellStyle = dataGridViewCellStyle2;
-            this.dataGridView_CTHD_kh.Location = new System.Drawing.Point(702, 120);
+            this.dataGridView_CTHD_kh.Location = new System.Drawing.Point(719, 120);
             this.dataGridView_CTHD_kh.Name = "dataGridView_CTHD_kh";
             this.dataGridView_CTHD_kh.ReadOnly = true;
             this.dataGridView_CTHD_kh.RowHeadersVisible = false;
             this.dataGridView_CTHD_kh.RowHeadersWidth = 62;
             this.dataGridView_CTHD_kh.RowTemplate.Height = 28;
             this.dataGridView_CTHD_kh.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_CTHD_kh.Size = new System.Drawing.Size(716, 74);
+            this.dataGridView_CTHD_kh.Size = new System.Drawing.Size(699, 74);
             this.dataGridView_CTHD_kh.TabIndex = 13;
             // 
             // dataGridView_CTDH_nv
@@ -275,14 +260,14 @@
             dataGridViewCellStyle4.SelectionForeColor = System.Drawing.SystemColors.Desktop;
             dataGridViewCellStyle4.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
             this.dataGridView_CTDH_nv.DefaultCellStyle = dataGridViewCellStyle4;
-            this.dataGridView_CTDH_nv.Location = new System.Drawing.Point(702, 25);
+            this.dataGridView_CTDH_nv.Location = new System.Drawing.Point(719, 25);
             this.dataGridView_CTDH_nv.Name = "dataGridView_CTDH_nv";
             this.dataGridView_CTDH_nv.ReadOnly = true;
             this.dataGridView_CTDH_nv.RowHeadersVisible = false;
             this.dataGridView_CTDH_nv.RowHeadersWidth = 62;
             this.dataGridView_CTDH_nv.RowTemplate.Height = 28;
             this.dataGridView_CTDH_nv.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.CellSelect;
-            this.dataGridView_CTDH_nv.Size = new System.Drawing.Size(716, 74);
+            this.dataGridView_CTDH_nv.Size = new System.Drawing.Size(699, 74);
             this.dataGridView_CTDH_nv.TabIndex = 15;
             // 
             // dataGridView_CTHD_dt
@@ -406,6 +391,20 @@
             this.dataGridView_Order.Size = new System.Drawing.Size(1448, 241);
             this.dataGridView_Order.TabIndex = 12;
             this.dataGridView_Order.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Image = global::DBMS_NHOM_10.Properties.Resources.Loading1;
+            this.btn_reset.Location = new System.Drawing.Point(6, 6);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(52, 49);
+            this.btn_reset.TabIndex = 27;
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // FormHoaDon
             // 

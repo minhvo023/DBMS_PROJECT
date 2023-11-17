@@ -30,8 +30,8 @@
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
             this.panelMenu = new System.Windows.Forms.Panel();
+            this.panel_mm = new System.Windows.Forms.Panel();
             this.btnSalary = new System.Windows.Forms.Button();
-            this.btnSetting = new System.Windows.Forms.Button();
             this.btnBangPhanCa = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
             this.btnCustomer = new System.Windows.Forms.Button();
@@ -48,17 +48,52 @@
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
             this.panelDesktopPane = new System.Windows.Forms.Panel();
+            this.panel1 = new System.Windows.Forms.Panel();
+            this.panel2 = new System.Windows.Forms.Panel();
+            this.panel5 = new System.Windows.Forms.Panel();
+            this.panel3 = new System.Windows.Forms.Panel();
+            this.panel6 = new System.Windows.Forms.Panel();
+            this.panel_login = new System.Windows.Forms.Panel();
+            this.txb_password = new System.Windows.Forms.TextBox();
+            this.txb_username = new System.Windows.Forms.TextBox();
+            this.btn_login = new System.Windows.Forms.Button();
+            this.pictureBox4 = new System.Windows.Forms.PictureBox();
+            this.pictureBox3 = new System.Windows.Forms.PictureBox();
+            this.pictureBox2 = new System.Windows.Forms.PictureBox();
+            this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panel_thongtin = new System.Windows.Forms.Panel();
+            this.ptb_AnhNV = new System.Windows.Forms.PictureBox();
+            this.btn_DoiMK = new System.Windows.Forms.Button();
+            this.btn_Edit = new System.Windows.Forms.Button();
+            this.btn_DiemDanh = new System.Windows.Forms.Button();
+            this.panel4 = new System.Windows.Forms.Panel();
+            this.txb_diachi = new System.Windows.Forms.TextBox();
+            this.txb_Phai = new System.Windows.Forms.TextBox();
+            this.txb_sdtNV = new System.Windows.Forms.TextBox();
+            this.txb_NgaySinh = new System.Windows.Forms.TextBox();
+            this.txb_TenCV = new System.Windows.Forms.TextBox();
+            this.txb_nameNV = new System.Windows.Forms.TextBox();
+            this.txb_idNV = new System.Windows.Forms.TextBox();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
+            this.panelDesktopPane.SuspendLayout();
+            this.panel1.SuspendLayout();
+            this.panel_login.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panel_thongtin.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhNV)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panelMenu.Controls.Add(this.panel_mm);
             this.panelMenu.Controls.Add(this.btnSalary);
-            this.panelMenu.Controls.Add(this.btnSetting);
             this.panelMenu.Controls.Add(this.btnBangPhanCa);
             this.panelMenu.Controls.Add(this.btnEmployee);
             this.panelMenu.Controls.Add(this.btnCustomer);
@@ -69,8 +104,18 @@
             this.panelMenu.Location = new System.Drawing.Point(0, 0);
             this.panelMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelMenu.Name = "panelMenu";
-            this.panelMenu.Size = new System.Drawing.Size(280, 969);
+            this.panelMenu.Size = new System.Drawing.Size(280, 1013);
             this.panelMenu.TabIndex = 0;
+            // 
+            // panel_mm
+            // 
+            this.panel_mm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
+            this.panel_mm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_mm.Location = new System.Drawing.Point(-1, 1);
+            this.panel_mm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.panel_mm.Name = "panel_mm";
+            this.panel_mm.Size = new System.Drawing.Size(280, 1013);
+            this.panel_mm.TabIndex = 12;
             // 
             // btnSalary
             // 
@@ -79,7 +124,7 @@
             this.btnSalary.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnSalary.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnSalary.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSalary.Image = ((System.Drawing.Image)(resources.GetObject("btnSalary.Image")));
+            this.btnSalary.Image = global::DBMS_NHOM_10.Properties.Resources.TaiChinh;
             this.btnSalary.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalary.Location = new System.Drawing.Point(0, 682);
             this.btnSalary.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -94,28 +139,6 @@
             this.btnSalary.UseVisualStyleBackColor = true;
             this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
-            // btnSetting
-            // 
-            this.btnSetting.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.btnSetting.FlatAppearance.BorderSize = 0;
-            this.btnSetting.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnSetting.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btnSetting.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnSetting.Image = ((System.Drawing.Image)(resources.GetObject("btnSetting.Image")));
-            this.btnSetting.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.Location = new System.Drawing.Point(0, 872);
-            this.btnSetting.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.btnSetting.Name = "btnSetting";
-            this.btnSetting.Padding = new System.Windows.Forms.Padding(40, 0, 0, 0);
-            this.btnSetting.Size = new System.Drawing.Size(278, 95);
-            this.btnSetting.TabIndex = 5;
-            this.btnSetting.Tag = "Tài Khoản";
-            this.btnSetting.Text = "Tài Khoản";
-            this.btnSetting.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
-            this.btnSetting.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
-            this.btnSetting.UseVisualStyleBackColor = true;
-            this.btnSetting.Click += new System.EventHandler(this.btnSetting_Click_1);
-            // 
             // btnBangPhanCa
             // 
             this.btnBangPhanCa.Dock = System.Windows.Forms.DockStyle.Top;
@@ -123,7 +146,7 @@
             this.btnBangPhanCa.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnBangPhanCa.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnBangPhanCa.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnBangPhanCa.Image = ((System.Drawing.Image)(resources.GetObject("btnBangPhanCa.Image")));
+            this.btnBangPhanCa.Image = global::DBMS_NHOM_10.Properties.Resources.PhanCa;
             this.btnBangPhanCa.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBangPhanCa.Location = new System.Drawing.Point(0, 570);
             this.btnBangPhanCa.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -145,7 +168,7 @@
             this.btnEmployee.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnEmployee.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnEmployee.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnEmployee.Image = ((System.Drawing.Image)(resources.GetObject("btnEmployee.Image")));
+            this.btnEmployee.Image = global::DBMS_NHOM_10.Properties.Resources.NhanVien;
             this.btnEmployee.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmployee.Location = new System.Drawing.Point(0, 458);
             this.btnEmployee.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -167,7 +190,7 @@
             this.btnCustomer.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCustomer.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnCustomer.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnCustomer.Image = ((System.Drawing.Image)(resources.GetObject("btnCustomer.Image")));
+            this.btnCustomer.Image = global::DBMS_NHOM_10.Properties.Resources.KhachHang;
             this.btnCustomer.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCustomer.Location = new System.Drawing.Point(0, 346);
             this.btnCustomer.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -189,7 +212,7 @@
             this.btnOrders.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnOrders.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnOrders.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnOrders.Image = ((System.Drawing.Image)(resources.GetObject("btnOrders.Image")));
+            this.btnOrders.Image = global::DBMS_NHOM_10.Properties.Resources.HoaDonn;
             this.btnOrders.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOrders.Location = new System.Drawing.Point(0, 234);
             this.btnOrders.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -211,7 +234,7 @@
             this.btnProducts.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnProducts.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btnProducts.ForeColor = System.Drawing.Color.Gainsboro;
-            this.btnProducts.Image = ((System.Drawing.Image)(resources.GetObject("btnProducts.Image")));
+            this.btnProducts.Image = global::DBMS_NHOM_10.Properties.Resources.DienThoai;
             this.btnProducts.ImageAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducts.Location = new System.Drawing.Point(0, 122);
             this.btnProducts.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
@@ -243,7 +266,7 @@
             this.btnMenu.Dock = System.Windows.Forms.DockStyle.Right;
             this.btnMenu.FlatAppearance.BorderSize = 0;
             this.btnMenu.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btnMenu.Image = ((System.Drawing.Image)(resources.GetObject("btnMenu.Image")));
+            this.btnMenu.Image = global::DBMS_NHOM_10.Properties.Resources.menu;
             this.btnMenu.Location = new System.Drawing.Point(208, 0);
             this.btnMenu.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnMenu.Name = "btnMenu";
@@ -286,7 +309,7 @@
             this.btn_Mini.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Mini.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Mini.ForeColor = System.Drawing.Color.White;
-            this.btn_Mini.Image = ((System.Drawing.Image)(resources.GetObject("btn_Mini.Image")));
+            this.btn_Mini.Image = global::DBMS_NHOM_10.Properties.Resources.minimize;
             this.btn_Mini.Location = new System.Drawing.Point(1428, 0);
             this.btn_Mini.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Mini.Name = "btn_Mini";
@@ -302,7 +325,7 @@
             this.btn_Close.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btn_Close.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_Close.ForeColor = System.Drawing.Color.White;
-            this.btn_Close.Image = ((System.Drawing.Image)(resources.GetObject("btn_Close.Image")));
+            this.btn_Close.Image = global::DBMS_NHOM_10.Properties.Resources.Close1;
             this.btn_Close.Location = new System.Drawing.Point(1486, 0);
             this.btn_Close.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btn_Close.Name = "btn_Close";
@@ -332,7 +355,7 @@
             this.btnCloseChildForm.FlatAppearance.BorderSize = 0;
             this.btnCloseChildForm.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.btnCloseChildForm.ForeColor = System.Drawing.Color.White;
-            this.btnCloseChildForm.Image = ((System.Drawing.Image)(resources.GetObject("btnCloseChildForm.Image")));
+            this.btnCloseChildForm.Image = global::DBMS_NHOM_10.Properties.Resources.CloseChild;
             this.btnCloseChildForm.Location = new System.Drawing.Point(0, 71);
             this.btnCloseChildForm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.btnCloseChildForm.Name = "btnCloseChildForm";
@@ -364,28 +387,329 @@
             this.lblTitle.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
             this.lblTitle.Font = new System.Drawing.Font("Times New Roman", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.lblTitle.ForeColor = System.Drawing.Color.White;
-            this.lblTitle.Location = new System.Drawing.Point(492, 25);
+            this.lblTitle.Location = new System.Drawing.Point(492, 34);
             this.lblTitle.Name = "lblTitle";
             this.lblTitle.Size = new System.Drawing.Size(560, 59);
             this.lblTitle.TabIndex = 0;
-            this.lblTitle.Text = "HOME";
+            this.lblTitle.Text = "ĐĂNG NHẬP";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
             // panelDesktopPane
             // 
             this.panelDesktopPane.BackColor = System.Drawing.Color.LightCyan;
+            this.panelDesktopPane.Controls.Add(this.panel1);
             this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
             this.panelDesktopPane.Location = new System.Drawing.Point(280, 124);
             this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1538, 845);
+            this.panelDesktopPane.Size = new System.Drawing.Size(1538, 889);
             this.panelDesktopPane.TabIndex = 2;
+            // 
+            // panel1
+            // 
+            this.panel1.BackgroundImage = global::DBMS_NHOM_10.Properties.Resources.bghome;
+            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panel1.Controls.Add(this.panel2);
+            this.panel1.Controls.Add(this.panel5);
+            this.panel1.Controls.Add(this.panel3);
+            this.panel1.Controls.Add(this.panel6);
+            this.panel1.Controls.Add(this.panel_login);
+            this.panel1.Controls.Add(this.panel_thongtin);
+            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel1.Location = new System.Drawing.Point(0, 0);
+            this.panel1.Name = "panel1";
+            this.panel1.Size = new System.Drawing.Size(1538, 889);
+            this.panel1.TabIndex = 11;
+            // 
+            // panel2
+            // 
+            this.panel2.BackColor = System.Drawing.Color.White;
+            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
+            this.panel2.Location = new System.Drawing.Point(1521, 17);
+            this.panel2.Name = "panel2";
+            this.panel2.Size = new System.Drawing.Size(17, 855);
+            this.panel2.TabIndex = 27;
+            // 
+            // panel5
+            // 
+            this.panel5.BackColor = System.Drawing.Color.White;
+            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
+            this.panel5.Location = new System.Drawing.Point(17, 0);
+            this.panel5.Name = "panel5";
+            this.panel5.Size = new System.Drawing.Size(1521, 17);
+            this.panel5.TabIndex = 29;
+            // 
+            // panel3
+            // 
+            this.panel3.BackColor = System.Drawing.Color.White;
+            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
+            this.panel3.Location = new System.Drawing.Point(17, 872);
+            this.panel3.Name = "panel3";
+            this.panel3.Size = new System.Drawing.Size(1521, 17);
+            this.panel3.TabIndex = 28;
+            // 
+            // panel6
+            // 
+            this.panel6.BackColor = System.Drawing.Color.White;
+            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
+            this.panel6.Location = new System.Drawing.Point(0, 0);
+            this.panel6.Name = "panel6";
+            this.panel6.Size = new System.Drawing.Size(17, 889);
+            this.panel6.TabIndex = 26;
+            // 
+            // panel_login
+            // 
+            this.panel_login.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel_login.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel_login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.panel_login.Controls.Add(this.txb_password);
+            this.panel_login.Controls.Add(this.txb_username);
+            this.panel_login.Controls.Add(this.btn_login);
+            this.panel_login.Controls.Add(this.pictureBox4);
+            this.panel_login.Controls.Add(this.pictureBox3);
+            this.panel_login.Controls.Add(this.pictureBox2);
+            this.panel_login.Controls.Add(this.pictureBox1);
+            this.panel_login.Location = new System.Drawing.Point(157, 73);
+            this.panel_login.Name = "panel_login";
+            this.panel_login.Size = new System.Drawing.Size(547, 718);
+            this.panel_login.TabIndex = 11;
+            // 
+            // txb_password
+            // 
+            this.txb_password.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_password.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_password.Location = new System.Drawing.Point(157, 523);
+            this.txb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txb_password.Name = "txb_password";
+            this.txb_password.Size = new System.Drawing.Size(258, 35);
+            this.txb_password.TabIndex = 10;
+            // 
+            // txb_username
+            // 
+            this.txb_username.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
+            this.txb_username.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_username.Location = new System.Drawing.Point(157, 425);
+            this.txb_username.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.txb_username.Name = "txb_username";
+            this.txb_username.Size = new System.Drawing.Size(258, 35);
+            this.txb_username.TabIndex = 9;
+            // 
+            // btn_login
+            // 
+            this.btn_login.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_login.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_login.Image = global::DBMS_NHOM_10.Properties.Resources.Login11;
+            this.btn_login.Location = new System.Drawing.Point(172, 598);
+            this.btn_login.Name = "btn_login";
+            this.btn_login.Size = new System.Drawing.Size(213, 88);
+            this.btn_login.TabIndex = 8;
+            this.btn_login.Text = "Đăng Nhập";
+            this.btn_login.TextImageRelation = System.Windows.Forms.TextImageRelation.TextBeforeImage;
+            this.btn_login.UseVisualStyleBackColor = true;
+            this.btn_login.Click += new System.EventHandler(this.btn_login_Click);
+            // 
+            // pictureBox4
+            // 
+            this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox4.Image = global::DBMS_NHOM_10.Properties.Resources.pass;
+            this.pictureBox4.Location = new System.Drawing.Point(111, 523);
+            this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox4.Name = "pictureBox4";
+            this.pictureBox4.Size = new System.Drawing.Size(40, 35);
+            this.pictureBox4.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox4.TabIndex = 6;
+            this.pictureBox4.TabStop = false;
+            // 
+            // pictureBox3
+            // 
+            this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox3.Image = global::DBMS_NHOM_10.Properties.Resources.login;
+            this.pictureBox3.Location = new System.Drawing.Point(111, 425);
+            this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox3.Name = "pictureBox3";
+            this.pictureBox3.Size = new System.Drawing.Size(40, 35);
+            this.pictureBox3.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox3.TabIndex = 5;
+            this.pictureBox3.TabStop = false;
+            // 
+            // pictureBox2
+            // 
+            this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox2.Image = global::DBMS_NHOM_10.Properties.Resources.login;
+            this.pictureBox2.Location = new System.Drawing.Point(172, 154);
+            this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
+            this.pictureBox2.Name = "pictureBox2";
+            this.pictureBox2.Size = new System.Drawing.Size(213, 202);
+            this.pictureBox2.SizeMode = System.Windows.Forms.PictureBoxSizeMode.Zoom;
+            this.pictureBox2.TabIndex = 2;
+            this.pictureBox2.TabStop = false;
+            // 
+            // pictureBox1
+            // 
+            this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
+            this.pictureBox1.Location = new System.Drawing.Point(21, 37);
+            this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
+            this.pictureBox1.Name = "pictureBox1";
+            this.pictureBox1.Size = new System.Drawing.Size(503, 91);
+            this.pictureBox1.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.pictureBox1.TabIndex = 0;
+            this.pictureBox1.TabStop = false;
+            // 
+            // panel_thongtin
+            // 
+            this.panel_thongtin.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel_thongtin.Controls.Add(this.ptb_AnhNV);
+            this.panel_thongtin.Controls.Add(this.btn_DoiMK);
+            this.panel_thongtin.Controls.Add(this.btn_Edit);
+            this.panel_thongtin.Controls.Add(this.btn_DiemDanh);
+            this.panel_thongtin.Controls.Add(this.panel4);
+            this.panel_thongtin.Controls.Add(this.txb_diachi);
+            this.panel_thongtin.Controls.Add(this.txb_Phai);
+            this.panel_thongtin.Controls.Add(this.txb_sdtNV);
+            this.panel_thongtin.Controls.Add(this.txb_NgaySinh);
+            this.panel_thongtin.Controls.Add(this.txb_TenCV);
+            this.panel_thongtin.Controls.Add(this.txb_nameNV);
+            this.panel_thongtin.Controls.Add(this.txb_idNV);
+            this.panel_thongtin.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panel_thongtin.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.panel_thongtin.Location = new System.Drawing.Point(0, 0);
+            this.panel_thongtin.Name = "panel_thongtin";
+            this.panel_thongtin.Size = new System.Drawing.Size(1538, 889);
+            this.panel_thongtin.TabIndex = 25;
+            this.panel_thongtin.Visible = false;
+            // 
+            // ptb_AnhNV
+            // 
+            this.ptb_AnhNV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.ptb_AnhNV.Image = global::DBMS_NHOM_10.Properties.Resources.login;
+            this.ptb_AnhNV.Location = new System.Drawing.Point(76, 41);
+            this.ptb_AnhNV.Name = "ptb_AnhNV";
+            this.ptb_AnhNV.Size = new System.Drawing.Size(275, 264);
+            this.ptb_AnhNV.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
+            this.ptb_AnhNV.TabIndex = 19;
+            this.ptb_AnhNV.TabStop = false;
+            // 
+            // btn_DoiMK
+            // 
+            this.btn_DoiMK.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_DoiMK.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DoiMK.Location = new System.Drawing.Point(223, 320);
+            this.btn_DoiMK.Name = "btn_DoiMK";
+            this.btn_DoiMK.Size = new System.Drawing.Size(165, 46);
+            this.btn_DoiMK.TabIndex = 30;
+            this.btn_DoiMK.Text = "Đổi Mật Khẩu";
+            this.btn_DoiMK.UseVisualStyleBackColor = true;
+            // 
+            // btn_Edit
+            // 
+            this.btn_Edit.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Edit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Edit.Location = new System.Drawing.Point(546, 322);
+            this.btn_Edit.Name = "btn_Edit";
+            this.btn_Edit.Size = new System.Drawing.Size(281, 46);
+            this.btn_Edit.TabIndex = 29;
+            this.btn_Edit.Text = "Chỉnh Sửa Thông Tin";
+            this.btn_Edit.UseVisualStyleBackColor = true;
+            // 
+            // btn_DiemDanh
+            // 
+            this.btn_DiemDanh.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_DiemDanh.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_DiemDanh.Location = new System.Drawing.Point(41, 320);
+            this.btn_DiemDanh.Name = "btn_DiemDanh";
+            this.btn_DiemDanh.Size = new System.Drawing.Size(176, 46);
+            this.btn_DiemDanh.TabIndex = 28;
+            this.btn_DiemDanh.Text = "Điểm Danh";
+            this.btn_DiemDanh.UseVisualStyleBackColor = true;
+            // 
+            // panel4
+            // 
+            this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
+            | System.Windows.Forms.AnchorStyles.Right)));
+            this.panel4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel4.Location = new System.Drawing.Point(32, 422);
+            this.panel4.Name = "panel4";
+            this.panel4.Size = new System.Drawing.Size(1474, 359);
+            this.panel4.TabIndex = 27;
+            // 
+            // txb_diachi
+            // 
+            this.txb_diachi.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_diachi.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_diachi.Location = new System.Drawing.Point(938, 322);
+            this.txb_diachi.Name = "txb_diachi";
+            this.txb_diachi.ReadOnly = true;
+            this.txb_diachi.Size = new System.Drawing.Size(397, 40);
+            this.txb_diachi.TabIndex = 26;
+            // 
+            // txb_Phai
+            // 
+            this.txb_Phai.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_Phai.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_Phai.Location = new System.Drawing.Point(938, 230);
+            this.txb_Phai.Name = "txb_Phai";
+            this.txb_Phai.ReadOnly = true;
+            this.txb_Phai.Size = new System.Drawing.Size(397, 40);
+            this.txb_Phai.TabIndex = 25;
+            // 
+            // txb_sdtNV
+            // 
+            this.txb_sdtNV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_sdtNV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_sdtNV.Location = new System.Drawing.Point(474, 230);
+            this.txb_sdtNV.Name = "txb_sdtNV";
+            this.txb_sdtNV.ReadOnly = true;
+            this.txb_sdtNV.Size = new System.Drawing.Size(397, 40);
+            this.txb_sdtNV.TabIndex = 24;
+            // 
+            // txb_NgaySinh
+            // 
+            this.txb_NgaySinh.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_NgaySinh.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_NgaySinh.Location = new System.Drawing.Point(938, 135);
+            this.txb_NgaySinh.Name = "txb_NgaySinh";
+            this.txb_NgaySinh.ReadOnly = true;
+            this.txb_NgaySinh.Size = new System.Drawing.Size(397, 40);
+            this.txb_NgaySinh.TabIndex = 23;
+            // 
+            // txb_TenCV
+            // 
+            this.txb_TenCV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_TenCV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_TenCV.Location = new System.Drawing.Point(938, 41);
+            this.txb_TenCV.Name = "txb_TenCV";
+            this.txb_TenCV.ReadOnly = true;
+            this.txb_TenCV.Size = new System.Drawing.Size(397, 40);
+            this.txb_TenCV.TabIndex = 22;
+            // 
+            // txb_nameNV
+            // 
+            this.txb_nameNV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_nameNV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_nameNV.Location = new System.Drawing.Point(474, 135);
+            this.txb_nameNV.Name = "txb_nameNV";
+            this.txb_nameNV.ReadOnly = true;
+            this.txb_nameNV.Size = new System.Drawing.Size(397, 40);
+            this.txb_nameNV.TabIndex = 21;
+            // 
+            // txb_idNV
+            // 
+            this.txb_idNV.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.txb_idNV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.txb_idNV.Location = new System.Drawing.Point(474, 41);
+            this.txb_idNV.Name = "txb_idNV";
+            this.txb_idNV.ReadOnly = true;
+            this.txb_idNV.Size = new System.Drawing.Size(397, 40);
+            this.txb_idNV.TabIndex = 20;
             // 
             // FormMainMenu
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1818, 969);
+            this.ClientSize = new System.Drawing.Size(1818, 1013);
             this.Controls.Add(this.panelDesktopPane);
             this.Controls.Add(this.panelTitleBar);
             this.Controls.Add(this.panelMenu);
@@ -399,6 +723,17 @@
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
+            this.panelDesktopPane.ResumeLayout(false);
+            this.panel1.ResumeLayout(false);
+            this.panel_login.ResumeLayout(false);
+            this.panel_login.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
+            ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panel_thongtin.ResumeLayout(false);
+            this.panel_thongtin.PerformLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhNV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -406,7 +741,6 @@
         #endregion
 
         private System.Windows.Forms.Panel panelMenu;
-        private System.Windows.Forms.Button btnSetting;
         private System.Windows.Forms.Button btnBangPhanCa;
         private System.Windows.Forms.Button btnEmployee;
         private System.Windows.Forms.Button btnCustomer;
@@ -424,6 +758,33 @@
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btn_Mini;
         private System.Windows.Forms.Button btn_Close;
+        private System.Windows.Forms.Panel panel1;
+        private System.Windows.Forms.Panel panel_mm;
+        private System.Windows.Forms.Panel panel_login;
+        private System.Windows.Forms.Button btn_login;
+        private System.Windows.Forms.PictureBox pictureBox4;
+        private System.Windows.Forms.PictureBox pictureBox3;
+        private System.Windows.Forms.PictureBox pictureBox2;
+        private System.Windows.Forms.PictureBox pictureBox1;
+        private System.Windows.Forms.TextBox txb_password;
+        private System.Windows.Forms.TextBox txb_username;
+        private System.Windows.Forms.Panel panel2;
+        private System.Windows.Forms.Panel panel5;
+        private System.Windows.Forms.Panel panel3;
+        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panel_thongtin;
+        private System.Windows.Forms.Button btn_DoiMK;
+        private System.Windows.Forms.Button btn_Edit;
+        private System.Windows.Forms.Button btn_DiemDanh;
+        private System.Windows.Forms.Panel panel4;
+        private System.Windows.Forms.TextBox txb_diachi;
+        private System.Windows.Forms.TextBox txb_Phai;
+        private System.Windows.Forms.TextBox txb_sdtNV;
+        private System.Windows.Forms.TextBox txb_NgaySinh;
+        private System.Windows.Forms.TextBox txb_TenCV;
+        private System.Windows.Forms.TextBox txb_nameNV;
+        private System.Windows.Forms.TextBox txb_idNV;
+        private System.Windows.Forms.PictureBox ptb_AnhNV;
     }
 }
 

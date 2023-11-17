@@ -13,12 +13,10 @@ C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.exe
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.pdb
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormNhanVien.resources
-C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormTaiKhoan.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormSoLuongGioHang.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormKhachHang.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormHoaDon.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormDienThoai.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormPhanCa.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditHoaDon.resources
-C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.Form_Login.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormTaiChinh.resources

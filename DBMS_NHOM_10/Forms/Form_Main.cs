@@ -127,11 +127,8 @@ namespace DBMS_NHOM_10
             OpenChildForm(new Forms.FormPhanCa(), sender);
 
         }
-        private void btnSetting_Click_1(object sender, EventArgs e)
-        {
-            OpenChildForm(new Forms.FormTaiKhoan(), sender);
 
-        }
+
         private void btnSalary_Click(object sender, EventArgs e)
         {
             OpenChildForm(new Forms.FormTaiChinh(), sender);
@@ -147,7 +144,7 @@ namespace DBMS_NHOM_10
         private void Reset()
         {
             DisableButton();
-            lblTitle.Text = "HOME";
+            lblTitle.Text = "THÔNG TIN";
             panelTitleBar.BackColor = Color.FromArgb(0, 150, 136);
             panelLogo.BackColor = Color.FromArgb(39, 39, 58);
             currentButton = null;
@@ -193,6 +190,65 @@ namespace DBMS_NHOM_10
                     menuButton.Padding = new Padding(10, 0, 0, 0);
                 }
             }
+        }
+
+        private void txb_username_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox1_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void pictureBox4_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel5_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox3_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void panel4_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel3_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void panel2_Paint(object sender, PaintEventArgs e)
+        {
+
+        }
+
+        private void pictureBox2_Click(object sender, EventArgs e)
+        {
+
+        }
+
+        private void txb_password_TextChanged(object sender, EventArgs e)
+        {
+
+        }
+
+        private void btn_login_Click(object sender, EventArgs e)
+        {
+            panel_mm.Visible = false;
+            lblTitle.Text = "THÔNG TIN";
+            panel_login.Visible = false;    
+            panel_thongtin.Visible = true;
+
         }
 
     }
