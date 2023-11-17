@@ -97,7 +97,7 @@
             this.btn_lsmh.Name = "btn_lsmh";
             this.btn_lsmh.Size = new System.Drawing.Size(284, 42);
             this.btn_lsmh.TabIndex = 3;
-            this.btn_lsmh.Text = "ID Khách Hàng:";
+            this.btn_lsmh.Text = "ID Khách Hàng [ ]";
             this.btn_lsmh.UseVisualStyleBackColor = true;
             // 
             // dataGridView_lsmh

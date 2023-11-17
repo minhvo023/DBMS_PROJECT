@@ -163,7 +163,7 @@ namespace DBMS_NHOM_10.Forms
             string value1 = dataGridView_Order.Rows[mouseLocation.RowIndex].Cells["TrangThai"].Value.ToString();
 
             
-            btn_cthd.Text = "ID Hóa Đơn: "+value.Trim()+"\nTrạng Thái: "+value1+"\nTổng Số Lượng: " + HoaDon_TongSL(value.Trim());
+            btn_cthd.Text = "ID Hóa Đơn [ "+value.Trim()+" ]\nTrạng Thái: "+value1+"\nTổng Số Lượng: " + HoaDon_TongSL(value.Trim());
             HoaDon_ChiTietHoaDon(value);
 
             dataGridView_CTHD_kh.Columns["idKH"].HeaderText = "ID Khách";

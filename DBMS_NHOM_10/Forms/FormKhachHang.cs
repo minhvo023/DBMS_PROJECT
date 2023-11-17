@@ -60,7 +60,7 @@ namespace DBMS_NHOM_10.Forms
                 dap.Fill(table);
                 DataTable dt = table;
                 dataGridView_lsmh.DataSource = dt;
-                btn_lsmh.Text = "ID Khách Hàng: " + value;
+                btn_lsmh.Text = "ID Khách Hàng [ " + value + " ]";
 
                 dataGridView_lsmh.Columns[0].HeaderText = "ID Hóa Đơn";
                 dataGridView_lsmh.Columns[1].HeaderText = "Ngày Mua";
@@ -75,7 +75,7 @@ namespace DBMS_NHOM_10.Forms
             {
                 MessageBox.Show(ex.Message, "Thông Báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
 
-                btn_lsmh.Text = "ID Khách Hàng: ";
+                btn_lsmh.Text = "ID Khách Hàng [ ]";
                 dataGridView_lsmh.DataSource = null;
             }
             finally

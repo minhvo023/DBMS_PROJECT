@@ -166,7 +166,7 @@ namespace DBMS_NHOM_10.Forms
         private void toolStripItem1_Click(object sender, EventArgs args)
         {
             string value = dataGridView_Employee.Rows[mouseLocation.RowIndex].Cells["idNV"].Value.ToString();
-            btn_ttct.Text = "ID Nhân Viên: " + value;
+            btn_ttct.Text = "ID Nhân Viên [ " + value + " ]";
             NhanVien_ThongTinChiTiet(value);
 
             dataGridView_ttnv.Columns["Ho_Ten"].HeaderText = "Họ và Tên";

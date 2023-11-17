@@ -30,9 +30,6 @@ namespace DBMS_NHOM_10.Forms_branch
 
             if (ck == "sửa")
             {
-                Functions.FillCombo("SELECT TenHangDT FROM HangDienThoai", cbbHang, "TenHangDT", "TenHangDT");
-                cbbHang.SelectedIndex = -1;
-
                 Functions.FillCombo("SELECT DISTINCT DungLuong FROM DienThoai", cbbDungLuong, "DungLuong", "DungLuong");
                 cbbHang.SelectedIndex = -1;
 

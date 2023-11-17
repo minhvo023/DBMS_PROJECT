@@ -206,7 +206,7 @@
             this.btn_cthd.Size = new System.Drawing.Size(287, 112);
             this.btn_cthd.TabIndex = 16;
             this.btn_cthd.Tag = "";
-            this.btn_cthd.Text = "ID Hóa Đơn:";
+            this.btn_cthd.Text = "ID Hóa Đơn [ ]";
             this.btn_cthd.UseVisualStyleBackColor = false;
             // 
             // dataGridView_CTHD_kh

@@ -23,7 +23,7 @@ namespace DBMS_NHOM_10.Forms
 
         }
 
-        public string NhanVien_TinhLuong_HD_DN(string a, string b, string c, string d)
+        public string NhanVien_TinhLuong_HD_DN(object a, string b, string c, string d)
         {            
             try
             {
@@ -39,22 +39,13 @@ namespace DBMS_NHOM_10.Forms
 
 
                 cmd.ExecuteNonQuery(); // Thực hiện hàm
-                if(returnParameter.Value == DBNull.Value)
-                {
-                    decimal result = 0;
-                    return result.ToString();
-
-                }
-                else
-                {
-                    decimal result = (decimal)returnParameter.Value;
-                    return result.ToString();
-                }
+                decimal result = (decimal)returnParameter.Value;
+                return result.ToString();
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
-                return "ERROR";
+                return "oo";
             }
             finally
             {
@@ -62,7 +53,7 @@ namespace DBMS_NHOM_10.Forms
             }
         }
 
-        public string SoLuong(string a, string b, string c, string d)
+        public string SoLuong(object a, string b, string c, string d)
         {
             try
             {
@@ -94,7 +85,7 @@ namespace DBMS_NHOM_10.Forms
             }
         }
 
-        public DataTable HienThiThongTin(string a, string b, string c, string d)
+        public DataTable HienThiThongTin(object a, string b, string c, string d)
         {
             try
             {
@@ -126,19 +117,19 @@ namespace DBMS_NHOM_10.Forms
 
         private void btn_TinhLuong_Click(object sender, EventArgs e)
         {
-            btn_KQ_NV.Text = "Nhân Viên "+ cbb_idNV.Text.Trim()+ "\nLương Tháng " + cbb_ThangNV.Text.Trim() +" là: " + NhanVien_TinhLuong_HD_DN(cbb_idNV.SelectedValue.ToString().Trim(), cbb_ThangNV.Text.Trim(), "", "") + "\nTổng số ca của tháng là: " + SoLuong(cbb_idNV.SelectedValue.ToString().Trim(), cbb_ThangNV.Text.Trim(),"", "");
-            dataGridView_show.DataSource = HienThiThongTin(cbb_idNV.SelectedValue.ToString().Trim(), cbb_ThangNV.Text.Trim(), "", "");
+            btn_KQ_NV.Text = "Nhân Viên [ " + cbb_idNV.Text.ToString().Trim() + " ]\nLương Tháng [ " + cbb_ThangNV.Text.ToString().Trim() + " ] là: " + NhanVien_TinhLuong_HD_DN(cbb_idNV.SelectedValue, cbb_ThangNV.Text.ToString().Trim(), "", "") + "\nTổng số ca là: " + SoLuong(cbb_idNV.SelectedValue, cbb_ThangNV.Text.ToString().Trim(), "", "");
+            dataGridView_show.DataSource = HienThiThongTin(cbb_idNV.SelectedValue, cbb_ThangNV.Text.Trim(), "", "");
         }
 
         private void btn_HD_Click(object sender, EventArgs e)
         {
-            btn_KQ_HD.Text = "Tổng giá trị Hóa Đơn tháng " + cbb_ThangHD.Text.Trim() + " là: " + NhanVien_TinhLuong_HD_DN("", "", cbb_ThangHD.Text.Trim(), "") + "\nTổng số Hóa Đơn của tháng là: " + SoLuong("", "", cbb_ThangHD.Text.Trim(), "");
+            btn_KQ_HD.Text = "Tổng giá trị Hóa Đơn tháng [ " + cbb_ThangHD.Text.Trim() + " ] là: " + NhanVien_TinhLuong_HD_DN("", "", cbb_ThangHD.Text.Trim(), "") + "\nTổng số Hóa Đơn là: " + SoLuong("", "", cbb_ThangHD.Text.Trim(), "");
             dataGridView_show.DataSource = HienThiThongTin("", "", cbb_ThangHD.Text.Trim(), "");
         }
 
         private void btn_DN_Click(object sender, EventArgs e)
         {
-            btn_KQ_DN.Text = "Tổng giá trị Đơn Nhập tháng " + cbb_ThangDN.Text.Trim() + " là: " + NhanVien_TinhLuong_HD_DN("", "", "", cbb_ThangDN.Text.Trim()) + "\nTổng số Hóa Đơn của tháng là: " + SoLuong("", "", "",cbb_ThangDN.Text.Trim());
+            btn_KQ_DN.Text = "Tổng giá trị Đơn Nhập tháng [ " + cbb_ThangDN.Text.Trim() + " ] là: " + NhanVien_TinhLuong_HD_DN("", "", "", cbb_ThangDN.Text.Trim()) + "\nTổng số Đơn Nhập là: " + SoLuong("", "", "",cbb_ThangDN.Text.Trim());
             dataGridView_show.DataSource = HienThiThongTin("", "", "", cbb_ThangDN.Text.Trim());
         }
     }

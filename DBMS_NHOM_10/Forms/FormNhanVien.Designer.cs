@@ -149,7 +149,7 @@
             this.btn_ttct.Name = "btn_ttct";
             this.btn_ttct.Size = new System.Drawing.Size(284, 42);
             this.btn_ttct.TabIndex = 3;
-            this.btn_ttct.Text = "ID Nhân Viên:";
+            this.btn_ttct.Text = "ID Nhân Viên [ ]";
             this.btn_ttct.UseVisualStyleBackColor = true;
             // 
             // dataGridView_ttnv
@@ -289,7 +289,7 @@
             this.panel2.Size = new System.Drawing.Size(15, 666);
             this.panel2.TabIndex = 22;
             // 
-            // FormEmployee
+            // FormNhanVien
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(9F, 20F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
@@ -300,7 +300,7 @@
             this.Controls.Add(this.panel3);
             this.Controls.Add(this.panel1);
             this.Controls.Add(this.panel2);
-            this.Name = "FormEmployee";
+            this.Name = "FormNhanVien";
             this.Text = "Danh Sách Nhân Viên";
             this.Load += new System.EventHandler(this.FormEmployee_Load);
             this.panel6.ResumeLayout(false);

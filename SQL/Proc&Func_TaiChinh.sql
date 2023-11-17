@@ -7,7 +7,7 @@
 )
 AS
 BEGIN
-	IF @thang != ''
+	IF @thang != '' AND @idNV IS NOT NULL
     BEGIN
         SELECT NgayLam, Ho_Ten, idCa, TrangThai
         FROM v_phancong
@@ -30,7 +30,7 @@ GO
 
 CREATE OR ALTER FUNCTION func_TongSo
 (
-    @idNV nvarchar(max) = null, -- ID của nhân viên
+    @idNV nchar(10) = null, -- ID của nhân viên
     @thangNV int = null, -- Tháng cần tính lương ví dụ 11
 	@thangHD int = null,
     @thangDN int = null 
@@ -45,7 +45,7 @@ BEGIN
 	DECLARE @thangDateDN date
 
 
-    IF (@thangNV != '')
+    IF (@thangNV != '' AND @idNV IS NOT NULL)
 	BEGIN
 	    SET @thangDateNV = CAST(CONVERT(varchar(4), YEAR(GETDATE())) + '-' + CAST(@thangNV AS nvarchar(2)) + '-01' AS date)
 
@@ -88,7 +88,7 @@ GO
 
 CREATE OR ALTER FUNCTION func_TinhLuong_HD_DN
 (
-    @idNV nvarchar(max) = null, -- ID của nhân viên
+    @idNV nchar(10) = null, -- ID của nhân viên
     @thang int = null, -- Tháng cần tính lương (ví dụ: 11)
     @thangHD int = null, -- Tháng cần tính tổng hóa đơn (ví dụ: 11)
     @thangDN int = null -- Tháng cần tính tổng đơn nhập (ví dụ: 11)
@@ -99,7 +99,7 @@ BEGIN
     DECLARE @result decimal(18, 0);
 
     -- Check for the case of calculating salary
-    IF (@thang != '')
+    IF (@thang != '' AND @idNV IS NOT NULL)
     BEGIN
         DECLARE @luong decimal(18, 2)
         DECLARE @thangDate date

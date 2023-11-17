@@ -238,6 +238,13 @@
             this.cbbHang.DropDownStyle = System.Windows.Forms.ComboBoxStyle.DropDownList;
             this.cbbHang.Font = new System.Drawing.Font("Times New Roman", 11F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.cbbHang.FormattingEnabled = true;
+            this.cbbHang.Items.AddRange(new object[] {
+            "Samsung",
+            "Apple",
+            "Oppo",
+            "Xiaomi",
+            "Realme",
+            "Vivo"});
             this.cbbHang.Location = new System.Drawing.Point(183, 192);
             this.cbbHang.Name = "cbbHang";
             this.cbbHang.Size = new System.Drawing.Size(179, 33);
