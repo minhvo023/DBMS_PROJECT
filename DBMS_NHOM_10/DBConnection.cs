@@ -11,7 +11,7 @@ namespace DBMS_NHOM_10
     public class DBConnection
     {
 
-        private static string ConnStr = @"Data Source=localhost\SQLEXPRESS;Initial Catalog=QuanLyCuaHangDienThoai;User ID=sa;Password=123456";
+        private static string ConnStr = @"Data Source=localhost;Initial Catalog=QuanLyCuaHangDienThoai;User ID=sa;Password=123456";
         private static SqlConnection conn = new SqlConnection(ConnStr);
 
         public static SqlConnection open()

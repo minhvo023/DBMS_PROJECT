@@ -11,13 +11,6 @@ CREATE TABLE CongViec(
 )
 GO
 
-insert into CongViec(idCV,TenCV,LuongTheoGio)
-values 
-('CV_01',N'Nhân viên bán hàng', 30000000),
-('CV_02',N'Nhân viên kỹ thuật', 35000000),
-('CV_03',N'Quản lý', 1);
-GO
-
 CREATE TABLE CaLamViec(
 	idCa nchar(10),
 	Gio_BatDau time NOT NULL,
@@ -25,12 +18,6 @@ CREATE TABLE CaLamViec(
 	CONSTRAINT PK_CaLamViec PRIMARY KEY (idCa),
     CONSTRAINT CK_gio_CLV CHECK (Gio_KetThuc > Gio_BatDau)
 )
-GO
-
-insert into CaLamViec(idCa,Gio_BatDau,Gio_KetThuc)
-values
-('CA_01','9:00','15:00'),
-('CA_02','15:00','21:00');
 GO
 
 CREATE TABLE NhanVien(
@@ -46,16 +33,6 @@ CREATE TABLE NhanVien(
 	MatKhau nchar(15)
 )
 GO
-insert into NhanVien(idNV,idCV,Ho_Ten,NgaySinh,DiaChi,GioiTinh,soDT_NV)
-values
-('NV_01','CV_01',N'Nguyễn Văn A', '10/10/1999',N'Quận 1',N'Nam','0345678927'),
-('NV_02','CV_01',N'Nguyễn Thị C', '8/8/1998',N'Quận 2',N'Nữ','0346895782'),
-('NV_03','CV_02',N'Trần Văn B', '2/02/2000',N'Quận 3',N'Nam','0345457489'),
-('NV_04','CV_02',N'Lê văn L', '4/04/2001',N'Quận 4',N'Nam','0386794759'),
-
-('NV_05','CV_03',N'Boss', '3/03/1995',N'Quận 5',N'Nam','0999999999');
-GO
-
 
 CREATE TABLE BangPhanCa(
 	idCa nchar(10) CONSTRAINT FK_BangPhanCa_CLV FOREIGN KEY REFERENCES CaLamViec(idCa),
@@ -63,6 +40,83 @@ CREATE TABLE BangPhanCa(
 	NgayLam date NOT NULL,
 	TrangThai nvarchar(max),
 	CONSTRAINT PK_BangPhanCa PRIMARY KEY (idCa, idNV, NgayLam),
+)
+GO
+
+CREATE TABLE KhachHang(
+	idKH nchar(10) CONSTRAINT PK_KhachHang PRIMARY KEY,
+	TenKH nvarchar(100) NOT NULL,
+	soDT_KH nchar(10) NOT NULL,
+	DiaChi nvarchar(100)
+)
+GO
+
+CREATE TABLE HoaDon(
+	idHD nchar(10) CONSTRAINT PK_HoaDon PRIMARY KEY,
+	idNV nchar(10) CONSTRAINT FK_HoaDon_NV FOREIGN KEY REFERENCES NhanVien(idNV),
+	idKH nchar(10) CONSTRAINT FK_HoaDon_KH FOREIGN KEY REFERENCES KhachHang(idKH),
+	Ngay date NOT NULL,
+	TriGiaHD float NOT NULL CONSTRAINT CK_HoaDon CHECK (TriGiaHD > 0),
+	TrangThai nvarchar(100) NOT NULL
+)
+GO
+
+CREATE TABLE HangDienThoai(
+	TenHangDT nvarchar(100) CONSTRAINT PK_HangDienThoai PRIMARY KEY,
+	NguonGoc nvarchar(100) NOT NULL,
+	TrangThai nvarchar(100)
+)
+GO
+
+CREATE TABLE DienThoai(
+	idDienThoai nchar(10) CONSTRAINT PK_DienThoai PRIMARY KEY,
+	TenHangDT nvarchar(100) CONSTRAINT FK_DienThoai_HangDT FOREIGN KEY REFERENCES HangDienThoai(TenHangDT),
+	TenDienThoai nvarchar(100) NOT NULL,
+	SoLuong float NOT NULL,
+	MauSac nvarchar(100) NOT NULL,
+	DungLuong nchar(10) NOT NULL,
+	GiaBan float NOT NULL,
+	TrangThai nvarchar(100),
+	HinhAnh image,
+)
+GO
+
+CREATE TABLE ChiTietHoaDon(
+	idHD nchar(10) CONSTRAINT FK_ChiTietHoaDon_HD FOREIGN KEY REFERENCES HoaDon(idHD),
+	idDienThoai nchar(10) CONSTRAINT FK_ChiTietHoaDon_DT FOREIGN KEY REFERENCES DienThoai(idDienThoai),
+	SoLuong float NOT NULL,
+	DonGia float NOT NULL,
+	TongTien float NOT NULL,
+	CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY (idHD,idDienThoai)
+)
+GO
+
+CREATE TABLE NhaCungCap(
+	idNCC nchar(10) CONSTRAINT PK_NhaCungCung PRIMARY KEY,
+	TenNCC nvarchar(100) NOT NULL,
+	soDT_NCC nchar(10) NOT NULL,
+	DiaChiNCC nvarchar(100)
+)
+GO
+
+CREATE TABLE DonNhap(
+	idDonNhap nchar(10) CONSTRAINT PK_DonNhap PRIMARY KEY,
+	idNV nchar(10) CONSTRAINT FK_DonNhap_NV FOREIGN KEY REFERENCES NhanVien(idNV),
+	idNCC nchar(10) CONSTRAINT FK_DonNhap_NCC FOREIGN KEY REFERENCES NhaCungCap(idNCC),
+	TriGiaDon float NOT NULL,
+	NgayTao date NOT NULL,
+	TrangThai NVARCHAR(100)
+)
+GO
+
+CREATE TABLE ChiTietDonNhap(
+	idDonNhap nchar(10) CONSTRAINT FK_ChiTietDonNhap_DN FOREIGN KEY REFERENCES DonNhap(idDonNhap),
+	SoLuong float NOT NULL,
+	DonGia float NOT NULL,
+	TongTien float NOT NULL,
+	NgayNhap date,
+	idDienThoai nchar(10) CONSTRAINT FK_ChiTietDonNhap_DT FOREIGN KEY REFERENCES DienThoai(idDienThoai),
+	CONSTRAINT CK_CTDN CHECK (SoLuong > 0 AND DonGia > 0)
 )
 GO
 
@@ -98,28 +152,10 @@ values
 ('CA_02','NV_04','11/3/2023');
 GO
 
-CREATE TABLE KhachHang(
-	idKH nchar(10) CONSTRAINT PK_KhachHang PRIMARY KEY,
-	TenKH nvarchar(100) NOT NULL,
-	soDT_KH nchar(10) NOT NULL,
-	DiaChi nvarchar(100)
-)
-GO
-
 insert into KhachHang(idKH,TenKH,soDT_KH, DiaChi)
 values 
 ('KH_01',N'Ngô Thị D','0382357983',N'Hà Nội'),
 ('KH_02',N'Bá Văn T','0382236793',N'Cà Mau');
-GO
-
-CREATE TABLE HoaDon(
-	idHD nchar(10) CONSTRAINT PK_HoaDon PRIMARY KEY,
-	idNV nchar(10) CONSTRAINT FK_HoaDon_NV FOREIGN KEY REFERENCES NhanVien(idNV),
-	idKH nchar(10) CONSTRAINT FK_HoaDon_KH FOREIGN KEY REFERENCES KhachHang(idKH),
-	Ngay date NOT NULL,
-	TriGiaHD float NOT NULL CONSTRAINT CK_HoaDon CHECK (TriGiaHD > 0),
-	TrangThai nvarchar(100) NOT NULL
-)
 GO
 
 insert into HoaDon(idHD,idNV,idKH,Ngay,TriGiaHD,TrangThai)
@@ -128,31 +164,11 @@ values
 ('HD_02','NV_02','KH_02','11/3/2023', 36990000,N'Đã thanh toán');
 GO
 
-CREATE TABLE HangDienThoai(
-	TenHangDT nvarchar(100) CONSTRAINT PK_HangDienThoai PRIMARY KEY,
-	NguonGoc nvarchar(100) NOT NULL,
-	TrangThai nvarchar(100)
-)
-GO
-
 insert into HangDienThoai(TenHangDT,NguonGoc,TrangThai)
 values
 ('Samsung',N'Hàn Quốc',N'Đang hoạt động'),
 ('Apple',N'Mỹ',N'Đang hoạt động'),
 ('Xiaomi',N'Trung Quốc',N'Đang hoạt động');
-GO
-
-CREATE TABLE DienThoai(
-	idDienThoai nchar(10) CONSTRAINT PK_DienThoai PRIMARY KEY,
-	TenHangDT nvarchar(100) CONSTRAINT FK_DienThoai_HangDT FOREIGN KEY REFERENCES HangDienThoai(TenHangDT),
-	TenDienThoai nvarchar(100) NOT NULL,
-	SoLuong float NOT NULL,
-	MauSac nvarchar(100) NOT NULL,
-	DungLuong nchar(10) NOT NULL,
-	GiaBan float NOT NULL,
-	TrangThai nvarchar(100),
-	HinhAnh image,
-)
 GO
 
 insert into DienThoai(idDienThoai,TenHangDT,TenDienThoai,SoLuong,MauSac,DungLuong,GiaBan,TrangThai)
@@ -168,28 +184,10 @@ values
 ('DT_07','Xiaomi','Xiaomi 13T 5G',5,N'Xanh Dương','256 GB',10990000,N'Còn hàng');
 GO
 
-CREATE TABLE ChiTietHoaDon(
-	idHD nchar(10) CONSTRAINT FK_ChiTietHoaDon_HD FOREIGN KEY REFERENCES HoaDon(idHD),
-	idDienThoai nchar(10) CONSTRAINT FK_ChiTietHoaDon_DT FOREIGN KEY REFERENCES DienThoai(idDienThoai),
-	SoLuong float NOT NULL,
-	DonGia float NOT NULL,
-	TongTien float NOT NULL,
-	CONSTRAINT PK_ChiTietHoaDon PRIMARY KEY (idHD,idDienThoai)
-)
-GO
-
 insert into ChiTietHoaDon(idHD,idDienThoai,SoLuong,DonGia,TongTien)
 values 
 ('HD_01','DT_02',2,13390000,26780000),
 ('HD_02','DT_05',1,36990000,36990000);
-GO
-
-CREATE TABLE NhaCungCap(
-	idNCC nchar(10) CONSTRAINT PK_NhaCungCung PRIMARY KEY,
-	TenNCC nvarchar(100) NOT NULL,
-	soDT_NCC nchar(10) NOT NULL,
-	DiaChiNCC nvarchar(100)
-)
 GO
 
 insert into NhaCungCap(idNCC,TenNCC,soDT_NCC,DiaChiNCC)
@@ -199,16 +197,6 @@ values
 ('NCC_03',N'PET','0995051001',N'TPHCM');
 GO
 
-CREATE TABLE DonNhap(
-	idDonNhap nchar(10) CONSTRAINT PK_DonNhap PRIMARY KEY,
-	idNV nchar(10) CONSTRAINT FK_DonNhap_NV FOREIGN KEY REFERENCES NhanVien(idNV),
-	idNCC nchar(10) CONSTRAINT FK_DonNhap_NCC FOREIGN KEY REFERENCES NhaCungCap(idNCC),
-	TriGiaDon float NOT NULL,
-	NgayTao date NOT NULL,
-	TrangThai NVARCHAR(100)
-)
-GO
-
 insert into DonNhap(idDonNhap,idNV,idNCC,TriGiaDon,NgayTao,TrangThai	)
 values
 ('DN_01','NV_01','NCC_01',82400000,'1/15/2023',N'Đã nhận'),
@@ -216,16 +204,29 @@ values
 ('DN_03',NULL,'NCC_03',151540000,'10/23/2023',N'Chưa nhận');
 GO
 
-CREATE TABLE ChiTietDonNhap(
-	idDonNhap nchar(10) CONSTRAINT FK_ChiTietDonNhap_DN FOREIGN KEY REFERENCES DonNhap(idDonNhap),
-	SoLuong float NOT NULL,
-	DonGia float NOT NULL,
-	TongTien float NOT NULL,
-	NgayNhap date,
-	idDienThoai nchar(10) CONSTRAINT FK_ChiTietDonNhap_DT FOREIGN KEY REFERENCES DienThoai(idDienThoai),
-	CONSTRAINT CK_CTDN CHECK (SoLuong > 0 AND DonGia > 0)
-)
+insert into CongViec(idCV,TenCV,LuongTheoGio)
+values 
+('CV_01',N'Nhân viên bán hàng', 30000000),
+('CV_02',N'Nhân viên kỹ thuật', 35000000),
+('CV_03',N'Quản lý', 1);
 GO
+
+insert into CaLamViec(idCa,Gio_BatDau,Gio_KetThuc)
+values
+('CA_01','9:00','15:00'),
+('CA_02','15:00','21:00');
+GO
+
+insert into NhanVien(idNV,idCV,Ho_Ten,NgaySinh,DiaChi,GioiTinh,soDT_NV)
+values
+('NV_01','CV_01',N'Nguyễn Văn A', '10/10/1999',N'Quận 1',N'Nam','0345678927'),
+('NV_02','CV_01',N'Nguyễn Thị C', '8/8/1998',N'Quận 2',N'Nữ','0346895782'),
+('NV_03','CV_02',N'Trần Văn B', '2/02/2000',N'Quận 3',N'Nam','0345457489'),
+('NV_04','CV_02',N'Lê văn L', '4/04/2001',N'Quận 4',N'Nam','0386794759'),
+('NV_05','CV_03',N'Boss', '3/03/1995',N'Quận 5',N'Nam','0999999999');
+GO
+
+
 
 insert into ChiTietDonNhap(idDonNhap,idDienThoai,SoLuong,DonGia,TongTien,NgayNhap)
 values
@@ -238,3 +239,4 @@ values
 ('DN_03','DT_04',2,27790000,55580000,NUll),
 ('DN_03','DT_05',2,36990000,73980000,NUll),
 ('DN_03','DT_07',2,10990000,21980000,NUll);
+

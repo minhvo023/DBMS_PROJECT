@@ -109,3 +109,27 @@ BEGIN
 	RETURN @maxId
 END
 GO
+
+CREATE OR ALTER PROCEDURE proc_CheckLogin (
+    @username VARCHAR(10),
+    @password VARCHAR(32)
+)
+AS
+BEGIN
+    IF @password = ''
+    BEGIN
+        -- Raise an error if the password is empty
+        RAISERROR('Password cannot be empty.', 16, 1);
+        RETURN;
+    END
+
+    -- Check login credentials
+    IF NOT EXISTS (SELECT 1 FROM NhanVien WHERE idNV = @username AND MatKhau = @password)
+    BEGIN
+        -- Raise an error if login fails
+        RAISERROR('Invalid login credentials.', 16, 1);
+        RETURN;
+    END
+
+    return 1080;
+END;
