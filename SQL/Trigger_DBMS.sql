@@ -75,7 +75,7 @@ BEGIN
 END;
 GO
 
-CREATE OR ALTER TRIGGER NhanVien_CapNhap_TrangThai
+CREATE OR ALTER TRIGGER NhanVien_CapNhap_TrangThai_MatKhau
 ON NhanVien
 AFTER INSERT, UPDATE
 AS
@@ -85,14 +85,14 @@ BEGIN
 	IF EXISTS (SELECT * FROM NhanVien INNER JOIN inserted i ON NhanVien.idNV = i.idNV WHERE i.TrangThai IS NULL OR NhanVien.TrangThai = N'Non-Active')
     BEGIN
 		UPDATE NhanVien
-		SET TrangThai = N'Active'
+		SET TrangThai = N'Active', MatKhau = '123456'
 		FROM NhanVien
 		INNER JOIN inserted i ON NhanVien.idNV = i.idNV
 	END
 	ELSE
 	BEGIN
 		UPDATE NhanVien
-		SET TrangThai = N'Non-Active'
+		SET TrangThai = N'Non-Active', MatKhau = NULL
 		FROM NhanVien
 		INNER JOIN inserted i ON NhanVien.idNV = i.idNV
 	END
@@ -136,53 +136,5 @@ BEGIN
         END
     END
 END
-GO
-
-
-CREATE  OR ALTER TRIGGER TaiKhoan_TuDongTao ON NhanVien
-AFTER INSERT
-AS
-BEGIN
-    DECLARE @idNV nchar(10), @matkhau VARCHAR(255)
-
-    -- Use the inserted table in case multiple rows are inserted
-    SELECT TOP 1 @idNV = idNV, @matkhau  = soDT_NV
-    FROM inserted
-
-    -- Assuming you have an emp_Password column in the Account table
-    INSERT INTO TaiKhoan(idNV, MatKhau)
-    VALUES (@idNV, @matkhau)
-END;
-GO
-
-
-CREATE  OR ALTER TRIGGER TaiKhoan_TuDongXoa
-ON NhanVien
-AFTER UPDATE
-AS
-BEGIN
-	IF UPDATE(TrangThai) AND EXISTS(SELECT 1 FROM inserted WHERE TrangThai = N'Non-Active') -- kiểm tra xem cột statusJob có được cập nhật hay không
-	BEGIN
-		DELETE FROM TaiKhoan WHERE idNV = (SELECT idNV FROM inserted)
-	END
-END;
-GO
-
-
-CREATE  OR ALTER TRIGGER TaiKhoan_TuDongCapNhap
-ON NhanVien
-AFTER UPDATE
-AS
-BEGIN
-	IF UPDATE(TrangThai) AND EXISTS(SELECT 1 FROM inserted WHERE TrangThai =
-	'Active')
-	BEGIN
-		DECLARE @idNV nchar(10), @matkhau NVARCHAR(255)
-		SELECT @idNV = idNV, @matkhau  = soDT_NV FROM inserted 
-		
-		INSERT INTO TaiKhoan(idNV, MatKhau)
-		VALUES (@idNV, @matkhau)
-	END
-END;
 GO
 

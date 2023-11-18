@@ -42,7 +42,8 @@ CREATE TABLE NhanVien(
 	GioiTinh nvarchar(100),
 	soDT_NV nchar(10) NOT NULL,
 	HinhAnh image,
-	TrangThai nvarchar(max)
+	TrangThai nvarchar(max),
+	MatKhau nchar(15)
 )
 GO
 insert into NhanVien(idNV,idCV,Ho_Ten,NgaySinh,DiaChi,GioiTinh,soDT_NV)
@@ -237,10 +238,3 @@ values
 ('DN_03','DT_04',2,27790000,55580000,NUll),
 ('DN_03','DT_05',2,36990000,73980000,NUll),
 ('DN_03','DT_07',2,10990000,21980000,NUll);
-
-
-CREATE TABLE TaiKhoan(
-	idNV nchar(10) CONSTRAINT PK_TK PRIMARY KEY,
-    MatKhau nchar(20) NOT NULL,
-    CONSTRAINT FK_TK FOREIGN KEY (idNV) REFERENCES NhanVien(idNV)
-)
