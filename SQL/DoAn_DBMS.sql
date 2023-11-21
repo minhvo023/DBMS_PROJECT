@@ -33,7 +33,10 @@ CREATE TABLE NhanVien(
 	MatKhau nchar(15)
 )
 GO
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 
 CREATE TABLE BangPhanCa(
 	idCa nchar(10) CONSTRAINT FK_BangPhanCa_CLV FOREIGN KEY REFERENCES CaLamViec(idCa),
@@ -44,7 +47,10 @@ CREATE TABLE BangPhanCa(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE KhachHang(
 	idKH nchar(10) CONSTRAINT PK_KhachHang PRIMARY KEY,
 	TenKH nvarchar(100) NOT NULL,
@@ -53,7 +59,10 @@ CREATE TABLE KhachHang(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE HoaDon(
 	idHD nchar(10) CONSTRAINT PK_HoaDon PRIMARY KEY,
 	idNV nchar(10) CONSTRAINT FK_HoaDon_NV FOREIGN KEY REFERENCES NhanVien(idNV),
@@ -64,7 +73,10 @@ CREATE TABLE HoaDon(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE HangDienThoai(
 	TenHangDT nvarchar(100) CONSTRAINT PK_HangDienThoai PRIMARY KEY,
 	NguonGoc nvarchar(100) NOT NULL,
@@ -72,7 +84,10 @@ CREATE TABLE HangDienThoai(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE DienThoai(
 	idDienThoai nchar(10) CONSTRAINT PK_DienThoai PRIMARY KEY,
 	TenHangDT nvarchar(100) CONSTRAINT FK_DienThoai_HangDT FOREIGN KEY REFERENCES HangDienThoai(TenHangDT),
@@ -86,7 +101,10 @@ CREATE TABLE DienThoai(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE ChiTietHoaDon(
 	idHD nchar(10) CONSTRAINT FK_ChiTietHoaDon_HD FOREIGN KEY REFERENCES HoaDon(idHD),
 	idDienThoai nchar(10) CONSTRAINT FK_ChiTietHoaDon_DT FOREIGN KEY REFERENCES DienThoai(idDienThoai),
@@ -105,7 +123,10 @@ CREATE TABLE NhaCungCap(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE DonNhap(
 	idDonNhap nchar(10) CONSTRAINT PK_DonNhap PRIMARY KEY,
 	idNV nchar(10) CONSTRAINT FK_DonNhap_NV FOREIGN KEY REFERENCES NhanVien(idNV),
@@ -116,7 +137,10 @@ CREATE TABLE DonNhap(
 )
 GO
 
+<<<<<<< HEAD
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 CREATE TABLE ChiTietDonNhap(
 	idDonNhap nchar(10) CONSTRAINT FK_ChiTietDonNhap_DN FOREIGN KEY REFERENCES DonNhap(idDonNhap),
 	SoLuong float NOT NULL,
@@ -128,6 +152,7 @@ CREATE TABLE ChiTietDonNhap(
 )
 GO
 
+<<<<<<< HEAD
 
 insert into CongViec(idCV,TenCV,LuongTheoGio)
 values 
@@ -151,6 +176,8 @@ values
 ('NV_04','CV_02',N'Lê văn L', '4/04/2001',N'Quận 4',N'Nam','0386794759');
 GO
 
+=======
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
 insert into BangPhanCa(idCa,idNV,NgayLam)
 values
 ('CA_01','NV_01','11/1/2023'),
@@ -235,6 +262,32 @@ values
 ('DN_03',NULL,'NCC_03',151540000,'10/23/2023',N'Chưa nhận');
 GO
 
+<<<<<<< HEAD
+
+
+=======
+insert into CongViec(idCV,TenCV,LuongTheoGio)
+values 
+('CV_01',N'Nhân viên bán hàng', 30000000),
+('CV_02',N'Nhân viên kỹ thuật', 35000000),
+('CV_03',N'Quản lý', 1);
+GO
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa
+
+insert into CaLamViec(idCa,Gio_BatDau,Gio_KetThuc)
+values
+('CA_01','9:00','15:00'),
+('CA_02','15:00','21:00');
+GO
+
+insert into NhanVien(idNV,idCV,Ho_Ten,NgaySinh,DiaChi,GioiTinh,soDT_NV)
+values
+('NV_01','CV_01',N'Nguyễn Văn A', '10/10/1999',N'Quận 1',N'Nam','0345678927'),
+('NV_02','CV_01',N'Nguyễn Thị C', '8/8/1998',N'Quận 2',N'Nữ','0346895782'),
+('NV_03','CV_02',N'Trần Văn B', '2/02/2000',N'Quận 3',N'Nam','0345457489'),
+('NV_04','CV_02',N'Lê văn L', '4/04/2001',N'Quận 4',N'Nam','0386794759'),
+('NV_05','CV_03',N'Boss', '3/03/1995',N'Quận 5',N'Nam','0999999999');
+GO
 
 
 
@@ -248,4 +301,9 @@ values
 
 ('DN_03','DT_04',2,27790000,55580000,NUll),
 ('DN_03','DT_05',2,36990000,73980000,NUll),
+<<<<<<< HEAD
 ('DN_03','DT_07',2,10990000,21980000,NUll);
+=======
+('DN_03','DT_07',2,10990000,21980000,NUll);
+
+>>>>>>> 25ccc9b6741acaf344f32c8ec54f1c7ab3b8d5fa

@@ -246,6 +246,41 @@ namespace DBMS_NHOM_10
         {
 
         }
+        
+        public void login()
+        {
+            string username = txb_username.Text;
+            string password = txb_password.Text;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("proc_CheckLogin", DBConnection.open());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", username);
+                cmd.Parameters.AddWithValue("@password", password);
+                SqlParameter returnParam = cmd.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                returnParam.Direction = ParameterDirection.ReturnValue;
+                cmd.ExecuteNonQuery();
+
+                int returnValue = (int)returnParam.Value;
+
+                if (returnValue == 1080)
+                {
+                    MessageBox.Show("Đăng nhập thành công");
+                    panel_thongtin.Visible = false;
+                    lblTitle.Text = "THÔNG TIN";
+                    panel_login.Visible = false;
+                    panel_thongtin.Visible = true;
+                }
+                else
+                {
+                    MessageBox.Show("Đăng nhập thất bại");
+                }
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+        }
 
         public void btn_login_Click(object sender, EventArgs e)
         {
@@ -362,7 +397,6 @@ namespace DBMS_NHOM_10
             txb_sdtNV.ReadOnly = false;
             txb_NgaySinh.ReadOnly = false;
             txb_Phai.ReadOnly = false;
-
         }
 
         public void NhanVien_cstt()
