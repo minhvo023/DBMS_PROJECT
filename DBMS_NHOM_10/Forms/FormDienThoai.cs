@@ -28,22 +28,33 @@ namespace DBMS_NHOM_10.Forms
 
         public void danhsach_dienthoai()
         {
-            string query = "SELECT * FROM v_dienthoai";
-            SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            dataGridView_Product.DataSource = table;
-            DBConnection.close();
+            try
+            {
+                string query = "SELECT * FROM v_dienthoai";
+                SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                dataGridView_Product.DataSource = table;
 
-            dataGridView_Product.Columns[0].HeaderText = "ID";
-            dataGridView_Product.Columns[1].HeaderText = "Hãng";
-            dataGridView_Product.Columns[2].HeaderText = "Tên";
-            dataGridView_Product.Columns[3].HeaderText = "Màu sắc";
-            dataGridView_Product.Columns[4].HeaderText = "Dung lượng";
-            dataGridView_Product.Columns[5].HeaderText = "Giá";
-            dataGridView_Product.Columns[6].HeaderText = "Số lượng";
-            dataGridView_Product.Columns[7].HeaderText = "Trạng Thái";
-            dataGridView_Product.Columns[8].HeaderText = "Hình ảnh";
+                dataGridView_Product.Columns[0].HeaderText = "ID";
+                dataGridView_Product.Columns[1].HeaderText = "Hãng";
+                dataGridView_Product.Columns[2].HeaderText = "Tên";
+                dataGridView_Product.Columns[3].HeaderText = "Màu sắc";
+                dataGridView_Product.Columns[4].HeaderText = "Dung lượng";
+                dataGridView_Product.Columns[5].HeaderText = "Giá";
+                dataGridView_Product.Columns[6].HeaderText = "Số lượng";
+                dataGridView_Product.Columns[7].HeaderText = "Trạng Thái";
+                dataGridView_Product.Columns[8].HeaderText = "Hình ảnh";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally
+            {
+                DBConnection.close();
+
+            }
         }
 
         private void btnHang_Click(object sender, EventArgs e)

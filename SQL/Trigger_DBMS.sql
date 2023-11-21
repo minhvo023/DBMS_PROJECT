@@ -89,12 +89,28 @@ BEGIN
 		FROM NhanVien
 		INNER JOIN inserted i ON NhanVien.idNV = i.idNV
 	END
+	ELSE IF EXISTS (SELECT * FROM NhanVien INNER JOIN inserted i ON NhanVien.idNV = i.idNV WHERE NhanVien.MatKhau is not null)
+    BEGIN
+        UPDATE NhanVien
+        SET MatKhau = i.MatKhau
+        FROM NhanVien
+        INNER JOIN inserted i ON NhanVien.idNV = i.idNV;
+    END
 	ELSE
 	BEGIN
 		UPDATE NhanVien
 		SET TrangThai = N'Non-Active', MatKhau = NULL
 		FROM NhanVien
 		INNER JOIN inserted i ON NhanVien.idNV = i.idNV
+
+
+		DECLARE @userName nvarchar(10);
+		SET @userName = (SELECT idNV FROM inserted);
+		-- Drop user
+        EXEC('DROP USER ' + @userName);
+
+        -- Drop login
+        EXEC('DROP LOGIN ' + @userName);
 	END
 END;
 GO
@@ -127,9 +143,7 @@ BEGIN
         END
         ELSE
         BEGIN
-            -- Nếu không có bản ghi nào có TrangThai là 'Ngừng Kinh Doanh' và SoLuong > 0
-            -- thì cập nhật TrangThai là 'Hết hàng'
-            UPDATE DienThoai
+			UPDATE DienThoai
             SET TrangThai = N'Hết hàng'
             FROM DienThoai
             INNER JOIN inserted ON DienThoai.idDienThoai = inserted.idDienThoai;
@@ -138,3 +152,56 @@ BEGIN
 END
 GO
 
+
+CREATE OR ALTER TRIGGER NhanVien_TaoTaiKhoanSQL ON NhanVien
+AFTER INSERT 
+AS 
+BEGIN 
+    SET NOCOUNT ON;
+
+    DECLARE @userName nchar(10), @passWord nchar(15), @idNV nchar(10), @idCV nchar(10);
+    DECLARE @sqlString nvarchar(2000);
+
+    -- Create a cursor to iterate over the inserted rows
+    DECLARE cursorNhanVien CURSOR FOR
+        SELECT idNV FROM inserted;
+
+    OPEN cursorNhanVien;
+
+    -- Fetch the first row from the cursor
+    FETCH NEXT FROM cursorNhanVien INTO @idNV;
+
+    -- Loop through the cursor
+    WHILE @@FETCH_STATUS = 0
+    BEGIN
+        -- Generate unique username based on idNV
+        SET @userName = @idNV;
+
+        -- Create login
+        SET @sqlString = 'CREATE LOGIN [' + @userName + '] WITH PASSWORD=''123456'', DEFAULT_DATABASE=[QuanLyCuaHangDienThoai], CHECK_EXPIRATION=OFF, CHECK_POLICY=OFF';
+        EXEC (@sqlString);
+
+        -- Create user
+        SET @sqlString = 'CREATE USER ' + @userName + ' FOR LOGIN ' + @userName;
+        EXEC (@sqlString);
+
+        -- Get idCV for role assignment
+        SELECT @idCV = idCV FROM NhanVien WHERE idNV = @idNV;
+
+        -- Assign role based on idCV
+        IF (@idCV = 'CV_03')
+            SET @sqlString = 'ALTER SERVER ROLE sysadmin ADD MEMBER ' + @userName;
+        ELSE  
+            SET @sqlString = 'ALTER ROLE NhanVien ADD MEMBER ' + @userName;
+
+        -- Execute role assignment
+        EXEC (@sqlString);
+
+        -- Fetch the next row from the cursor
+        FETCH NEXT FROM cursorNhanVien INTO @idNV;
+    END;
+
+    -- Close and deallocate the cursor
+    CLOSE cursorNhanVien;
+    DEALLOCATE cursorNhanVien;
+END;

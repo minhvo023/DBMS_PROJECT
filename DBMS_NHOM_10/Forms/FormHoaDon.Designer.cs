@@ -46,6 +46,7 @@
             this.txb_NamHD = new System.Windows.Forms.TextBox();
             this.txb_ThangHD = new System.Windows.Forms.TextBox();
             this.txb_NgayHD = new System.Windows.Forms.TextBox();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.cbb_timkiem_tt = new System.Windows.Forms.ComboBox();
             this.btn_timkiemHD = new System.Windows.Forms.Button();
             this.btn_cthd = new System.Windows.Forms.Button();
@@ -57,7 +58,6 @@
             this.panel1 = new System.Windows.Forms.Panel();
             this.panel2 = new System.Windows.Forms.Panel();
             this.dataGridView_Order = new System.Windows.Forms.DataGridView();
-            this.btn_reset = new System.Windows.Forms.Button();
             this.panel6.SuspendLayout();
             this.panel4.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CTHD_kh)).BeginInit();
@@ -98,7 +98,7 @@
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1448, 212);
             this.panel4.TabIndex = 16;
-            // 
+           // 
             // label4
             // 
             this.label4.Anchor = System.Windows.Forms.AnchorStyles.Top;
@@ -153,6 +153,20 @@
             this.txb_NgayHD.Name = "txb_NgayHD";
             this.txb_NgayHD.Size = new System.Drawing.Size(43, 30);
             this.txb_NgayHD.TabIndex = 28;
+            // 
+            // btn_reset
+            // 
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Image = global::DBMS_NHOM_10.Properties.Resources.Loading1;
+            this.btn_reset.Location = new System.Drawing.Point(6, 6);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(52, 49);
+            this.btn_reset.TabIndex = 27;
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // cbb_timkiem_tt
             // 
@@ -391,20 +405,6 @@
             this.dataGridView_Order.Size = new System.Drawing.Size(1448, 241);
             this.dataGridView_Order.TabIndex = 12;
             this.dataGridView_Order.CellMouseEnter += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView_CellMouseEnter);
-            // 
-            // btn_reset
-            // 
-            this.btn_reset.FlatAppearance.BorderSize = 0;
-            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_reset.ForeColor = System.Drawing.Color.White;
-            this.btn_reset.Image = global::DBMS_NHOM_10.Properties.Resources.Loading1;
-            this.btn_reset.Location = new System.Drawing.Point(6, 6);
-            this.btn_reset.Name = "btn_reset";
-            this.btn_reset.Size = new System.Drawing.Size(52, 49);
-            this.btn_reset.TabIndex = 27;
-            this.btn_reset.UseVisualStyleBackColor = true;
-            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // FormHoaDon
             // 

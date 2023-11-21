@@ -132,5 +132,18 @@ namespace DBMS_NHOM_10.Forms
             btn_KQ_DN.Text = "Tổng giá trị Đơn Nhập tháng [ " + cbb_ThangDN.Text.Trim() + " ] là: " + NhanVien_TinhLuong_HD_DN("", "", "", cbb_ThangDN.Text.Trim()) + "\nTổng số Đơn Nhập là: " + SoLuong("", "", "",cbb_ThangDN.Text.Trim());
             dataGridView_show.DataSource = HienThiThongTin("", "", "", cbb_ThangDN.Text.Trim());
         }
+
+        private void btn_reset_Click(object sender, EventArgs e)
+        {
+            cbb_idNV.Text = string.Empty;
+            cbb_ThangDN.Text = string.Empty;
+            cbb_ThangHD.Text = string.Empty;
+            cbb_ThangNV.Text = string.Empty;
+            dataGridView_show.DataSource = null;
+
+            btn_KQ_NV.Text = string.Empty;
+            btn_KQ_HD.Text = string.Empty;
+            btn_KQ_DN.Text= string.Empty;
+        }
     }
 }

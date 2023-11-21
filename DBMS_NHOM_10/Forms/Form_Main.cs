@@ -1,12 +1,16 @@
 ﻿using DBMS_NHOM_10.Forms;
+using DBMS_NHOM_10.Forms_branch;
 using DBMS_NHOM_10.View;
 using System;
+using System.Collections;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
+using System.Data.SqlClient;
 using System.Drawing;
 using System.Linq;
 using System.Runtime.InteropServices;
+using System.Security.Cryptography.X509Certificates;
 using System.Text;
 using System.Threading.Tasks;
 using System.Windows.Forms;
@@ -20,16 +24,17 @@ namespace DBMS_NHOM_10
         private int tempIndex;
         private Form activeForm;
 
+
         public FormMainMenu()
         {
             InitializeComponent();
-
             random = new Random();
             btnCloseChildForm.Visible = false;
             this.Text = string.Empty;
             this.ControlBox = false;
             this.MaximizedBounds = Screen.FromHandle(this.Handle).WorkingArea;
         }
+
         [DllImport("user32.DLL", EntryPoint = "ReleaseCapture")]
         
         private extern static void SendMessage(System.IntPtr hWnd, int wMsg, int wParam, int lParam);
@@ -242,14 +247,226 @@ namespace DBMS_NHOM_10
 
         }
 
-        private void btn_login_Click(object sender, EventArgs e)
+        public void btn_login_Click(object sender, EventArgs e)
         {
-            panel_mm.Visible = false;
+            if (checklogin() != "")
+            {
+                kiemtra();
+            }
+        }
+        public void kiemtra()
+        {
+            
             lblTitle.Text = "THÔNG TIN";
-            panel_login.Visible = false;    
+            panel_login.Visible = false;
             panel_thongtin.Visible = true;
+            panelLogo.Visible = true;
+            btnSalary.Visible = true;
+            btnBangPhanCa.Visible = true;
+            btnEmployee.Visible = true;
+            btnCustomer.Visible = true;
+            btnOrders.Visible = true;
+            btnProducts.Visible = true;
+
+
+            txb_idNV.Text = Functions.GetFieldValues("SELECT idNV FROM NhanVien WHERE idNV ='" + txb_username.Text.Trim() + "'");
+            txb_TenCV.Text = Functions.GetFieldValues("SELECT TenCV FROM CongViec join NhanVien ON NhanVien.idCV = CongViec.idCV WHERE idNV ='" + txb_username.Text.Trim() + "'");
+            txb_nameNV.Text = Functions.GetFieldValues("SELECT Ho_Ten FROM NhanVien WHERE idNV ='" + txb_username.Text.Trim() + "'");
+            txb_diachi.Text = Functions.GetFieldValues("SELECT DiaChi FROM NhanVien WHERE idNV ='" + txb_username.Text.Trim() + "'");
+            txb_Phai.Text = Functions.GetFieldValues("SELECT GioiTinh FROM NhanVien WHERE idNV ='" + txb_username.Text.Trim() + "'");
+            txb_sdtNV.Text = Functions.GetFieldValues("SELECT soDT_NV FROM NhanVien WHERE idNV ='" + txb_username.Text.Trim() + "'");
+
+            string day = Functions.GetFieldValues("SELECT NgaySinh FROM NhanVien WHERE idNV ='" + txb_username.Text.Trim() + "'");
+
+
+            DateTime ngaySinhFromDatabase = Convert.ToDateTime(day);
+            txb_NgaySinh.Text = ngaySinhFromDatabase.ToString("dd/MM/yyyy");
+        }
+        public string checklogin()
+        {
+            string err;
+            string rs = "";
+
+            try
+            {
+                DBConnection.connn(txb_username.Text);
+                SqlCommand cmd = new SqlCommand("proc_NhanVien_DangNhap", DBConnection.open());
+
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@username", txb_username.Text.Trim());
+                cmd.Parameters.AddWithValue("@password", txb_password.Text.Trim());
+
+                SqlParameter returnParam = cmd.Parameters.Add("@ReturnValue", SqlDbType.Int);
+                returnParam.Direction = ParameterDirection.ReturnValue;
+
+                // Execute the stored procedure
+                if(DBConnection.conn.State != ConnectionState.Closed)
+                {
+                    cmd.ExecuteNonQuery();
+
+                    // Retrieve the return value
+                    int returnValue = (int)returnParam.Value;
+                    if (returnValue == 0)
+                    {
+                        MessageBox.Show("'Quản Lý' Đăng nhập thành công!");
+                    }
+                    else if (returnValue == 1)
+                    {
+                        MessageBox.Show("'Nhân Viên' Đăng nhập thành công");
+                    }
+                    rs = "login";
+                }
+            }
+            catch (SqlException ex)
+            {
+                err = ex.Message;
+
+                MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            finally
+            {
+                DBConnection.close();
+            }
+            return rs;
+        }
+
+        private void btn_logout_Click(object sender, EventArgs e)
+        {
+            txb_username.Text = String.Empty;
+            txb_password.Text = String.Empty;
+
+            lblTitle.Text = "Đăng Nhập";
+            panel_login.Visible = true;
+            panel_thongtin.Visible = false;
+            panelLogo.Visible = false;
+            btnSalary.Visible = false;
+            btnBangPhanCa.Visible = false;
+            btnEmployee.Visible = false;
+            btnCustomer.Visible = false;
+            btnOrders.Visible = false;
+            btnProducts.Visible = false;
+        }
+
+        private void btn_DoiMK_Click(object sender, EventArgs e)
+        {
+            FormDoiMK formDoiMK = new FormDoiMK(txb_idNV.Text.Trim());
+            formDoiMK.ShowDialog();
+        }
+
+        private void btn_Edit_Click(object sender, EventArgs e)
+        {
+            btn_Luu.Visible = true;
+            txb_nameNV.ReadOnly = false;
+            txb_diachi.ReadOnly = false;
+            txb_sdtNV.ReadOnly = false;
+            txb_NgaySinh.ReadOnly = false;
+            txb_Phai.ReadOnly = false;
 
         }
 
+        public void NhanVien_cstt()
+        {
+            string err;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("proc_NhanVien_ChinhSuaThongTinCaNha", DBConnection.open());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idNV", txb_idNV.Text.Trim());
+                cmd.Parameters.AddWithValue("@Ho_Ten", txb_nameNV.Text.Trim());
+                cmd.Parameters.AddWithValue("@DiaChi", txb_diachi.Text.Trim());
+                cmd.Parameters.AddWithValue("@soDT_NV", txb_sdtNV.Text.Trim());
+                cmd.Parameters.AddWithValue("@NgaySinh", txb_NgaySinh.Text.Trim());
+                cmd.Parameters.AddWithValue("@GioiTinh", txb_Phai.Text.Trim());
+
+                cmd.ExecuteNonQuery();
+
+                err = "Thay đổi thành công!";
+            }
+            catch (SqlException ex)
+            {
+                err = "Thay đổi thất bại!  " + ex.Message ;
+
+
+            }
+            finally
+            {
+                DBConnection.close();
+
+            }
+            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+        }
+
+        private void btn_Luu_Click(object sender, EventArgs e)
+        {
+            NhanVien_cstt();
+            btn_Luu.Visible = false;
+            txb_nameNV.ReadOnly = true;
+            txb_diachi.ReadOnly = true;
+            txb_sdtNV.ReadOnly = true;
+            txb_NgaySinh.ReadOnly = true;
+            txb_Phai.ReadOnly = true;
+            kiemtra();
+        }
+
+        private void btn_DiemDanh_Click(object sender, EventArgs e)
+        {
+            NhanVien_DiemDanh();
+        }
+        public void NhanVien_DiemDanh()
+        {
+            string err;
+            try
+            {
+                SqlCommand cmd = new SqlCommand("proc_NhanVien_DiemDanh", DBConnection.open());
+                cmd.CommandType = CommandType.StoredProcedure;
+                cmd.Parameters.AddWithValue("@idNV", txb_idNV.Text.Trim());
+
+                cmd.ExecuteNonQuery();
+
+                err = "Điểm danh thành công!";
+                btn_DiemDanh.Visible= false;
+            }
+            catch (SqlException ex)
+            {
+                err = "Điểm danh thất bại!  " + ex.Message;
+
+            }
+            finally
+            {
+                DBConnection.close();
+
+            }
+            MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+        }
+        public void NhanVien_CaLamTuongLai()
+        {
+            string err;
+            try
+            {
+                string query = "exec proc_NhanVien_CaLam " + txb_idNV.Text.Trim();
+                SqlDataAdapter adapter = new SqlDataAdapter(query, DBConnection.open());
+                DataTable dt = new DataTable();
+                adapter.Fill(dt);
+                dataGridView_CaNV.DataSource = dt;
+            }
+            catch (SqlException ex)
+            {
+                err = ex.Message;
+                MessageBox.Show(err, "Thông báo", MessageBoxButtons.OK, MessageBoxIcon.Information);
+
+            }
+            finally
+            {
+                DBConnection.close();
+
+            }
+        }
+
+        private void btn_CaLam_Click(object sender, EventArgs e)
+        {
+            NhanVien_CaLamTuongLai();
+        }
     }
 }

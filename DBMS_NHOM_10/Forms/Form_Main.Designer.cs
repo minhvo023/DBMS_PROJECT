@@ -29,8 +29,10 @@
         private void InitializeComponent()
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FormMainMenu));
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle4 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle5 = new System.Windows.Forms.DataGridViewCellStyle();
+            System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle6 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panelMenu = new System.Windows.Forms.Panel();
-            this.panel_mm = new System.Windows.Forms.Panel();
             this.btnSalary = new System.Windows.Forms.Button();
             this.btnBangPhanCa = new System.Windows.Forms.Button();
             this.btnEmployee = new System.Windows.Forms.Button();
@@ -47,12 +49,6 @@
             this.btnCloseChildForm = new System.Windows.Forms.Button();
             this.btnClose = new System.Windows.Forms.Button();
             this.lblTitle = new System.Windows.Forms.Label();
-            this.panelDesktopPane = new System.Windows.Forms.Panel();
-            this.panel1 = new System.Windows.Forms.Panel();
-            this.panel2 = new System.Windows.Forms.Panel();
-            this.panel5 = new System.Windows.Forms.Panel();
-            this.panel3 = new System.Windows.Forms.Panel();
-            this.panel6 = new System.Windows.Forms.Panel();
             this.panel_login = new System.Windows.Forms.Panel();
             this.txb_password = new System.Windows.Forms.TextBox();
             this.txb_username = new System.Windows.Forms.TextBox();
@@ -61,7 +57,9 @@
             this.pictureBox3 = new System.Windows.Forms.PictureBox();
             this.pictureBox2 = new System.Windows.Forms.PictureBox();
             this.pictureBox1 = new System.Windows.Forms.PictureBox();
+            this.panelDesktopPane = new System.Windows.Forms.Panel();
             this.panel_thongtin = new System.Windows.Forms.Panel();
+            this.btn_logout = new System.Windows.Forms.Button();
             this.ptb_AnhNV = new System.Windows.Forms.PictureBox();
             this.btn_DoiMK = new System.Windows.Forms.Button();
             this.btn_Edit = new System.Windows.Forms.Button();
@@ -74,25 +72,28 @@
             this.txb_TenCV = new System.Windows.Forms.TextBox();
             this.txb_nameNV = new System.Windows.Forms.TextBox();
             this.txb_idNV = new System.Windows.Forms.TextBox();
+            this.btn_Luu = new System.Windows.Forms.Button();
+            this.btn_CaLam = new System.Windows.Forms.Button();
+            this.dataGridView_CaNV = new System.Windows.Forms.DataGridView();
             this.panelMenu.SuspendLayout();
             this.panelLogo.SuspendLayout();
             this.panelTitleBar.SuspendLayout();
-            this.panelDesktopPane.SuspendLayout();
-            this.panel1.SuspendLayout();
             this.panel_login.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).BeginInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).BeginInit();
+            this.panelDesktopPane.SuspendLayout();
             this.panel_thongtin.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhNV)).BeginInit();
+            this.panel4.SuspendLayout();
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CaNV)).BeginInit();
             this.SuspendLayout();
             // 
             // panelMenu
             // 
             this.panelMenu.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
             this.panelMenu.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panelMenu.Controls.Add(this.panel_mm);
             this.panelMenu.Controls.Add(this.btnSalary);
             this.panelMenu.Controls.Add(this.btnBangPhanCa);
             this.panelMenu.Controls.Add(this.btnEmployee);
@@ -106,16 +107,6 @@
             this.panelMenu.Name = "panelMenu";
             this.panelMenu.Size = new System.Drawing.Size(280, 1013);
             this.panelMenu.TabIndex = 0;
-            // 
-            // panel_mm
-            // 
-            this.panel_mm.BackColor = System.Drawing.Color.FromArgb(((int)(((byte)(51)))), ((int)(((byte)(51)))), ((int)(((byte)(76)))));
-            this.panel_mm.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
-            this.panel_mm.Location = new System.Drawing.Point(-1, 1);
-            this.panel_mm.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panel_mm.Name = "panel_mm";
-            this.panel_mm.Size = new System.Drawing.Size(280, 1013);
-            this.panel_mm.TabIndex = 12;
             // 
             // btnSalary
             // 
@@ -137,6 +128,7 @@
             this.btnSalary.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnSalary.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnSalary.UseVisualStyleBackColor = true;
+            this.btnSalary.Visible = false;
             this.btnSalary.Click += new System.EventHandler(this.btnSalary_Click);
             // 
             // btnBangPhanCa
@@ -159,6 +151,7 @@
             this.btnBangPhanCa.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnBangPhanCa.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnBangPhanCa.UseVisualStyleBackColor = true;
+            this.btnBangPhanCa.Visible = false;
             this.btnBangPhanCa.Click += new System.EventHandler(this.btnNotifications_Click_1);
             // 
             // btnEmployee
@@ -181,6 +174,7 @@
             this.btnEmployee.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnEmployee.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnEmployee.UseVisualStyleBackColor = true;
+            this.btnEmployee.Visible = false;
             this.btnEmployee.Click += new System.EventHandler(this.btnReporting_Click);
             // 
             // btnCustomer
@@ -203,6 +197,7 @@
             this.btnCustomer.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnCustomer.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnCustomer.UseVisualStyleBackColor = true;
+            this.btnCustomer.Visible = false;
             this.btnCustomer.Click += new System.EventHandler(this.btnCustomer_Click);
             // 
             // btnOrders
@@ -225,6 +220,7 @@
             this.btnOrders.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnOrders.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnOrders.UseVisualStyleBackColor = true;
+            this.btnOrders.Visible = false;
             this.btnOrders.Click += new System.EventHandler(this.btnOrders_Click);
             // 
             // btnProducts
@@ -247,6 +243,7 @@
             this.btnProducts.TextAlign = System.Drawing.ContentAlignment.MiddleLeft;
             this.btnProducts.TextImageRelation = System.Windows.Forms.TextImageRelation.ImageBeforeText;
             this.btnProducts.UseVisualStyleBackColor = true;
+            this.btnProducts.Visible = false;
             this.btnProducts.Click += new System.EventHandler(this.btnProducts_Click_1);
             // 
             // panelLogo
@@ -260,6 +257,7 @@
             this.panelLogo.Name = "panelLogo";
             this.panelLogo.Size = new System.Drawing.Size(278, 122);
             this.panelLogo.TabIndex = 0;
+            this.panelLogo.Visible = false;
             // 
             // btnMenu
             // 
@@ -394,72 +392,9 @@
             this.lblTitle.Text = "ĐĂNG NHẬP";
             this.lblTitle.TextAlign = System.Drawing.ContentAlignment.MiddleCenter;
             // 
-            // panelDesktopPane
-            // 
-            this.panelDesktopPane.BackColor = System.Drawing.Color.LightCyan;
-            this.panelDesktopPane.Controls.Add(this.panel1);
-            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panelDesktopPane.Location = new System.Drawing.Point(280, 124);
-            this.panelDesktopPane.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
-            this.panelDesktopPane.Name = "panelDesktopPane";
-            this.panelDesktopPane.Size = new System.Drawing.Size(1538, 889);
-            this.panelDesktopPane.TabIndex = 2;
-            // 
-            // panel1
-            // 
-            this.panel1.BackgroundImage = global::DBMS_NHOM_10.Properties.Resources.bghome;
-            this.panel1.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
-            this.panel1.Controls.Add(this.panel2);
-            this.panel1.Controls.Add(this.panel5);
-            this.panel1.Controls.Add(this.panel3);
-            this.panel1.Controls.Add(this.panel6);
-            this.panel1.Controls.Add(this.panel_login);
-            this.panel1.Controls.Add(this.panel_thongtin);
-            this.panel1.Dock = System.Windows.Forms.DockStyle.Fill;
-            this.panel1.Location = new System.Drawing.Point(0, 0);
-            this.panel1.Name = "panel1";
-            this.panel1.Size = new System.Drawing.Size(1538, 889);
-            this.panel1.TabIndex = 11;
-            // 
-            // panel2
-            // 
-            this.panel2.BackColor = System.Drawing.Color.White;
-            this.panel2.Dock = System.Windows.Forms.DockStyle.Right;
-            this.panel2.Location = new System.Drawing.Point(1521, 17);
-            this.panel2.Name = "panel2";
-            this.panel2.Size = new System.Drawing.Size(17, 855);
-            this.panel2.TabIndex = 27;
-            // 
-            // panel5
-            // 
-            this.panel5.BackColor = System.Drawing.Color.White;
-            this.panel5.Dock = System.Windows.Forms.DockStyle.Top;
-            this.panel5.Location = new System.Drawing.Point(17, 0);
-            this.panel5.Name = "panel5";
-            this.panel5.Size = new System.Drawing.Size(1521, 17);
-            this.panel5.TabIndex = 29;
-            // 
-            // panel3
-            // 
-            this.panel3.BackColor = System.Drawing.Color.White;
-            this.panel3.Dock = System.Windows.Forms.DockStyle.Bottom;
-            this.panel3.Location = new System.Drawing.Point(17, 872);
-            this.panel3.Name = "panel3";
-            this.panel3.Size = new System.Drawing.Size(1521, 17);
-            this.panel3.TabIndex = 28;
-            // 
-            // panel6
-            // 
-            this.panel6.BackColor = System.Drawing.Color.White;
-            this.panel6.Dock = System.Windows.Forms.DockStyle.Left;
-            this.panel6.Location = new System.Drawing.Point(0, 0);
-            this.panel6.Name = "panel6";
-            this.panel6.Size = new System.Drawing.Size(17, 889);
-            this.panel6.TabIndex = 26;
-            // 
             // panel_login
             // 
-            this.panel_login.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.panel_login.Anchor = System.Windows.Forms.AnchorStyles.None;
             this.panel_login.BackColor = System.Drawing.SystemColors.ControlLightLight;
             this.panel_login.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.panel_login.Controls.Add(this.txb_password);
@@ -469,19 +404,20 @@
             this.panel_login.Controls.Add(this.pictureBox3);
             this.panel_login.Controls.Add(this.pictureBox2);
             this.panel_login.Controls.Add(this.pictureBox1);
-            this.panel_login.Location = new System.Drawing.Point(157, 73);
+            this.panel_login.Location = new System.Drawing.Point(153, 80);
             this.panel_login.Name = "panel_login";
-            this.panel_login.Size = new System.Drawing.Size(547, 718);
-            this.panel_login.TabIndex = 11;
+            this.panel_login.Size = new System.Drawing.Size(639, 742);
+            this.panel_login.TabIndex = 31;
             // 
             // txb_password
             // 
             this.txb_password.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_password.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_password.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_password.Location = new System.Drawing.Point(157, 523);
+            this.txb_password.Location = new System.Drawing.Point(203, 523);
             this.txb_password.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txb_password.Name = "txb_password";
+            this.txb_password.PasswordChar = '*';
             this.txb_password.Size = new System.Drawing.Size(258, 35);
             this.txb_password.TabIndex = 10;
             // 
@@ -490,7 +426,7 @@
             this.txb_username.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_username.BorderStyle = System.Windows.Forms.BorderStyle.FixedSingle;
             this.txb_username.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_username.Location = new System.Drawing.Point(157, 425);
+            this.txb_username.Location = new System.Drawing.Point(203, 425);
             this.txb_username.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.txb_username.Name = "txb_username";
             this.txb_username.Size = new System.Drawing.Size(258, 35);
@@ -501,7 +437,7 @@
             this.btn_login.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_login.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
             this.btn_login.Image = global::DBMS_NHOM_10.Properties.Resources.Login11;
-            this.btn_login.Location = new System.Drawing.Point(172, 598);
+            this.btn_login.Location = new System.Drawing.Point(218, 598);
             this.btn_login.Name = "btn_login";
             this.btn_login.Size = new System.Drawing.Size(213, 88);
             this.btn_login.TabIndex = 8;
@@ -514,7 +450,7 @@
             // 
             this.pictureBox4.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox4.Image = global::DBMS_NHOM_10.Properties.Resources.pass;
-            this.pictureBox4.Location = new System.Drawing.Point(111, 523);
+            this.pictureBox4.Location = new System.Drawing.Point(157, 523);
             this.pictureBox4.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox4.Name = "pictureBox4";
             this.pictureBox4.Size = new System.Drawing.Size(40, 35);
@@ -526,7 +462,7 @@
             // 
             this.pictureBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox3.Image = global::DBMS_NHOM_10.Properties.Resources.login;
-            this.pictureBox3.Location = new System.Drawing.Point(111, 425);
+            this.pictureBox3.Location = new System.Drawing.Point(157, 425);
             this.pictureBox3.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox3.Name = "pictureBox3";
             this.pictureBox3.Size = new System.Drawing.Size(40, 35);
@@ -538,7 +474,7 @@
             // 
             this.pictureBox2.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox2.Image = global::DBMS_NHOM_10.Properties.Resources.login;
-            this.pictureBox2.Location = new System.Drawing.Point(172, 154);
+            this.pictureBox2.Location = new System.Drawing.Point(218, 154);
             this.pictureBox2.Margin = new System.Windows.Forms.Padding(3, 4, 3, 4);
             this.pictureBox2.Name = "pictureBox2";
             this.pictureBox2.Size = new System.Drawing.Size(213, 202);
@@ -550,7 +486,7 @@
             // 
             this.pictureBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.pictureBox1.Image = ((System.Drawing.Image)(resources.GetObject("pictureBox1.Image")));
-            this.pictureBox1.Location = new System.Drawing.Point(21, 37);
+            this.pictureBox1.Location = new System.Drawing.Point(67, 37);
             this.pictureBox1.Margin = new System.Windows.Forms.Padding(4, 5, 4, 5);
             this.pictureBox1.Name = "pictureBox1";
             this.pictureBox1.Size = new System.Drawing.Size(503, 91);
@@ -558,9 +494,24 @@
             this.pictureBox1.TabIndex = 0;
             this.pictureBox1.TabStop = false;
             // 
+            // panelDesktopPane
+            // 
+            this.panelDesktopPane.BackgroundImage = global::DBMS_NHOM_10.Properties.Resources.bghome;
+            this.panelDesktopPane.BackgroundImageLayout = System.Windows.Forms.ImageLayout.Stretch;
+            this.panelDesktopPane.Controls.Add(this.panel_thongtin);
+            this.panelDesktopPane.Controls.Add(this.panel_login);
+            this.panelDesktopPane.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.panelDesktopPane.Location = new System.Drawing.Point(280, 124);
+            this.panelDesktopPane.Name = "panelDesktopPane";
+            this.panelDesktopPane.Size = new System.Drawing.Size(1538, 889);
+            this.panelDesktopPane.TabIndex = 2;
+            // 
             // panel_thongtin
             // 
             this.panel_thongtin.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel_thongtin.Controls.Add(this.btn_CaLam);
+            this.panel_thongtin.Controls.Add(this.btn_Luu);
+            this.panel_thongtin.Controls.Add(this.btn_logout);
             this.panel_thongtin.Controls.Add(this.ptb_AnhNV);
             this.panel_thongtin.Controls.Add(this.btn_DoiMK);
             this.panel_thongtin.Controls.Add(this.btn_Edit);
@@ -578,8 +529,19 @@
             this.panel_thongtin.Location = new System.Drawing.Point(0, 0);
             this.panel_thongtin.Name = "panel_thongtin";
             this.panel_thongtin.Size = new System.Drawing.Size(1538, 889);
-            this.panel_thongtin.TabIndex = 25;
+            this.panel_thongtin.TabIndex = 34;
             this.panel_thongtin.Visible = false;
+            // 
+            // btn_logout
+            // 
+            this.btn_logout.Anchor = System.Windows.Forms.AnchorStyles.None;
+            this.btn_logout.Location = new System.Drawing.Point(1308, 801);
+            this.btn_logout.Name = "btn_logout";
+            this.btn_logout.Size = new System.Drawing.Size(198, 52);
+            this.btn_logout.TabIndex = 31;
+            this.btn_logout.Text = "Đăng Xuất";
+            this.btn_logout.UseVisualStyleBackColor = true;
+            this.btn_logout.Click += new System.EventHandler(this.btn_logout_Click);
             // 
             // ptb_AnhNV
             // 
@@ -602,17 +564,19 @@
             this.btn_DoiMK.TabIndex = 30;
             this.btn_DoiMK.Text = "Đổi Mật Khẩu";
             this.btn_DoiMK.UseVisualStyleBackColor = true;
+            this.btn_DoiMK.Click += new System.EventHandler(this.btn_DoiMK_Click);
             // 
             // btn_Edit
             // 
             this.btn_Edit.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.btn_Edit.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_Edit.Location = new System.Drawing.Point(546, 322);
+            this.btn_Edit.Location = new System.Drawing.Point(474, 320);
             this.btn_Edit.Name = "btn_Edit";
             this.btn_Edit.Size = new System.Drawing.Size(281, 46);
             this.btn_Edit.TabIndex = 29;
             this.btn_Edit.Text = "Chỉnh Sửa Thông Tin";
             this.btn_Edit.UseVisualStyleBackColor = true;
+            this.btn_Edit.Click += new System.EventHandler(this.btn_Edit_Click);
             // 
             // btn_DiemDanh
             // 
@@ -622,14 +586,16 @@
             this.btn_DiemDanh.Name = "btn_DiemDanh";
             this.btn_DiemDanh.Size = new System.Drawing.Size(176, 46);
             this.btn_DiemDanh.TabIndex = 28;
-            this.btn_DiemDanh.Text = "Điểm Danh";
+            this.btn_DiemDanh.Text = "Chấm Công";
             this.btn_DiemDanh.UseVisualStyleBackColor = true;
+            this.btn_DiemDanh.Click += new System.EventHandler(this.btn_DiemDanh_Click);
             // 
             // panel4
             // 
             this.panel4.Anchor = ((System.Windows.Forms.AnchorStyles)(((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Left) 
             | System.Windows.Forms.AnchorStyles.Right)));
             this.panel4.BackColor = System.Drawing.SystemColors.ControlLightLight;
+            this.panel4.Controls.Add(this.dataGridView_CaNV);
             this.panel4.Location = new System.Drawing.Point(32, 422);
             this.panel4.Name = "panel4";
             this.panel4.Size = new System.Drawing.Size(1474, 359);
@@ -699,11 +665,76 @@
             // 
             this.txb_idNV.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.txb_idNV.Font = new System.Drawing.Font("Times New Roman", 14F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.txb_idNV.Location = new System.Drawing.Point(474, 41);
+            this.txb_idNV.Location = new System.Drawing.Point(474, 42);
             this.txb_idNV.Name = "txb_idNV";
             this.txb_idNV.ReadOnly = true;
             this.txb_idNV.Size = new System.Drawing.Size(397, 40);
             this.txb_idNV.TabIndex = 20;
+            // 
+            // btn_Luu
+            // 
+            this.btn_Luu.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_Luu.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_Luu.Location = new System.Drawing.Point(785, 320);
+            this.btn_Luu.Name = "btn_Luu";
+            this.btn_Luu.Size = new System.Drawing.Size(86, 46);
+            this.btn_Luu.TabIndex = 32;
+            this.btn_Luu.Text = "Lưu";
+            this.btn_Luu.UseVisualStyleBackColor = true;
+            this.btn_Luu.Visible = false;
+            this.btn_Luu.Click += new System.EventHandler(this.btn_Luu_Click);
+            // 
+            // btn_CaLam
+            // 
+            this.btn_CaLam.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_CaLam.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_CaLam.Location = new System.Drawing.Point(41, 373);
+            this.btn_CaLam.Name = "btn_CaLam";
+            this.btn_CaLam.Size = new System.Drawing.Size(347, 43);
+            this.btn_CaLam.TabIndex = 33;
+            this.btn_CaLam.Text = "Hiển Thị Ca Làm Việc";
+            this.btn_CaLam.UseVisualStyleBackColor = true;
+            this.btn_CaLam.Click += new System.EventHandler(this.btn_CaLam_Click);
+            // 
+            // dataGridView_CaNV
+            // 
+            this.dataGridView_CaNV.AllowUserToAddRows = false;
+            this.dataGridView_CaNV.AllowUserToDeleteRows = false;
+            this.dataGridView_CaNV.AllowUserToResizeColumns = false;
+            this.dataGridView_CaNV.AllowUserToResizeRows = false;
+            dataGridViewCellStyle4.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            this.dataGridView_CaNV.AlternatingRowsDefaultCellStyle = dataGridViewCellStyle4;
+            this.dataGridView_CaNV.AutoSizeColumnsMode = System.Windows.Forms.DataGridViewAutoSizeColumnsMode.Fill;
+            this.dataGridView_CaNV.AutoSizeRowsMode = System.Windows.Forms.DataGridViewAutoSizeRowsMode.AllCells;
+            this.dataGridView_CaNV.BackgroundColor = System.Drawing.SystemColors.ButtonHighlight;
+            this.dataGridView_CaNV.ClipboardCopyMode = System.Windows.Forms.DataGridViewClipboardCopyMode.EnableAlwaysIncludeHeaderText;
+            dataGridViewCellStyle5.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle5.BackColor = System.Drawing.SystemColors.Control;
+            dataGridViewCellStyle5.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle5.ForeColor = System.Drawing.SystemColors.WindowText;
+            dataGridViewCellStyle5.SelectionBackColor = System.Drawing.SystemColors.Highlight;
+            dataGridViewCellStyle5.SelectionForeColor = System.Drawing.SystemColors.HighlightText;
+            dataGridViewCellStyle5.WrapMode = System.Windows.Forms.DataGridViewTriState.True;
+            this.dataGridView_CaNV.ColumnHeadersDefaultCellStyle = dataGridViewCellStyle5;
+            this.dataGridView_CaNV.ColumnHeadersHeightSizeMode = System.Windows.Forms.DataGridViewColumnHeadersHeightSizeMode.AutoSize;
+            dataGridViewCellStyle6.Alignment = System.Windows.Forms.DataGridViewContentAlignment.MiddleCenter;
+            dataGridViewCellStyle6.BackColor = System.Drawing.SystemColors.Window;
+            dataGridViewCellStyle6.Font = new System.Drawing.Font("Microsoft Sans Serif", 10F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            dataGridViewCellStyle6.ForeColor = System.Drawing.SystemColors.ControlText;
+            dataGridViewCellStyle6.SelectionBackColor = System.Drawing.SystemColors.InactiveCaption;
+            dataGridViewCellStyle6.SelectionForeColor = System.Drawing.Color.Black;
+            dataGridViewCellStyle6.WrapMode = System.Windows.Forms.DataGridViewTriState.False;
+            this.dataGridView_CaNV.DefaultCellStyle = dataGridViewCellStyle6;
+            this.dataGridView_CaNV.Dock = System.Windows.Forms.DockStyle.Fill;
+            this.dataGridView_CaNV.Location = new System.Drawing.Point(0, 0);
+            this.dataGridView_CaNV.Name = "dataGridView_CaNV";
+            this.dataGridView_CaNV.ReadOnly = true;
+            this.dataGridView_CaNV.RowHeadersVisible = false;
+            this.dataGridView_CaNV.RowHeadersWidth = 62;
+            this.dataGridView_CaNV.RowTemplate.Height = 28;
+            this.dataGridView_CaNV.SelectionMode = System.Windows.Forms.DataGridViewSelectionMode.FullRowSelect;
+            this.dataGridView_CaNV.Size = new System.Drawing.Size(1474, 359);
+            this.dataGridView_CaNV.TabIndex = 13;
             // 
             // FormMainMenu
             // 
@@ -723,17 +754,18 @@
             this.panelLogo.ResumeLayout(false);
             this.panelLogo.PerformLayout();
             this.panelTitleBar.ResumeLayout(false);
-            this.panelDesktopPane.ResumeLayout(false);
-            this.panel1.ResumeLayout(false);
             this.panel_login.ResumeLayout(false);
             this.panel_login.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox4)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox3)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox2)).EndInit();
             ((System.ComponentModel.ISupportInitialize)(this.pictureBox1)).EndInit();
+            this.panelDesktopPane.ResumeLayout(false);
             this.panel_thongtin.ResumeLayout(false);
             this.panel_thongtin.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.ptb_AnhNV)).EndInit();
+            this.panel4.ResumeLayout(false);
+            ((System.ComponentModel.ISupportInitialize)(this.dataGridView_CaNV)).EndInit();
             this.ResumeLayout(false);
 
         }
@@ -750,7 +782,6 @@
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Panel panelTitleBar;
         private System.Windows.Forms.Label lblTitle;
-        private System.Windows.Forms.Panel panelDesktopPane;
         private System.Windows.Forms.Button btnCloseChildForm;
         private System.Windows.Forms.Button btnClose;
         private System.Windows.Forms.Button bntMinimize;
@@ -758,21 +789,18 @@
         private System.Windows.Forms.Button btnSalary;
         private System.Windows.Forms.Button btn_Mini;
         private System.Windows.Forms.Button btn_Close;
-        private System.Windows.Forms.Panel panel1;
-        private System.Windows.Forms.Panel panel_mm;
         private System.Windows.Forms.Panel panel_login;
+        private System.Windows.Forms.TextBox txb_password;
+        private System.Windows.Forms.TextBox txb_username;
         private System.Windows.Forms.Button btn_login;
         private System.Windows.Forms.PictureBox pictureBox4;
         private System.Windows.Forms.PictureBox pictureBox3;
         private System.Windows.Forms.PictureBox pictureBox2;
         private System.Windows.Forms.PictureBox pictureBox1;
-        private System.Windows.Forms.TextBox txb_password;
-        private System.Windows.Forms.TextBox txb_username;
-        private System.Windows.Forms.Panel panel2;
-        private System.Windows.Forms.Panel panel5;
-        private System.Windows.Forms.Panel panel3;
-        private System.Windows.Forms.Panel panel6;
+        private System.Windows.Forms.Panel panelDesktopPane;
         private System.Windows.Forms.Panel panel_thongtin;
+        private System.Windows.Forms.Button btn_logout;
+        private System.Windows.Forms.PictureBox ptb_AnhNV;
         private System.Windows.Forms.Button btn_DoiMK;
         private System.Windows.Forms.Button btn_Edit;
         private System.Windows.Forms.Button btn_DiemDanh;
@@ -784,7 +812,9 @@
         private System.Windows.Forms.TextBox txb_TenCV;
         private System.Windows.Forms.TextBox txb_nameNV;
         private System.Windows.Forms.TextBox txb_idNV;
-        private System.Windows.Forms.PictureBox ptb_AnhNV;
+        private System.Windows.Forms.Button btn_Luu;
+        private System.Windows.Forms.Button btn_CaLam;
+        private System.Windows.Forms.DataGridView dataGridView_CaNV;
     }
 }
 

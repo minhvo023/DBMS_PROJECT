@@ -112,18 +112,25 @@ namespace DBMS_NHOM_10.Forms
 
         public void danhsach_khachhang()
         {
-            string query = "SELECT * FROM v_khachhang";
+            try
+            {
+                string query = "SELECT * FROM v_khachhang";
 
-            SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            dataGridView_Customer.DataSource = table;
-            DBConnection.close();
+                SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                dataGridView_Customer.DataSource = table;
 
-            dataGridView_Customer.Columns[0].HeaderText = "ID";
-            dataGridView_Customer.Columns[1].HeaderText = "Họ và Tên";
-            dataGridView_Customer.Columns[2].HeaderText = "Số Điện Thoại";
-            dataGridView_Customer.Columns[3].HeaderText = "Địa Chỉ";
+                dataGridView_Customer.Columns[0].HeaderText = "ID";
+                dataGridView_Customer.Columns[1].HeaderText = "Họ và Tên";
+                dataGridView_Customer.Columns[2].HeaderText = "Số Điện Thoại";
+                dataGridView_Customer.Columns[3].HeaderText = "Địa Chỉ";
+            }
+            catch (Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { DBConnection.close(); }
         }
         private void btnSearch_sđt_Click(object sender, EventArgs e)
         {

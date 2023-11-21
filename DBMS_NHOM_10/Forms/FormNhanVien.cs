@@ -18,12 +18,10 @@ namespace DBMS_NHOM_10.Forms
         public FormNhanVien()
         {
             InitializeComponent();
-        }
-
-        private void FormEmployee_Load(object sender, EventArgs e)
-        {
             danhsach_nhanvien();
             AddContextMenu();
+
+
         }
 
         public void NhanVien_Xoa() // XÓA NHÂN VIÊN
@@ -52,7 +50,7 @@ namespace DBMS_NHOM_10.Forms
         }
 
 
-        public void NhanVien_ThongTinChiTiet(string value)
+        public bool NhanVien_ThongTinChiTiet(string value)
         {
             try
             {
@@ -73,10 +71,13 @@ namespace DBMS_NHOM_10.Forms
 
                 dataGridView_ttnv.DataSource = nhanVienTable;
                 dataGridView_ttcv.DataSource = congviecTable;
+
+                return true; // Success
             }
             catch (SqlException ex)
             {
                 MessageBox.Show(ex.Message, "Thông Báo!", MessageBoxButtons.OK, MessageBoxIcon.Information);
+                return false; // Failure
             }
             finally
             {
@@ -88,19 +89,26 @@ namespace DBMS_NHOM_10.Forms
         public void danhsach_nhanvien()
         {
             string query = "SELECT * FROM v_nhanvien";
+            try
+            {
+                SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
+                DataTable table = new DataTable();
+                dap.Fill(table);
 
-            SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            dataGridView_Employee.DataSource = table;
-            DBConnection.close();
+                dataGridView_Employee.DataSource = table;
 
-            dataGridView_Employee.Columns[0].HeaderText = "ID";
-            dataGridView_Employee.Columns[1].HeaderText = "Họ và Tên";
-            dataGridView_Employee.Columns[2].HeaderText = "Số Điện Thoại";
-            dataGridView_Employee.Columns[3].HeaderText = "Vị Trí";
-            dataGridView_Employee.Columns[4].HeaderText = "Trạng Thái";
-
+                dataGridView_Employee.Columns[0].HeaderText = "ID";
+                dataGridView_Employee.Columns[1].HeaderText = "Họ và Tên";
+                dataGridView_Employee.Columns[2].HeaderText = "Số Điện Thoại";
+                dataGridView_Employee.Columns[3].HeaderText = "Vị Trí";
+                dataGridView_Employee.Columns[4].HeaderText = "Trạng Thái";
+            }
+            catch(SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+                this.Hide();
+            }
+            finally { DBConnection.close(); }
 
         }
 
@@ -166,19 +174,20 @@ namespace DBMS_NHOM_10.Forms
         private void toolStripItem1_Click(object sender, EventArgs args)
         {
             string value = dataGridView_Employee.Rows[mouseLocation.RowIndex].Cells["idNV"].Value.ToString();
-            btn_ttct.Text = "ID Nhân Viên [ " + value + " ]";
-            NhanVien_ThongTinChiTiet(value);
+            btn_ttct.Text = "ID Nhân Viên [ " + value.Trim() + " ]";
+            if(NhanVien_ThongTinChiTiet(value) is true)
+            {
+                dataGridView_ttnv.Columns["Ho_Ten"].HeaderText = "Họ và Tên";
+                dataGridView_ttnv.Columns["NgaySinh"].HeaderText = "ngày Sinh";
+                dataGridView_ttnv.Columns["GioiTinh"].HeaderText = "Giới Tính";
+                dataGridView_ttnv.Columns["soDT_NV"].HeaderText = "SĐT";
+                dataGridView_ttnv.Columns["DiaChi"].HeaderText = "Địa Chỉ";
+                dataGridView_ttnv.Columns["TrangThai"].HeaderText = "Trạng Thái";
 
-            dataGridView_ttnv.Columns["Ho_Ten"].HeaderText = "Họ và Tên";
-            dataGridView_ttnv.Columns["NgaySinh"].HeaderText = "ngày Sinh";
-            dataGridView_ttnv.Columns["GioiTinh"].HeaderText = "Giới Tính";
-            dataGridView_ttnv.Columns["soDT_NV"].HeaderText = "SĐT";
-            dataGridView_ttnv.Columns["DiaChi"].HeaderText = "Địa Chỉ";
-            dataGridView_ttnv.Columns["TrangThai"].HeaderText = "Trạng Thái";
-
-            dataGridView_ttcv.Columns["idCV"].HeaderText = "ID";
-            dataGridView_ttcv.Columns["TenCV"].HeaderText = "Vị Trí";
-
+                dataGridView_ttcv.Columns["idCV"].HeaderText = "ID";
+                dataGridView_ttcv.Columns["TenCV"].HeaderText = "Vị Trí";
+            }
+            
         }
 
         private void dataGridView_CellMouseEnter(object sender, DataGridViewCellEventArgs location)
@@ -223,18 +232,24 @@ namespace DBMS_NHOM_10.Forms
         public static void load_refresh(DataGridView dgv)
         {
             string query = "SELECT * FROM v_nhanvien";
-
-            SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            dgv.DataSource = table;
-            DBConnection.close();
+            try
+            {
+                SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                dgv.DataSource = table;
+            }
+            catch (SqlException ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { DBConnection.close(); }
         }
 
-        private void button1_Click(object sender, EventArgs e)
+        private void btn_reset_Click(object sender, EventArgs e)
         {
             load_refresh(dataGridView_Employee);
-            btn_ttct.Text = "ID Nhân Viên:";
+            btn_ttct.Text = "ID Nhân Viên []";
             txb_TimKiem_sdt.Text = "";
             dataGridView_ttcv.DataSource = null;
             dataGridView_ttnv.DataSource = null;

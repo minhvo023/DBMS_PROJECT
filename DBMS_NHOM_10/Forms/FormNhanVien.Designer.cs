@@ -37,7 +37,7 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle7 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle8 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.button1 = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.label1 = new System.Windows.Forms.Label();
             this.dataGridView_ttcv = new System.Windows.Forms.DataGridView();
             this.btn_ttct = new System.Windows.Forms.Button();
@@ -58,7 +58,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.MediumTurquoise;
-            this.panel6.Controls.Add(this.button1);
+            this.panel6.Controls.Add(this.btn_reset);
             this.panel6.Controls.Add(this.label1);
             this.panel6.Controls.Add(this.dataGridView_ttcv);
             this.panel6.Controls.Add(this.btn_ttct);
@@ -72,19 +72,19 @@
             this.panel6.Size = new System.Drawing.Size(1274, 341);
             this.panel6.TabIndex = 20;
             // 
-            // button1
+            // btn_reset
             // 
-            this.button1.FlatAppearance.BorderSize = 0;
-            this.button1.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
-            this.button1.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.button1.ForeColor = System.Drawing.Color.White;
-            this.button1.Image = global::DBMS_NHOM_10.Properties.Resources.Loading;
-            this.button1.Location = new System.Drawing.Point(6, 6);
-            this.button1.Name = "button1";
-            this.button1.Size = new System.Drawing.Size(52, 49);
-            this.button1.TabIndex = 26;
-            this.button1.UseVisualStyleBackColor = true;
-            this.button1.Click += new System.EventHandler(this.button1_Click);
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Image = global::DBMS_NHOM_10.Properties.Resources.Loading;
+            this.btn_reset.Location = new System.Drawing.Point(6, 6);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(52, 49);
+            this.btn_reset.TabIndex = 26;
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
             // 
             // label1
             // 
@@ -301,7 +301,6 @@
             this.Controls.Add(this.panel2);
             this.Name = "FormNhanVien";
             this.Text = "Danh Sách Nhân Viên";
-            this.Load += new System.EventHandler(this.FormEmployee_Load);
             this.panel6.ResumeLayout(false);
             this.panel6.PerformLayout();
             ((System.ComponentModel.ISupportInitialize)(this.dataGridView_ttcv)).EndInit();
@@ -325,6 +324,6 @@
         private System.Windows.Forms.Panel panel2;
         private System.Windows.Forms.DataGridView dataGridView_ttcv;
         private System.Windows.Forms.Label label1;
-        private System.Windows.Forms.Button button1;
+        private System.Windows.Forms.Button btn_reset;
     }
 }

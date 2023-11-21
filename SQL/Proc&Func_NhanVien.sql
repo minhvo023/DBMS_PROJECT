@@ -99,6 +99,102 @@ BEGIN
 END;
 GO
 
+CREATE OR ALTER PROCEDURE proc_NhanVien_DangNhap
+(
+	@username nchar(10),
+	@password nchar(15)
+)
+AS
+BEGIN
+	IF (@username = '' OR @password = '')
+	BEGIN
+		RAISERROR('Vui lòng nhập thông tin đăng nhập', 16,1)
+	END
+	ELSE
+	BEGIN
+		IF EXISTS ( SELECT 1 FROM NhanVien join CongViec ON NhanVien.idCV = CongViec.idCV WHERE idNV = @username AND TenCV = N'Quản Lý' AND MatKhau = @password)
+		BEGIN
+			RETURN 0;
+		END
+		ELSE IF EXISTS ( SELECT 1 FROM NhanVien join CongViec ON NhanVien.idCV = CongViec.idCV WHERE idNV = @username AND TenCV <> N'Quản Lý' AND MatKhau = @password)
+		BEGIN
+			RETURN 1;
+		END
+		ELSE
+		BEGIN
+			RAISERROR ('Mật Khẩu không chính xác',16,1)
+		END
+	END
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE proc_NhanVien_DoiMK
+(
+	@idNV NVARCHAR(255),
+	@mkCu NVARCHAR(255),
+	@mkMoi NVARCHAR(255)
+)
+AS
+BEGIN
+	-- Kiểm tra xem mật khẩu cũ có đúng không
+	IF EXISTS (SELECT 1 FROM NhanVien WHERE idNV = @idNV AND MatKhau = @mkCu)
+	BEGIN
+		-- Nếu đúng, cập nhật mật khẩu mới
+		UPDATE NhanVien
+		SET MatKhau = @mkMoi
+		WHERE idNV = @idNV;
+	END
+	ELSE
+	BEGIN
+		-- Nếu mật khẩu cũ không đúng, thông báo lỗi
+		RAISERROR('Mật khẩu cũ không đúng.', 16,1);
+	END
+END
+GO
+
+
+CREATE OR ALTER PROCEDURE proc_NhanVien_ChinhSuaThongTinCaNha
+(
+	 @idNV nchar(10),
+    @Ho_Ten nvarchar(255),
+    @DiaChi nvarchar(255),
+    @soDT_NV nvarchar(20),
+    @NgaySinh nvarchar(255),
+    @GioiTinh nvarchar(255)
+)
+AS
+BEGIN
+	UPDATE NhanVien
+    SET
+        Ho_Ten = @Ho_Ten,
+        DiaChi = @DiaChi,
+        soDT_NV = @soDT_NV,
+        NgaySinh = @NgaySinh,
+        GioiTinh = @GioiTinh
+    WHERE idNV = @idNV;
+END
+GO
+
+CREATE OR ALTER PROCEDURE proc_NhanVien_CaLam
+(
+	@idNV nchar(10)
+)
+AS
+BEGIN
+	DECLARE @ngay DATETIME;
+    SET @ngay = CONVERT(DATE, GETDATE());
+	IF EXISTS (SELECT * FROM BangPhanCa WHERE NgayLam > @ngay)
+	BEGIN
+		SELECT * FROM v_phancong
+		WHERE idNV = @idNV AND NgayLam > @ngay;
+	END
+	ELSE
+	BEGIN
+		RAISERROR ('Bạn không có ca làm việc tương lai!',16,1)
+	END
+END
+GO
 
 CREATE OR ALTER FUNCTION func_NhanVien_idMAX()
 RETURNS NCHAR(10)
@@ -109,3 +205,4 @@ BEGIN
 	RETURN @maxId
 END
 GO
+

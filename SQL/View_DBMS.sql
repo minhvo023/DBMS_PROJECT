@@ -29,4 +29,3 @@ AS
 SELECT BangPhanCa.NgayLam ,NhanVien.idNV, NhanVien.Ho_Ten ,BangPhanCa.idCa,  BangPhanCa.TrangThai
 FROM BangPhanCa join NhanVien ON BangPhanCa.idNV = NhanVien.idNV join CongViec ON NhanVien.idCV = CongViec.idCV join CaLamViec on BangPhanCa.idCa = CaLamViec.idCa
 go
-

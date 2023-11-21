@@ -112,37 +112,41 @@ namespace DBMS_NHOM_10.Forms
 
         public void danhsach_hoadon()
         {
-            string query = "SELECT * FROM v_hoadon";
+            try
+            {
+                string query = "SELECT * FROM v_hoadon";
 
-            SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
-            DataTable table = new DataTable();
-            dap.Fill(table);
-            dataGridView_Order.DataSource = table;
-            DBConnection.close();
+                SqlDataAdapter dap = new SqlDataAdapter(query, DBConnection.open());
+                DataTable table = new DataTable();
+                dap.Fill(table);
+                dataGridView_Order.DataSource = table;
 
-            dataGridView_Order.Columns[0].HeaderText = "ID Hóa Đơn";
-            dataGridView_Order.Columns[1].HeaderText = "ID Nhân Viên";
-            dataGridView_Order.Columns[2].HeaderText = "ID Khách Hàng";
-            dataGridView_Order.Columns[3].HeaderText = "Ngày Tạo";
-            dataGridView_Order.Columns[4].HeaderText = "Trị Giá";
-            dataGridView_Order.Columns[5].HeaderText = "Tình Trạng";
+                dataGridView_Order.Columns[0].HeaderText = "ID Hóa Đơn";
+                dataGridView_Order.Columns[1].HeaderText = "ID Nhân Viên";
+                dataGridView_Order.Columns[2].HeaderText = "ID Khách Hàng";
+                dataGridView_Order.Columns[3].HeaderText = "Ngày Tạo";
+                dataGridView_Order.Columns[4].HeaderText = "Trị Giá";
+                dataGridView_Order.Columns[5].HeaderText = "Tình Trạng";
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+            }
+            finally { DBConnection.close(); }
 
         }
 
         ToolStripMenuItem toolStripItem1 = new ToolStripMenuItem();
         ToolStripMenuItem toolStripItem2 = new ToolStripMenuItem();
 
-        ToolStripMenuItem toolStripItem3 = new ToolStripMenuItem();
-
 
         private void AddContextMenu()
         {
             toolStripItem1.Text = "Chi Tiết Hóa Đơn";
             toolStripItem1.Click += new EventHandler(toolStripItem1_Click);
-            toolStripItem2.Text = "Xóa Hóa Đơn - NV";
+            toolStripItem2.Text = "Xóa Hóa Đơn";
             toolStripItem2.Click += new EventHandler(toolStripItem2_Click);
-            toolStripItem3.Text = "Xóa Hóa Đơn - QL";
-            toolStripItem3.Click += new EventHandler(toolStripItem3_Click);
+
             ContextMenuStrip strip = new ContextMenuStrip();
 
             foreach (DataGridViewColumn column in dataGridView_Order.Columns)
@@ -151,7 +155,6 @@ namespace DBMS_NHOM_10.Forms
                 column.ContextMenuStrip = strip;
                 column.ContextMenuStrip.Items.Add(toolStripItem1);
                 column.ContextMenuStrip.Items.Add(toolStripItem2);
-                column.ContextMenuStrip.Items.Add(toolStripItem3);
             }
         }
 
@@ -188,24 +191,38 @@ namespace DBMS_NHOM_10.Forms
         public string HoaDon_TongSL(string value)
         {
             string sum="";
-            string str = "SELECT dbo.func_HoaDon_TongSL('" + value +"')";
-            SqlCommand cmd = new SqlCommand(str, DBConnection.open());
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-                sum = reader.GetValue(0).ToString();
-            reader.Close();
-            return sum;
+            try
+            {
+                string str = "SELECT dbo.func_HoaDon_TongSL('" + value + "')";
+                SqlCommand cmd = new SqlCommand(str, DBConnection.open());
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                    sum = reader.GetValue(0).ToString();
+                reader.Close();
+                return sum;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return sum;
+            }
+            finally
+            {
+                DBConnection.close();
+            }
         }
         private void toolStripItem2_Click(object sender, EventArgs args)
         {
-            HoaDon_Xoa(0);
-            load_refresh();
-
-        }
-        private void toolStripItem3_Click(object sender, EventArgs args)
-        {
-            HoaDon_Xoa(1);
-            load_refresh();
+            if ("Quản Lý" == Functions.GetFieldValues("SELECT TenCV FROM CongViec join NhanVien ON NhanVien.idCV = CongViec.idCV WHERE idNV ='" + DBConnection.pq + "'"))
+            {
+                HoaDon_Xoa(1);
+                load_refresh();
+            }
+            else
+            {
+                HoaDon_Xoa(0);
+                load_refresh();
+            }
 
         }
 
@@ -250,5 +267,6 @@ namespace DBMS_NHOM_10.Forms
             load_refresh();
 
         }
+
     }
 }

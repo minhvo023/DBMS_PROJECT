@@ -36,21 +36,6 @@ END;
 GO
 
 
-CREATE OR ALTER PROCEDURE proc_PhanCa_DiemDanh
-(
-	
-)
-AS
-BEGIN
-    DECLARE @NgayLam DATE;
-    SET @NgayLam = GETDATE();
-
-    UPDATE BangPhanCa
-    SET TrangThai = N'Done'
-    WHERE BangPhanCa.NgayLam = @NgayLam;
-END;
-GO
-
 
 CREATE OR ALTER FUNCTION func_PhanCa_TK_Date_Ca
 (

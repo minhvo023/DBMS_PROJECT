@@ -20,3 +20,4 @@ C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormPhanCa.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormEditHoaDon.resources
 C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms.FormTaiChinh.resources
+C:\Users\DELL\Desktop\DBMS\DBMS_Nhom10\DBMS_PROJECT\DBMS_NHOM_10\obj\Debug\DBMS_NHOM_10.Forms_branch.FormDoiMK.resources

@@ -31,9 +31,10 @@
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle1 = new System.Windows.Forms.DataGridViewCellStyle();
             System.Windows.Forms.DataGridViewCellStyle dataGridViewCellStyle2 = new System.Windows.Forms.DataGridViewCellStyle();
             this.panel6 = new System.Windows.Forms.Panel();
-            this.btn_KQ_DN = new System.Windows.Forms.Button();
+            this.btn_reset = new System.Windows.Forms.Button();
             this.btn_KQ_HD = new System.Windows.Forms.Button();
             this.groupBox3 = new System.Windows.Forms.GroupBox();
+            this.btn_KQ_DN = new System.Windows.Forms.Button();
             this.cbb_ThangDN = new System.Windows.Forms.ComboBox();
             this.btn_DN = new System.Windows.Forms.Button();
             this.label5 = new System.Windows.Forms.Label();
@@ -43,13 +44,13 @@
             this.btn_HD = new System.Windows.Forms.Button();
             this.label3 = new System.Windows.Forms.Label();
             this.button4 = new System.Windows.Forms.Button();
-            this.btn_KQ_NV = new System.Windows.Forms.Button();
             this.groupBox1 = new System.Windows.Forms.GroupBox();
             this.cbb_ThangNV = new System.Windows.Forms.ComboBox();
             this.cbb_idNV = new System.Windows.Forms.ComboBox();
             this.btn_NV = new System.Windows.Forms.Button();
             this.label2 = new System.Windows.Forms.Label();
             this.label1 = new System.Windows.Forms.Label();
+            this.btn_KQ_NV = new System.Windows.Forms.Button();
             this.dataGridView_show = new System.Windows.Forms.DataGridView();
             this.panel5 = new System.Windows.Forms.Panel();
             this.panel3 = new System.Windows.Forms.Panel();
@@ -65,6 +66,7 @@
             // panel6
             // 
             this.panel6.BackColor = System.Drawing.Color.MediumTurquoise;
+            this.panel6.Controls.Add(this.btn_reset);
             this.panel6.Controls.Add(this.btn_KQ_HD);
             this.panel6.Controls.Add(this.groupBox3);
             this.panel6.Controls.Add(this.button7);
@@ -78,6 +80,45 @@
             this.panel6.Size = new System.Drawing.Size(1274, 231);
             this.panel6.TabIndex = 26;
             // 
+            // btn_reset
+            // 
+            this.btn_reset.FlatAppearance.BorderSize = 0;
+            this.btn_reset.FlatStyle = System.Windows.Forms.FlatStyle.Flat;
+            this.btn_reset.Font = new System.Drawing.Font("Microsoft Sans Serif", 15F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_reset.ForeColor = System.Drawing.Color.White;
+            this.btn_reset.Image = global::DBMS_NHOM_10.Properties.Resources.Loading;
+            this.btn_reset.Location = new System.Drawing.Point(3, 3);
+            this.btn_reset.Name = "btn_reset";
+            this.btn_reset.Size = new System.Drawing.Size(52, 49);
+            this.btn_reset.TabIndex = 32;
+            this.btn_reset.UseVisualStyleBackColor = true;
+            this.btn_reset.Click += new System.EventHandler(this.btn_reset_Click);
+            // 
+            // btn_KQ_HD
+            // 
+            this.btn_KQ_HD.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.btn_KQ_HD.Enabled = false;
+            this.btn_KQ_HD.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KQ_HD.Location = new System.Drawing.Point(470, 231);
+            this.btn_KQ_HD.Name = "btn_KQ_HD";
+            this.btn_KQ_HD.Size = new System.Drawing.Size(345, 138);
+            this.btn_KQ_HD.TabIndex = 31;
+            this.btn_KQ_HD.UseVisualStyleBackColor = true;
+            // 
+            // groupBox3
+            // 
+            this.groupBox3.Anchor = System.Windows.Forms.AnchorStyles.Top;
+            this.groupBox3.Controls.Add(this.btn_KQ_DN);
+            this.groupBox3.Controls.Add(this.cbb_ThangDN);
+            this.groupBox3.Controls.Add(this.btn_DN);
+            this.groupBox3.Controls.Add(this.label5);
+            this.groupBox3.Location = new System.Drawing.Point(863, 25);
+            this.groupBox3.Name = "groupBox3";
+            this.groupBox3.Size = new System.Drawing.Size(352, 369);
+            this.groupBox3.TabIndex = 31;
+            this.groupBox3.TabStop = false;
+            this.groupBox3.Text = "Tổng Đơn Nhập";
+            // 
             // btn_KQ_DN
             // 
             this.btn_KQ_DN.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
@@ -88,31 +129,6 @@
             this.btn_KQ_DN.Size = new System.Drawing.Size(345, 138);
             this.btn_KQ_DN.TabIndex = 32;
             this.btn_KQ_DN.UseVisualStyleBackColor = true;
-            // 
-            // btn_KQ_HD
-            // 
-            this.btn_KQ_HD.Anchor = System.Windows.Forms.AnchorStyles.Top;
-            this.btn_KQ_HD.Enabled = false;
-            this.btn_KQ_HD.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KQ_HD.Location = new System.Drawing.Point(466, 231);
-            this.btn_KQ_HD.Name = "btn_KQ_HD";
-            this.btn_KQ_HD.Size = new System.Drawing.Size(345, 138);
-            this.btn_KQ_HD.TabIndex = 31;
-            this.btn_KQ_HD.UseVisualStyleBackColor = true;
-            // 
-            // groupBox3
-            // 
-            this.groupBox3.Anchor = ((System.Windows.Forms.AnchorStyles)((System.Windows.Forms.AnchorStyles.Top | System.Windows.Forms.AnchorStyles.Right)));
-            this.groupBox3.Controls.Add(this.btn_KQ_DN);
-            this.groupBox3.Controls.Add(this.cbb_ThangDN);
-            this.groupBox3.Controls.Add(this.btn_DN);
-            this.groupBox3.Controls.Add(this.label5);
-            this.groupBox3.Location = new System.Drawing.Point(894, 25);
-            this.groupBox3.Name = "groupBox3";
-            this.groupBox3.Size = new System.Drawing.Size(352, 369);
-            this.groupBox3.TabIndex = 31;
-            this.groupBox3.TabStop = false;
-            this.groupBox3.Text = "Tổng Đơn Nhập";
             // 
             // cbb_ThangDN
             // 
@@ -169,7 +185,7 @@
             this.groupBox2.Controls.Add(this.cbb_ThangHD);
             this.groupBox2.Controls.Add(this.btn_HD);
             this.groupBox2.Controls.Add(this.label3);
-            this.groupBox2.Location = new System.Drawing.Point(462, 25);
+            this.groupBox2.Location = new System.Drawing.Point(466, 25);
             this.groupBox2.Name = "groupBox2";
             this.groupBox2.Size = new System.Drawing.Size(354, 369);
             this.groupBox2.TabIndex = 30;
@@ -225,26 +241,16 @@
             this.button4.Text = "Điểm Danh";
             this.button4.UseVisualStyleBackColor = true;
             // 
-            // btn_KQ_NV
-            // 
-            this.btn_KQ_NV.Enabled = false;
-            this.btn_KQ_NV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
-            this.btn_KQ_NV.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
-            this.btn_KQ_NV.Location = new System.Drawing.Point(5, 221);
-            this.btn_KQ_NV.Name = "btn_KQ_NV";
-            this.btn_KQ_NV.Size = new System.Drawing.Size(345, 109);
-            this.btn_KQ_NV.TabIndex = 28;
-            this.btn_KQ_NV.UseVisualStyleBackColor = true;
-            // 
             // groupBox1
             // 
+            this.groupBox1.Anchor = System.Windows.Forms.AnchorStyles.Top;
             this.groupBox1.Controls.Add(this.cbb_ThangNV);
             this.groupBox1.Controls.Add(this.cbb_idNV);
             this.groupBox1.Controls.Add(this.btn_NV);
             this.groupBox1.Controls.Add(this.label2);
             this.groupBox1.Controls.Add(this.label1);
             this.groupBox1.Controls.Add(this.btn_KQ_NV);
-            this.groupBox1.Location = new System.Drawing.Point(40, 25);
+            this.groupBox1.Location = new System.Drawing.Point(73, 25);
             this.groupBox1.Name = "groupBox1";
             this.groupBox1.Size = new System.Drawing.Size(355, 369);
             this.groupBox1.TabIndex = 27;
@@ -308,6 +314,17 @@
             this.label1.Size = new System.Drawing.Size(31, 25);
             this.label1.TabIndex = 25;
             this.label1.Text = "ID";
+            // 
+            // btn_KQ_NV
+            // 
+            this.btn_KQ_NV.Enabled = false;
+            this.btn_KQ_NV.Font = new System.Drawing.Font("Times New Roman", 12F, System.Drawing.FontStyle.Bold, System.Drawing.GraphicsUnit.Point, ((byte)(0)));
+            this.btn_KQ_NV.ForeColor = System.Drawing.SystemColors.ActiveCaptionText;
+            this.btn_KQ_NV.Location = new System.Drawing.Point(5, 221);
+            this.btn_KQ_NV.Name = "btn_KQ_NV";
+            this.btn_KQ_NV.Size = new System.Drawing.Size(345, 109);
+            this.btn_KQ_NV.TabIndex = 28;
+            this.btn_KQ_NV.UseVisualStyleBackColor = true;
             // 
             // dataGridView_show
             // 
@@ -434,5 +451,6 @@
         private System.Windows.Forms.Button btn_NV;
         private System.Windows.Forms.Label label2;
         private System.Windows.Forms.Label label1;
+        private System.Windows.Forms.Button btn_reset;
     }
 }

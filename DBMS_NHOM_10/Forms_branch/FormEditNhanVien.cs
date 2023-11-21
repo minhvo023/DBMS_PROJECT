@@ -84,13 +84,25 @@ namespace DBMS_NHOM_10.Forms_branch
         public string NhanVien_idMAX()
         {
             string k = "";
-            string str = "SELECT dbo.func_NhanVien_idMAX()";
-            SqlCommand cmd = new SqlCommand(str, DBConnection.open());
-            SqlDataReader reader = cmd.ExecuteReader();
-            while (reader.Read())
-                k = reader.GetValue(0).ToString();
-            reader.Close();
-            return k;
+            try
+            {
+                string str = "SELECT dbo.func_NhanVien_idMAX()";
+                SqlCommand cmd = new SqlCommand(str, DBConnection.open());
+                SqlDataReader reader = cmd.ExecuteReader();
+                while (reader.Read())
+                    k = reader.GetValue(0).ToString();
+                reader.Close();
+                return k;
+            }
+            catch(Exception ex)
+            {
+                MessageBox.Show(ex.Message);
+                return k;
+            }
+            finally
+            {
+                DBConnection.close();
+            }
         }
 
         public void NhanVien_ThemHoacSua()

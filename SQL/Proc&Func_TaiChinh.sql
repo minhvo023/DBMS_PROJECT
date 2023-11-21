@@ -2,8 +2,8 @@
 (
     @idNV nvarchar(max) = null, -- ID của nhân viên
     @thang int = null, -- Tháng cần tính lương (ví dụ: 11)
-    @thangHD int = null, -- Tháng cần tính tổng hóa đơn (ví dụ: 11)
-    @thangDN int = null -- Tháng cần tính tổng đơn nhập (ví dụ: 11)
+    @thangHD int = null,
+    @thangDN int = null
 )
 AS
 BEGIN
@@ -89,14 +89,14 @@ GO
 CREATE OR ALTER FUNCTION func_TinhLuong_HD_DN
 (
     @idNV nchar(10) = null, -- ID của nhân viên
-    @thang int = null, -- Tháng cần tính lương (ví dụ: 11)
-    @thangHD int = null, -- Tháng cần tính tổng hóa đơn (ví dụ: 11)
-    @thangDN int = null -- Tháng cần tính tổng đơn nhập (ví dụ: 11)
+    @thang int = null, 
+    @thangHD int = null,
+    @thangDN int = null
 )
 RETURNS decimal(18, 0) -- Điều này tùy thuộc vào định dạng lương của bạn
 AS
 BEGIN
-    DECLARE @result decimal(18, 0);
+    DECLARE @result decimal(18, 0) = null ;
 
     -- Check for the case of calculating salary
     IF (@thang != '' AND @idNV IS NOT NULL)
@@ -149,7 +149,7 @@ BEGIN
             AND DonNhap.NgayTao < DATEADD(MONTH, 1, @thangDateDN)
             AND DonNhap.TrangThai = N'Đã Nhận';
     END
-    ELSE
+    IF (@result IS NULL)
     BEGIN
         SET @result = 0; -- Default value when no case matches
     END
